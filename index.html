@@ -3,143 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>HUNPAY Dashboard</title>
+<title>HUNPAY Trading Wallet Demo</title>
 
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f4f6fb;color:#172033}
-header{background:#172033;color:#fff;text-align:center;padding:22px;font-size:27px;font-weight:bold}
+header{background:#172033;color:#fff;text-align:center;padding:20px;font-size:24px;font-weight:bold}
 .container{max-width:720px;margin:auto;padding:16px}
-.balance{background:linear-gradient(135deg,#7b18e6,#9b35ee);color:#fff;border-radius:24px;padding:25px;margin-bottom:18px}
-.balance h1{font-size:38px;margin:10px 0}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
-.menu{background:#fff;border-radius:17px;padding:17px 7px;text-align:center;cursor:pointer;box-shadow:0 4px 15px #0001;font-size:13px}
-.icon{font-size:28px;margin-bottom:7px}
 .card{background:#fff;border-radius:20px;padding:22px;margin-bottom:18px;box-shadow:0 4px 18px #00000010}
+.balance{background:linear-gradient(135deg,#7b18e6,#9b35ee);color:#fff;border-radius:22px;padding:24px;margin-bottom:18px}
+.balance h1{font-size:36px;margin:10px 0}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.menu{background:#fff;border-radius:15px;padding:15px 7px;text-align:center;cursor:pointer;box-shadow:0 4px 15px #0001;font-size:13px}
+.icon{font-size:25px;margin-bottom:6px}
 .hidden{display:none}
-h2{margin-top:0}
 label{display:block;font-weight:bold;margin:14px 0 7px}
-input,select,textarea{width:100%;padding:14px;border:1px solid #ddd;border-radius:11px;font-size:16px}
-button{width:100%;padding:14px;border:0;border-radius:11px;background:#7b20e6;color:white;font-size:16px;font-weight:bold;margin-top:14px;cursor:pointer}
-.price{font-size:29px;font-weight:bold;margin:15px 0}
-.box{background:#f4efff;border:2px solid #8735e8;border-radius:16px;padding:16px;margin-top:15px}
-.row{background:#fff;padding:12px;border-radius:9px;margin:9px 0}
+input,select{width:100%;padding:14px;border:1px solid #ddd;border-radius:10px;font-size:16px}
+button{width:100%;padding:14px;border:0;border-radius:10px;background:#7b20e6;color:#fff;font-size:16px;font-weight:bold;margin-top:14px;cursor:pointer}
+.success{background:#e8f8ee;color:#146c36;padding:12px;border-radius:10px;margin-top:12px}
+.error{background:#fde8e8;color:#a11;padding:12px;border-radius:10px;margin-top:12px}
+.row{background:#f7f7fb;padding:12px;border-radius:9px;margin:9px 0}
 .row strong{display:block;margin-bottom:5px}
-.notice{padding:12px;border-radius:10px;margin-top:12px;background:#eef5ff}
-.success{display:none;background:#e8f8ee;color:#146c36;padding:12px;border-radius:10px;margin-top:12px}
-.status{font-weight:bold}
 table{width:100%;border-collapse:collapse;font-size:13px}
 th,td{padding:10px;border-bottom:1px solid #eee;text-align:left}
-
-.whatsapp{
-background:#25D366;
-color:white;
-text-decoration:none;
-display:block;
-text-align:center;
-padding:14px;
-border-radius:11px;
-font-size:16px;
-font-weight:bold;
-margin-top:14px;
-}
+.switch{text-align:center;margin-top:15px;color:#7b20e6;font-weight:bold;cursor:pointer}
+.notice{background:#eef5ff;padding:12px;border-radius:10px;margin-top:12px}
 
 @media(max-width:600px){
-header{font-size:21px;padding:18px}
+header{font-size:20px}
 .container{padding:11px}
 .grid{grid-template-columns:repeat(2,1fr)}
-.menu{min-height:88px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.balance h1{font-size:32px}
-.card{padding:17px}
 }
 </style>
 </head>
 
 <body>
 
-<header>HUNPAY Dashboard</header>
+<header>HUNPAY Trading Wallet Demo</header>
 
 <div class="container">
 
-<div class="balance">
-<small>Your Account Balance</small>
-<h1 id="balance">₦200,000.00</h1>
-<small>Demo account balance</small>
-</div>
+<div class="card" id="auth">
 
-<div class="grid">
+<div id="registerBox">
 
-<div class="menu" onclick="show('register')">
-<div class="icon">📝</div>Register
-</div>
-
-<div class="menu" onclick="show('login')">
-<div class="icon">🔐</div>Login
-</div>
-
-<div class="menu" onclick="show('id')">
-<div class="icon">🪪</div>ID Code
-</div>
-
-<div class="menu" onclick="show('withdraw')">
-<div class="icon">💸</div>Withdraw
-</div>
-
-<div class="menu" onclick="show('airtime')">
-<div class="icon">📱</div>Airtime
-</div>
-
-<div class="menu" onclick="show('data')">
-<div class="icon">🌐</div>Data
-</div>
-
-<div class="menu" onclick="show('bank')">
-<div class="icon">🏦</div>Payment Account
-</div>
-
-<div class="menu" onclick="show('profile')">
-<div class="icon">👤</div>Profile
-</div>
-
-<div class="menu" onclick="show('transactions')">
-<div class="icon">📋</div>Transactions
-</div>
-
-<div class="menu" onclick="show('support')">
-<div class="icon">🎧</div>Support
-</div>
-
-</div>
-
-
-<!-- REGISTER -->
-
-<div class="card hidden" id="register">
-
-<h2>📝 Create Account</h2>
+<h2>Create Account</h2>
 
 <label>Full Name</label>
 <input id="regName" placeholder="Enter your full name">
 
-<label>Phone Number</label>
-<input id="regPhone" type="tel" placeholder="Enter phone number">
-
 <label>Email</label>
-<input id="regEmail" type="email" placeholder="Enter email">
-
-<label>Country</label>
-
-<select id="regCountry">
-
-<option value="nigeria">
-Nigeria 🇳🇬
-</option>
-
-<option value="cameroon">
-Cameroon 🇨🇲
-</option>
-
-</select>
+<input id="regEmail" type="email" placeholder="Enter your email">
 
 <label>Password</label>
 <input id="regPassword" type="password" placeholder="Create password">
@@ -148,126 +62,135 @@ Cameroon 🇨🇲
 Create Account
 </button>
 
-<div class="success" id="registerSuccess">
-Account created successfully.
+<div id="regMessage"></div>
+
+<div class="switch" onclick="showLogin()">
+Already have an account? Login
 </div>
 
 </div>
 
 
-<!-- LOGIN -->
+<div id="loginBox" class="hidden">
 
-<div class="card hidden" id="login">
+<h2>Login</h2>
 
-<h2>🔐 Login</h2>
-
-<label>Email or Phone</label>
-<input id="loginId" placeholder="Email or phone">
+<label>Email</label>
+<input id="loginEmail" type="email" placeholder="Enter your email">
 
 <label>Password</label>
-<input id="loginPassword" type="password" placeholder="Password">
+<input id="loginPassword" type="password" placeholder="Enter your password">
 
 <button onclick="loginUser()">
 Login
 </button>
 
-<div class="success" id="loginSuccess"></div>
+<div id="loginMessage"></div>
+
+<div class="switch" onclick="showRegister()">
+Create Account
+</div>
+
+</div>
 
 </div>
 
 
-<!-- ID CODE -->
+<div id="app" class="hidden">
 
-<div class="card hidden" id="id">
+<div class="balance">
 
-<h2>🪪 ID Code</h2>
+<small>Demo Trading Wallet Balance</small>
 
-<label>Country</label>
+<h1 id="balance">₦0.00</h1>
 
-<select id="idCountry" onchange="updatePayment()">
+<small id="welcome"></small>
 
-<option value="nigeria">
-Nigeria 🇳🇬
-</option>
-
-<option value="cameroon">
-Cameroon 🇨🇲
-</option>
-
-</select>
-
-<div class="price" id="idPrice">
-₦12,500
 </div>
 
-<div class="box">
 
-<h3>Payment Information</h3>
+<div class="grid">
+
+<div class="menu" onclick="showSection('wallet')">
+<div class="icon">💰</div>
+Wallet
+</div>
+
+<div class="menu" onclick="showSection('deposit')">
+<div class="icon">➕</div>
+Deposit
+</div>
+
+<div class="menu" onclick="showSection('withdraw')">
+<div class="icon">💸</div>
+Withdraw
+</div>
+
+<div class="menu" onclick="showSection('profile')">
+<div class="icon">👤</div>
+Profile
+</div>
+
+<div class="menu" onclick="showSection('transactions')">
+<div class="icon">📋</div>
+Transactions
+</div>
+
+<div class="menu" onclick="logout()">
+<div class="icon">🚪</div>
+Logout
+</div>
+
+</div>
+
+
+<div class="card section" id="wallet">
+
+<h2>💰 Trading Wallet</h2>
+
+<p>Your personal demo wallet is linked to your account.</p>
 
 <div class="row">
-<strong>Account Name</strong>
-<span id="paymentName"></span>
+<strong>Name</strong>
+<span id="walletName"></span>
 </div>
 
 <div class="row">
-<strong>Account / MoMo Number</strong>
-<span id="paymentNumber"></span>
-</div>
-
-<div class="row">
-<strong>Bank / Network</strong>
-<span id="paymentBank"></span>
-</div>
-
+<strong>Email</strong>
+<span id="walletEmail"></span>
 </div>
 
 <div class="notice">
-Payment submissions are recorded for review.
+Demo wallet only. The displayed balance is stored locally in this browser.
 </div>
 
-<label>Transaction Reference</label>
+</div>
+
+
+<div class="card section hidden" id="deposit">
+
+<h2>➕ Demo Deposit</h2>
+
+<label>Amount</label>
 
 <input
-id="paymentReference"
-placeholder="Enter transaction reference">
+id="depositAmount"
+type="number"
+min="1"
+placeholder="Enter amount">
 
-<label>Payment Proof</label>
-
-<input
-id="paymentProof"
-type="file"
-accept="image/*,.pdf">
-
-<button onclick="submitPayment()">
-Submit Payment Record
+<button onclick="demoDeposit()">
+Add Demo Balance
 </button>
 
-<div class="success" id="paymentSuccess">
-Payment record submitted for review.
-</div>
+<div id="depositMessage"></div>
 
 </div>
 
 
-<!-- WITHDRAW -->
+<div class="card section hidden" id="withdraw">
 
-<div class="card hidden" id="withdraw">
-
-<h2>💸 Withdrawal Request</h2>
-
-<label>Country</label>
-
-<select id="withdrawCountry" onchange="updateWithdraw()">
-
-<option value="nigeria">
-Nigeria 🇳🇬
-</option>
-
-<option value="cameroon">
-Cameroon 🇨🇲
-</option>
-
-</select>
+<h2>💸 Demo Withdrawal</h2>
 
 <label>Account Name</label>
 
@@ -275,253 +198,59 @@ Cameroon 🇨🇲
 id="withdrawName"
 placeholder="Enter account name">
 
-<label>Account / MoMo Number</label>
+<label>Account Number</label>
 
 <input
 id="withdrawNumber"
 placeholder="Enter account number">
-
-<label>Bank / Mobile Money</label>
-
-<select id="withdrawProvider"></select>
 
 <label>Amount</label>
 
 <input
 id="withdrawAmount"
 type="number"
+min="1"
 placeholder="Enter amount">
 
-<button onclick="submitWithdraw()">
-Submit Withdrawal
+<button onclick="demoWithdraw()">
+Submit Demo Withdrawal
 </button>
 
-<div class="success" id="withdrawSuccess">
-Withdrawal request submitted for review.
-</div>
+<div id="withdrawMessage"></div>
 
 </div>
 
 
-<!-- AIRTIME -->
-
-<div class="card hidden" id="airtime">
-
-<h2>📱 Airtime</h2>
-
-<label>Country</label>
-
-<select>
-
-<option>Nigeria 🇳🇬</option>
-<option>Cameroon 🇨🇲</option>
-
-</select>
-
-<label>Phone Number</label>
-
-<input
-type="tel"
-placeholder="Enter phone number">
-
-<label>Amount</label>
-
-<input
-type="number"
-placeholder="Enter amount">
-
-<button onclick="simpleNotice('Airtime request recorded.')">
-Continue
-</button>
-
-</div>
-
-
-<!-- DATA -->
-
-<div class="card hidden" id="data">
-
-<h2>🌐 Data</h2>
-
-<label>Country</label>
-
-<select>
-
-<option>Nigeria 🇳🇬</option>
-<option>Cameroon 🇨🇲</option>
-
-</select>
-
-<label>Phone Number</label>
-
-<input
-type="tel"
-placeholder="Enter phone number">
-
-<label>Network</label>
-
-<select>
-
-<option>Select network</option>
-<option>MTN</option>
-<option>Airtel</option>
-<option>Glo</option>
-<option>9mobile</option>
-<option>MTN Cameroon</option>
-<option>Orange Cameroon</option>
-
-</select>
-
-<label>Amount</label>
-
-<input
-type="number"
-placeholder="Enter amount">
-
-<button onclick="simpleNotice('Data request recorded.')">
-Continue
-</button>
-
-</div>
-
-
-<!-- PAYMENT ACCOUNT -->
-
-<div class="card hidden" id="bank">
-
-<h2>🏦 Company Payment Account</h2>
-
-<label>Country</label>
-
-<select id="accountCountry" onchange="loadAccount()">
-
-<option value="cameroon">
-Cameroon 🇨🇲
-</option>
-
-<option value="nigeria">
-Nigeria 🇳🇬
-</option>
-
-</select>
-
-<label>Account Name</label>
-
-<input id="accountName">
-
-<label>Account / MoMo Number</label>
-
-<input id="accountNumber">
-
-<label>Bank / Network</label>
-
-<input id="accountBank">
-
-<button onclick="saveAccount()">
-Save Account
-</button>
-
-<div class="success" id="accountSuccess">
-Account details saved.
-</div>
-
-</div>
-
-
-<!-- PROFILE -->
-
-<div class="card hidden" id="profile">
+<div class="card section hidden" id="profile">
 
 <h2>👤 Profile</h2>
 
 <label>Full Name</label>
+
 <input id="profileName">
 
-<label>Phone Number</label>
-<input id="profilePhone">
-
 <label>Email</label>
-<input id="profileEmail">
 
-<label>Country</label>
-
-<select id="profileCountry">
-
-<option value="nigeria">
-Nigeria 🇳🇬
-</option>
-
-<option value="cameroon">
-Cameroon 🇨🇲
-</option>
-
-</select>
+<input id="profileEmail" type="email">
 
 <button onclick="saveProfile()">
 Save Profile
 </button>
 
-<div class="success" id="profileSuccess">
-Profile saved.
-</div>
+<div id="profileMessage"></div>
 
 </div>
 
 
-<!-- TRANSACTIONS -->
-
-<div class="card hidden" id="transactions">
+<div class="card section hidden" id="transactions">
 
 <h2>📋 Transactions</h2>
 
 <div id="transactionList">
-<p>No transactions yet.</p>
+No transactions yet.
 </div>
 
 </div>
-
-
-<!-- SUPPORT -->
-
-<div class="card hidden" id="support">
-
-<h2>🎧 Contact Support</h2>
-
-<p>
-Need help? Select your country and contact the support team directly on WhatsApp.
-</p>
-
-<label>Country</label>
-
-<select id="supportCountry" onchange="updateSupport()">
-
-<option value="nigeria">
-Nigeria 🇳🇬
-</option>
-
-<option value="cameroon">
-Cameroon 🇨🇲
-</option>
-
-</select>
-
-<div class="box">
-
-<div class="row">
-
-<strong>Support WhatsApp</strong>
-
-<span id="supportNumber">
-+234 901 994 6815
-</span>
-
-</div>
-
-</div>
-
-<button onclick="contactSupport()">
-💬 Chat With Support on WhatsApp
-</button>
 
 </div>
 
@@ -530,320 +259,294 @@ Cameroon 🇨🇲
 
 <script>
 
-const defaultAccounts={
+function users(){
 
-nigeria:{
-name:"Joshua Elisha Effiong",
-number:"9019946815",
-bank:"Moniepoint MFB"
-},
-
-cameroon:{
-name:"PATRICK RICARDO ZEKENG KEMKA",
-number:"678652697",
-bank:"MTN MOMO"
-}
-
-};
-
-
-const supportNumbers={
-
-nigeria:"2349019946815",
-
-cameroon:"237672863741"
-
-};
-
-
-const nigeriaProviders=[
-
-"Access Bank",
-"GTBank",
-"UBA",
-"First Bank",
-"Zenith Bank",
-"Moniepoint",
-"OPay",
-"PalmPay",
-"Kuda",
-"Union Bank",
-"Stanbic IBTC",
-"Fidelity Bank",
-"FCMB",
-"Sterling Bank",
-"Ecobank",
-"Wema Bank",
-"Keystone Bank",
-"Polaris Bank"
-
-];
-
-
-const cameroonProviders=[
-
-"MTN MoMo",
-"Orange Money",
-"Express Union",
-"UBA Cameroon",
-"Afriland First Bank",
-"CCA Bank",
-"Commercial Bank Cameroon",
-"Ecobank Cameroon"
-
-];
-
-
-function getAccounts(){
-
-const saved=
-localStorage.getItem("hunpay_accounts");
-
-return saved
-?JSON.parse(saved)
-:defaultAccounts;
-
-}
-
-
-function updatePayment(){
-
-const country=
-document.getElementById("idCountry").value;
-
-const account=
-getAccounts()[country];
-
-document.getElementById("paymentName")
-.textContent=account.name;
-
-document.getElementById("paymentNumber")
-.textContent=account.number;
-
-document.getElementById("paymentBank")
-.textContent=account.bank;
-
-document.getElementById("idPrice")
-.textContent=
-country==="nigeria"
-?"₦12,500"
-:"12,500 XAF";
-
-}
-
-
-function saveAccount(){
-
-const country=
-document.getElementById("accountCountry").value;
-
-const name=
-document.getElementById("accountName").value.trim();
-
-const number=
-document.getElementById("accountNumber").value.trim();
-
-const bank=
-document.getElementById("accountBank").value.trim();
-
-if(!name||!number||!bank){
-
-alert("Please complete all fields.");
-
-return;
-
-}
-
-const accounts=getAccounts();
-
-accounts[country]={
-name:name,
-number:number,
-bank:bank
-};
-
-localStorage.setItem(
-"hunpay_accounts",
-JSON.stringify(accounts)
+return JSON.parse(
+localStorage.getItem("hunpay_users") || "{}"
 );
 
-document.getElementById(
-"accountSuccess"
-).style.display="block";
+}
 
-updatePayment();
+
+function saveUsers(data){
+
+localStorage.setItem(
+"hunpay_users",
+JSON.stringify(data)
+);
 
 }
 
 
-function loadAccount(){
+function currentEmail(){
 
-const country=
-document.getElementById("accountCountry").value;
+return localStorage.getItem(
+"hunpay_logged_in"
+);
 
-const account=
-getAccounts()[country];
+}
 
-document.getElementById(
-"accountName"
-).value=account.name;
 
-document.getElementById(
-"accountNumber"
-).value=account.number;
+function currentUser(){
 
-document.getElementById(
-"accountBank"
-).value=account.bank;
+const all=users();
+
+const email=currentEmail();
+
+return email && all[email]
+?all[email]
+:null;
 
 }
 
 
 function registerUser(){
 
-const user={
+const name=
+document.getElementById("regName")
+.value.trim();
 
-name:
-document.getElementById("regName").value.trim(),
+const email=
+document.getElementById("regEmail")
+.value.trim()
+.toLowerCase();
 
-phone:
-document.getElementById("regPhone").value.trim(),
+const password=
+document.getElementById("regPassword")
+.value;
 
-email:
-document.getElementById("regEmail").value.trim(),
 
-country:
-document.getElementById("regCountry").value,
+if(!name || !email || !password){
 
-password:
-document.getElementById("regPassword").value
-
-};
-
-if(
-!user.name||
-!user.phone||
-!user.email||
-!user.password
-){
-
-alert("Please complete all registration fields.");
+message(
+"regMessage",
+"Please complete all fields.",
+"error"
+);
 
 return;
 
 }
 
-localStorage.setItem(
-"hunpay_user",
-JSON.stringify(user)
+
+const all=users();
+
+
+if(all[email]){
+
+message(
+"regMessage",
+"This email already has an account. Please login.",
+"error"
 );
 
-document.getElementById(
-"registerSuccess"
-).style.display="block";
+return;
+
+}
+
+
+all[email]={
+
+name:name,
+email:email,
+password:password,
+balance:0,
+transactions:[]
+
+};
+
+
+saveUsers(all);
+
+
+localStorage.setItem(
+"hunpay_logged_in",
+email
+);
+
+
+openApp();
 
 }
 
 
 function loginUser(){
 
-const saved=
-localStorage.getItem("hunpay_user");
-
-if(!saved){
-
-alert("No local demo account found.");
-
-return;
-
-}
-
-const user=JSON.parse(saved);
-
-const id=
-document.getElementById("loginId").value.trim();
+const email=
+document.getElementById("loginEmail")
+.value.trim()
+.toLowerCase();
 
 const password=
-document.getElementById("loginPassword").value;
+document.getElementById("loginPassword")
+.value;
 
-const box=
-document.getElementById("loginSuccess");
-
-if(
-(id===user.email||id===user.phone)&&
-password===user.password
-){
-
-box.textContent="Login successful.";
-
-}else{
-
-box.textContent="Incorrect login details.";
-
-}
-
-box.style.display="block";
-
-}
+const user=users()[email];
 
 
-function submitPayment(){
+if(!user || user.password!==password){
 
-const reference=
-document.getElementById(
-"paymentReference"
-).value.trim();
-
-const proof=
-document.getElementById(
-"paymentProof"
-).files.length;
-
-if(!reference&&!proof){
-
-alert(
-"Please provide a transaction reference or payment proof."
+message(
+"loginMessage",
+"Incorrect email or password.",
+"error"
 );
 
 return;
 
 }
 
-const transactions=
-JSON.parse(
-localStorage.getItem(
-"hunpay_transactions"
-)||"[]"
-);
-
-transactions.push({
-
-type:"ID Code Payment",
-
-reference:
-reference||"Proof uploaded",
-
-status:"Pending",
-
-date:new Date().toLocaleString()
-
-});
 
 localStorage.setItem(
-"hunpay_transactions",
-JSON.stringify(transactions)
+"hunpay_logged_in",
+email
 );
 
-document.getElementById(
-"paymentSuccess"
-).style.display="block";
+
+openApp();
+
+}
+
+
+function openApp(){
+
+document
+.getElementById("auth")
+.classList.add("hidden");
+
+document
+.getElementById("app")
+.classList.remove("hidden");
+
+loadUser();
+
+}
+
+
+function loadUser(){
+
+const user=currentUser();
+
+if(!user)return;
+
+
+document
+.getElementById("balance")
+.textContent=
+"₦"+
+Number(user.balance||0)
+.toLocaleString(
+"en-NG",
+{
+minimumFractionDigits:2
+}
+);
+
+
+document
+.getElementById("welcome")
+.textContent=
+"Welcome, "+user.name;
+
+
+document
+.getElementById("walletName")
+.textContent=user.name;
+
+
+document
+.getElementById("walletEmail")
+.textContent=user.email;
+
+
+document
+.getElementById("profileName")
+.value=user.name;
+
+
+document
+.getElementById("profileEmail")
+.value=user.email;
+
 
 loadTransactions();
 
 }
 
 
-function submitWithdraw(){
+function updateUser(user){
+
+const all=users();
+
+all[user.email]=user;
+
+saveUsers(all);
+
+loadUser();
+
+}
+
+
+function demoDeposit(){
+
+const amount=
+Number(
+document.getElementById(
+"depositAmount"
+).value
+);
+
+
+if(!amount || amount<=0){
+
+message(
+"depositMessage",
+"Enter a valid amount.",
+"error"
+);
+
+return;
+
+}
+
+
+const user=currentUser();
+
+user.balance=
+Number(user.balance||0)+amount;
+
+
+user.transactions.push({
+
+type:"Demo Deposit",
+
+amount:amount,
+
+status:"Completed",
+
+date:new Date().toLocaleString()
+
+});
+
+
+updateUser(user);
+
+
+message(
+"depositMessage",
+"Demo balance added successfully.",
+"success"
+);
+
+
+document.getElementById(
+"depositAmount"
+).value="";
+
+}
+
+
+function demoWithdraw(){
 
 const name=
 document.getElementById(
@@ -856,274 +559,216 @@ document.getElementById(
 ).value.trim();
 
 const amount=
+Number(
 document.getElementById(
 "withdrawAmount"
-).value;
+).value
+);
 
-if(!name||!number||!amount){
 
-alert(
-"Please complete the withdrawal details."
+const user=currentUser();
+
+
+if(!name || !number || !amount){
+
+message(
+"withdrawMessage",
+"Please complete all fields.",
+"error"
 );
 
 return;
 
 }
 
-const transactions=
-JSON.parse(
-localStorage.getItem(
-"hunpay_transactions"
-)||"[]"
+
+if(amount>Number(user.balance||0)){
+
+message(
+"withdrawMessage",
+"Insufficient demo balance.",
+"error"
 );
 
-transactions.push({
+return;
 
-type:"Withdrawal",
+}
+
+
+user.balance-=amount;
+
+
+user.transactions.push({
+
+type:"Demo Withdrawal",
 
 amount:amount,
 
-status:"Pending",
+status:"Completed",
 
 date:new Date().toLocaleString()
 
 });
 
-localStorage.setItem(
-"hunpay_transactions",
-JSON.stringify(transactions)
+
+updateUser(user);
+
+
+message(
+"withdrawMessage",
+"Demo withdrawal recorded.",
+"success"
 );
-
-document.getElementById(
-"withdrawSuccess"
-).style.display="block";
-
-loadTransactions();
-
-}
-
-
-function updateWithdraw(){
-
-const country=
-document.getElementById(
-"withdrawCountry"
-).value;
-
-const select=
-document.getElementById(
-"withdrawProvider"
-);
-
-select.innerHTML="";
-
-const providers=
-country==="nigeria"
-?nigeriaProviders
-:cameroonProviders;
-
-providers.forEach(function(provider){
-
-const option=
-document.createElement("option");
-
-option.textContent=provider;
-
-select.appendChild(option);
-
-});
 
 }
 
 
 function saveProfile(){
 
-const profile={
+const user=currentUser();
 
-name:
+const name=
 document.getElementById(
 "profileName"
-).value,
+).value.trim();
 
-phone:
-document.getElementById(
-"profilePhone"
-).value,
 
-email:
-document.getElementById(
-"profileEmail"
-).value,
+if(!name){
 
-country:
-document.getElementById(
-"profileCountry"
-).value
-
-};
-
-localStorage.setItem(
-"hunpay_profile",
-JSON.stringify(profile)
+message(
+"profileMessage",
+"Enter your name.",
+"error"
 );
 
-document.getElementById(
-"profileSuccess"
-).style.display="block";
+return;
+
+}
+
+
+user.name=name;
+
+updateUser(user);
+
+
+message(
+"profileMessage",
+"Profile saved.",
+"success"
+);
 
 }
 
 
 function loadTransactions(){
 
+const user=currentUser();
+
 const list=
 document.getElementById(
 "transactionList"
 );
 
-const transactions=
-JSON.parse(
-localStorage.getItem(
-"hunpay_transactions"
-)||"[]"
-);
 
-if(!transactions.length){
+if(!user || !user.transactions.length){
 
 list.innerHTML=
-"<p>No transactions yet.</p>";
+"No transactions yet.";
 
 return;
 
 }
 
+
 let html=
 "<table>"+
 "<tr>"+
 "<th>Type</th>"+
-"<th>Amount/Ref</th>"+
+"<th>Amount</th>"+
 "<th>Status</th>"+
+"<th>Date</th>"+
 "</tr>";
 
-transactions
+
+user.transactions
 .slice()
 .reverse()
 .forEach(function(t){
 
 html+=
 "<tr>"+
-"<td>"+t.type+"</td>"+
-"<td>"+(t.amount||t.reference||"-")+"</td>"+
-"<td>"+t.status+"</td>"+
+"<td>"+escapeHtml(t.type)+"</td>"+
+"<td>₦"+
+Number(t.amount)
+.toLocaleString("en-NG")+
+"</td>"+
+"<td>"+
+escapeHtml(t.status)+
+"</td>"+
+"<td>"+
+escapeHtml(t.date)+
+"</td>"+
 "</tr>";
 
 });
 
-html+="</table>";
 
-list.innerHTML=html;
-
-}
-
-
-function updateSupport(){
-
-const country=
-document.getElementById(
-"supportCountry"
-).value;
-
-const number=
-supportNumbers[country];
-
-document.getElementById(
-"supportNumber"
-).textContent=
-country==="nigeria"
-?"+234 901 994 6815"
-:"+237 672 863 741";
+list.innerHTML=
+html+
+"</table>";
 
 }
 
 
-function contactSupport(){
+function escapeHtml(s){
 
-const country=
-document.getElementById(
-"supportCountry"
-).value;
+return String(s)
+.replace(
+/[&<>"']/g,
+function(m){
 
-const number=
-supportNumbers[country];
+return {
 
-const message=
-"Hello HUNPAY Support, I need assistance with my account.";
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
 
-const url=
-"https://wa.me/"+
-number+
-"?text="+
-encodeURIComponent(message);
-
-window.open(url,"_blank");
-
-}
-
-
-function simpleNotice(message){
-
-alert(message);
-
-}
-
-
-function show(id){
-
-const sections=[
-
-"register",
-"login",
-"id",
-"withdraw",
-"airtime",
-"data",
-"bank",
-"profile",
-"transactions",
-"support"
-
-];
-
-sections.forEach(function(section){
-
-document
-.getElementById(section)
-.classList.add("hidden");
+}[m];
 
 });
+
+}
+
+
+function showSection(id){
+
+document
+.querySelectorAll(".section")
+.forEach(function(x){
+
+x.classList.add("hidden");
+
+});
+
 
 document
 .getElementById(id)
 .classList.remove("hidden");
 
-if(id==="id")
-updatePayment();
 
-if(id==="bank")
-loadAccount();
+if(id==="transactions"){
 
-if(id==="withdraw")
-updateWithdraw();
-
-if(id==="transactions")
 loadTransactions();
 
-if(id==="support")
-updateSupport();
+}
+
 
 window.scrollTo({
 
 top:0,
+
 behavior:"smooth"
 
 });
@@ -1131,10 +776,75 @@ behavior:"smooth"
 }
 
 
-updatePayment();
-updateWithdraw();
-loadTransactions();
-updateSupport();
+function showLogin(){
+
+document
+.getElementById("registerBox")
+.classList.add("hidden");
+
+document
+.getElementById("loginBox")
+.classList.remove("hidden");
+
+}
+
+
+function showRegister(){
+
+document
+.getElementById("loginBox")
+.classList.add("hidden");
+
+document
+.getElementById("registerBox")
+.classList.remove("hidden");
+
+}
+
+
+function logout(){
+
+localStorage.removeItem(
+"hunpay_logged_in"
+);
+
+
+document
+.getElementById("app")
+.classList.add("hidden");
+
+
+document
+.getElementById("auth")
+.classList.remove("hidden");
+
+
+showLogin();
+
+}
+
+
+function message(id,text,type){
+
+const el=
+document.getElementById(id);
+
+el.className=type;
+
+el.textContent=text;
+
+}
+
+
+window.onload=function(){
+
+if(currentUser()){
+
+openApp();
+
+}
+
+};
 
 </script>
 
