@@ -3,124 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Trading Wallet — Test</title>
+<title>Trading Wallet Demo</title>
 
 <style>
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f4f6fb;
-  color:#172033
-}
-header{
-  background:#172033;
-  color:#fff;
-  text-align:center;
-  padding:22px;
-  font-size:25px;
-  font-weight:bold
-}
-.container{
-  max-width:650px;
-  margin:auto;
-  padding:18px
-}
-.card{
-  background:#fff;
-  padding:24px;
-  margin-bottom:20px;
-  border-radius:20px;
-  box-shadow:0 5px 20px #0001
-}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f6fb;color:#172033}
+header{background:#172033;color:#fff;padding:22px;text-align:center;font-size:25px;font-weight:bold}
+.container{max-width:700px;margin:auto;padding:15px}
+.card{background:#fff;padding:22px;margin-bottom:18px;border-radius:20px;box-shadow:0 5px 20px #0001}
 .hidden{display:none}
-label{
-  display:block;
-  margin:15px 0 7px;
-  font-weight:bold
-}
-input,select{
-  width:100%;
-  padding:14px;
-  border:1px solid #ddd;
-  border-radius:10px;
-  font-size:16px
-}
-button{
-  width:100%;
-  padding:15px;
-  margin-top:18px;
-  border:0;
-  border-radius:10px;
-  background:#7620df;
-  color:#fff;
-  font-size:16px;
-  font-weight:bold
-}
-.secondary{background:#172033}
-.logout{background:#d52b20}
-.wallet{
-  background:linear-gradient(135deg,#7019d8,#a238ed);
-  color:#fff;
-  border-radius:22px;
-  padding:25px
-}
-.wallet h1{
-  font-size:40px;
-  margin:10px 0
-}
-.menu{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px
-}
-.menu button{
-  margin:0;
-  background:#fff;
-  color:#172033;
-  box-shadow:0 3px 12px #0001
-}
-.payment{
-  background:#f5f0ff;
-  border:2px solid #8535df;
-  border-radius:16px;
-  padding:18px
-}
-.payment-row{
-  background:#fff;
-  padding:14px;
-  border-radius:10px;
-  margin:10px 0
-}
-.payment-row strong{
-  display:block;
-  margin-bottom:6px
-}
-.test{
-  color:#c40000;
-  font-weight:bold
-}
-.notice{
-  background:#fff3cd;
-  color:#725500;
-  padding:12px;
-  border-radius:10px;
-  margin-top:15px
-}
-.message{
-  padding:12px;
-  border-radius:10px;
-  margin-top:15px;
-  text-align:center
-}
-.error{
-  background:#fde8e8;
-  color:#a00000
-}
-.success{
-  background:#e8f7ed;
-  color:#176b38
-}
+label{display:block;margin:15px 0 7px;font-weight:bold}
+input,select,textarea{width:100%;padding:14px;border:1px solid #ddd;border-radius:10px;font-size:16px}
+button{width:100%;padding:14px;margin-top:15px;border:0;border-radius:10px;background:#7620df;color:white;font-size:16px;font-weight:bold;cursor:pointer}
+.dark{background:#172033}
+.red{background:#d52b20}
+.wallet{background:linear-gradient(135deg,#7019d8,#a238ed);color:#fff;padding:25px;border-radius:22px}
+.wallet h1{font-size:40px;margin:10px 0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.grid button{margin:0;background:#fff;color:#172033;box-shadow:0 3px 12px #0001;min-height:75px}
+.payment{background:#f5f0ff;border:2px solid #8535df;border-radius:16px;padding:18px}
+.payment-row{background:#fff;padding:13px;border-radius:10px;margin:10px 0}
+.payment-row strong{display:block;margin-bottom:5px}
+.test{color:#c40000;font-weight:bold}
+.notice{background:#fff3cd;color:#725500;padding:12px;border-radius:10px;margin-top:12px}
+.message{padding:12px;border-radius:10px;margin-top:12px;text-align:center}
+.error{background:#fde8e8;color:#a00000}
+.success{background:#e8f7ed;color:#176b38}
+.support{background:#eaf4ff;border-radius:14px;padding:15px;margin-top:12px}
+.support a{display:block;margin-top:10px;color:#1264c4;font-weight:bold;text-decoration:none}
+@media(max-width:550px){.grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 
@@ -131,10 +42,8 @@ button{
 <div class="container">
 
 <!-- REGISTER -->
-
 <div class="card" id="register">
-
-<h2>Create Account</h2>
+<h2>📝 Create Account</h2>
 
 <label>Full Name</label>
 <input id="name" placeholder="Enter your full name">
@@ -145,112 +54,104 @@ button{
 <label>Password</label>
 <input id="password" type="password" placeholder="Create password">
 
-<button onclick="registerUser()">
-Create Account
-</button>
+<button onclick="registerUser()">Create Account</button>
 
 <div id="registerMessage"></div>
 
-<button class="secondary" onclick="showLogin()">
+<button class="dark" onclick="showLogin()">
 Already Have An Account? Login
 </button>
-
 </div>
 
 
 <!-- LOGIN -->
-
 <div class="card hidden" id="login">
-
-<h2>Login</h2>
+<h2>🔐 Login</h2>
 
 <label>Email Address</label>
-<input id="loginEmail" type="email" placeholder="Enter your email">
+<input id="loginEmail" type="email" placeholder="Enter email">
 
 <label>Password</label>
 <input id="loginPassword" type="password" placeholder="Enter password">
 
-<button onclick="loginUser()">
-Login
-</button>
+<button onclick="loginUser()">Login</button>
 
 <div id="loginMessage"></div>
 
-<button class="secondary" onclick="showRegister()">
+<button class="dark" onclick="showRegister()">
 Create New Account
 </button>
-
 </div>
 
 
 <!-- DASHBOARD -->
-
 <div class="hidden" id="dashboard">
 
 <div class="card">
-
 <h2 id="welcome"></h2>
 
 <div class="wallet">
-
 <small>Trading Wallet Balance</small>
-
-<h1>₦0.00</h1>
-
-<small>Available Demo Balance</small>
-
+<h1>₦200000.00</h1>
+<small>Demo Balance</small>
 </div>
-
 </div>
 
 
-<div class="menu">
+<!-- DASHBOARD MENU -->
+<div class="grid">
 
-<button onclick="section('trading')">
-📈 Trading
-</button>
-
-<button onclick="section('withdraw')">
-💸 Withdraw
-</button>
-
-<button onclick="section('idcode')">
-🪪 Buy ID Code
-</button>
-
-<button onclick="section('profile')">
-👤 Profile
-</button>
+<button onclick="openSection('trading')">📈<br>Trading</button>
+<button onclick="openSection('deposit')">💳<br>Deposit</button>
+<button onclick="openSection('withdraw')">💸<br>Withdraw</button>
+<button onclick="openSection('idcode')">🪪<br>Buy ID Code</button>
+<button onclick="openSection('airtime')">📱<br>Airtime</button>
+<button onclick="openSection('data')">🌐<br>Buy Data</button>
+<button onclick="openSection('chat')">💬<br>Chat</button>
+<button onclick="openSection('support')">🎧<br>Customer Service</button>
+<button onclick="openSection('profile')">👤<br>Profile</button>
 
 </div>
 
 
 <!-- TRADING -->
-
 <div class="card hidden" id="trading">
-
 <h2>📈 Trading</h2>
-
-<p>Your demo trading wallet is active.</p>
+<p>Your trading wallet is available in demonstration mode.</p>
 
 <div class="wallet">
-
-<small>Current Balance</small>
-<h1>₦0.00</h1>
-
+<small>Wallet Balance</small>
+<h1>₦200000.00</h1>
+</div>
 </div>
 
+
+<!-- DEPOSIT -->
+<div class="card hidden" id="deposit">
+<h2>💳 Deposit</h2>
+
+<label>Country</label>
+<select>
+<option>Nigeria 🇳🇬</option>
+<option>Cameroon 🇨🇲</option>
+</select>
+
+<label>Amount</label>
+<input type="number" placeholder="Enter amount">
+
+<button onclick="demo('depositMessage')">
+Continue
+</button>
+
+<div id="depositMessage"></div>
 </div>
 
 
 <!-- WITHDRAW -->
-
 <div class="card hidden" id="withdraw">
-
 <h2>💸 Withdraw</h2>
 
 <label>Country</label>
-
 <select>
 <option>Nigeria 🇳🇬</option>
 <option>Cameroon 🇨🇲</option>
@@ -263,7 +164,6 @@ Create New Account
 <input placeholder="Enter account number">
 
 <label>Bank / Mobile Money</label>
-
 <select>
 <option>Select provider</option>
 <option>Moniepoint</option>
@@ -274,8 +174,8 @@ Create New Account
 <option>UBA</option>
 <option>First Bank</option>
 <option>Zenith Bank</option>
-<option>MTN MoMo Cameroon</option>
-<option>Orange Money Cameroon</option>
+<option>MTN MoMo</option>
+<option>Orange Money</option>
 </select>
 
 <label>Amount</label>
@@ -286,93 +186,172 @@ Submit Test Withdrawal
 </button>
 
 <div id="withdrawMessage"></div>
-
 </div>
 
 
 <!-- ID CODE -->
-
 <div class="card hidden" id="idcode">
 
 <h2>🪪 Buy ID Code</h2>
 
 <div class="payment">
 
-<h3>Payment Details — TEST MODE</h3>
+<h3>ID Code Payment</h3>
 
 <div class="payment-row">
-
 <strong>ID Code Amount</strong>
-
-<span class="test">
-₦12,500
-</span>
-
+<span>₦12,500</span>
 </div>
-
 
 <div class="payment-row">
-
-<strong>🇳🇬 Nigeria — Moniepoint</strong>
-
-<span class="test">
-Account Number: 0000000000
-</span>
-
+<strong>🇳🇬 Nigeria Account Number</strong>
+<span class="test">0000000000</span>
 </div>
-
 
 <div class="payment-row">
-
-<strong>🇨🇲 Cameroon — MoMo</strong>
-
-<span class="test">
-Account Number: 000000000
-</span>
-
+<strong>🇨🇲 Cameroon Account
+PATRICK RICARDO ZEKENG KEMKA
+678652697
+. Number</strong>
+<span class="test">0000000000</span>
 </div>
-
 
 <div class="notice">
-
-TEST MODE: the account numbers above are
-fictional placeholders and are not payment accounts.
-
+Demo payment details. The displayed account numbers are
+non-payment placeholders.
 </div>
 
 </div>
-
 
 <label>Payment Reference</label>
-
-<input
-id="reference"
-placeholder="Enter test payment reference"
->
-
+<input id="reference" placeholder="Enter test reference">
 
 <label>Payment Proof</label>
-
-<input
-id="proof"
-type="file"
-accept="image/*,.pdf"
->
-
+<input id="proof" type="file" accept="image/*,.pdf">
 
 <button onclick="submitTestPayment()">
 Submit Test Payment
 </button>
 
 <div id="paymentMessage"></div>
+</div>
 
+
+<!-- AIRTIME -->
+<div class="card hidden" id="airtime">
+<h2>📱 Airtime</h2>
+
+<label>Country</label>
+<select>
+<option>Nigeria 🇳🇬</option>
+<option>Cameroon 🇨🇲</option>
+</select>
+
+<label>Phone Number</label>
+<input type="tel" placeholder="Enter phone number">
+
+<label>Network</label>
+<select>
+<option>Select network</option>
+<option>MTN</option>
+<option>Airtel</option>
+<option>Glo</option>
+<option>9mobile</option>
+<option>MTN Cameroon</option>
+<option>Orange Cameroon</option>
+</select>
+
+<label>Amount</label>
+<input type="number" placeholder="Enter amount">
+
+<button onclick="demo('airtimeMessage')">
+Continue
+</button>
+
+<div id="airtimeMessage"></div>
+</div>
+
+
+<!-- DATA -->
+<div class="card hidden" id="data">
+<h2>🌐 Buy Data</h2>
+
+<label>Country</label>
+<select>
+<option>Nigeria 🇳🇬</option>
+<option>Cameroon 🇨🇲</option>
+</select>
+
+<label>Phone Number</label>
+<input type="tel" placeholder="Enter phone number">
+
+<label>Network</label>
+<select>
+<option>Select network</option>
+<option>MTN</option>
+<option>Airtel</option>
+<option>Glo</option>
+<option>9mobile</option>
+<option>MTN Cameroon</option>
+<option>Orange Cameroon</option>
+</select>
+
+<label>Data Plan</label>
+<select>
+<option>Select data plan</option>
+<option>500MB</option>
+<option>1GB</option>
+<option>2GB</option>
+<option>5GB</option>
+<option>10GB</option>
+</select>
+
+<button onclick="demo('dataMessage')">
+Continue
+</button>
+
+<div id="dataMessage"></div>
+</div>
+
+
+<!-- CHAT -->
+<div class="card hidden" id="chat">
+<h2>💬 Chat</h2>
+
+<label>Message</label>
+<textarea id="chatMessage" rows="5"
+placeholder="Type your message"></textarea>
+
+<button onclick="sendChat()">
+Send Message
+</button>
+
+<div id="chatResult"></div>
+</div>
+
+
+<!-- CUSTOMER SERVICE -->
+<div class="card hidden" id="support">
+<h2>🎧 Customer Service</h2>
+
+<div class="support">
+<strong>Nigeria Support</strong>
+<a href="https://wa.me/2349019946815" target="_blank">
+WhatsApp: +234 901 994 6815
+</a>
+</div>
+
+<div class="support">
+<strong>Cameroon Support</strong>
+<a href="https://wa.me/237672863741" target="_blank">
+WhatsApp: +237 672 863 741
+</a>
+</div>
 </div>
 
 
 <!-- PROFILE -->
-
 <div class="card hidden" id="profile">
-
 <h2>👤 Profile</h2>
 
 <p>
@@ -384,329 +363,186 @@ Submit Test Payment
 <strong>Email:</strong>
 <span id="profileEmail"></span>
 </p>
-
 </div>
 
 
 <div class="card">
-
-<button class="logout" onclick="logout()">
-Logout
-</button>
-
+<button class="red" onclick="logout()">Logout</button>
 </div>
 
 </div>
-
 </div>
 
 
 <script>
 
-const USERS="trading_test_users";
-const SESSION="trading_test_session";
+const USERS_KEY="trading_demo_users";
+const SESSION_KEY="trading_demo_session";
 
-
-function users(){
-
-return JSON.parse(
-localStorage.getItem(USERS)||"{}"
-);
-
+function getUsers(){
+return JSON.parse(localStorage.getItem(USERS_KEY)||"{}");
 }
 
-
-function save(data){
-
-localStorage.setItem(
-USERS,
-JSON.stringify(data)
-);
-
+function saveUsers(users){
+localStorage.setItem(USERS_KEY,JSON.stringify(users));
 }
-
 
 function registerUser(){
 
-const name=
-document.getElementById("name")
-.value.trim();
-
-const email=
-document.getElementById("email")
-.value.trim()
-.toLowerCase();
-
-const password=
-document.getElementById("password")
-.value;
-
+const name=document.getElementById("name").value.trim();
+const email=document.getElementById("email").value.trim().toLowerCase();
+const password=document.getElementById("password").value;
 
 if(!name||!email||!password){
-
-msg(
-"registerMessage",
-"Please complete all fields.",
-"error"
-);
-
+message("registerMessage","Please complete all fields.","error");
 return;
 }
 
-
-const data=users();
-
-
-if(data[email]){
-
-msg(
-"registerMessage",
-"This email already has an account. Please login.",
-"error"
-);
-
+if(password.length<6){
+message("registerMessage","Password must contain at least 6 characters.","error");
 return;
 }
 
+const users=getUsers();
 
-data[email]={
+if(users[email]){
+message("registerMessage","This email already has an account. Please login.","error");
+return;
+}
+
+users[email]={
 name:name,
 email:email,
 password:password,
 wallet:0
 };
 
+saveUsers(users);
 
-save(data);
+localStorage.setItem(SESSION_KEY,email);
 
-
-localStorage.setItem(
-SESSION,
-email
-);
-
-
-dashboard(data[email]);
-
+openDashboard();
 }
-
 
 function loginUser(){
 
-const email=
-document.getElementById("loginEmail")
-.value.trim()
-.toLowerCase();
-
-const password=
-document.getElementById("loginPassword")
-.value;
-
-const data=users();
-
-const user=data[email];
-
+const email=document.getElementById("loginEmail").value.trim().toLowerCase();
+const password=document.getElementById("loginPassword").value;
+const users=getUsers();
+const user=users[email];
 
 if(!user){
-
-msg(
-"loginMessage",
-"Account not found.",
-"error"
-);
-
+message("loginMessage","Account not found. Please create an account.","error");
 return;
 }
-
 
 if(user.password!==password){
-
-msg(
-"loginMessage",
-"Incorrect password.",
-"error"
-);
-
+message("loginMessage","Incorrect email or password.","error");
 return;
 }
 
-
-localStorage.setItem(
-SESSION,
-email
-);
-
-
-dashboard(user);
-
+localStorage.setItem(SESSION_KEY,email);
+openDashboard();
 }
 
+function openDashboard(){
 
-function dashboard(user){
+const email=localStorage.getItem(SESSION_KEY);
+const users=getUsers();
+const user=users[email];
 
-document
-.getElementById("register")
-.classList.add("hidden");
-
-document
-.getElementById("login")
-.classList.add("hidden");
-
-document
-.getElementById("dashboard")
-.classList.remove("hidden");
-
-
-document
-.getElementById("welcome")
-.textContent=
-"Welcome, "+user.name;
-
-
-document
-.getElementById("profileName")
-.textContent=
-user.name;
-
-
-document
-.getElementById("profileEmail")
-.textContent=
-user.email;
-
+if(!user){
+showLogin();
+return;
 }
 
+document.getElementById("register").classList.add("hidden");
+document.getElementById("login").classList.add("hidden");
+document.getElementById("dashboard").classList.remove("hidden");
+
+document.getElementById("welcome").textContent="Welcome, "+user.name;
+document.getElementById("profileName").textContent=user.name;
+document.getElementById("profileEmail").textContent=user.email;
+}
 
 function showLogin(){
-
-document
-.getElementById("register")
-.classList.add("hidden");
-
-document
-.getElementById("login")
-.classList.remove("hidden");
-
+document.getElementById("register").classList.add("hidden");
+document.getElementById("login").classList.remove("hidden");
 }
-
 
 function showRegister(){
-
-document
-.getElementById("login")
-.classList.add("hidden");
-
-document
-.getElementById("register")
-.classList.remove("hidden");
-
+document.getElementById("login").classList.add("hidden");
+document.getElementById("register").classList.remove("hidden");
 }
 
+function openSection(id){
 
-function section(id){
+const sections=[
+"trading","deposit","withdraw","idcode",
+"airtime","data","chat","support","profile"
+];
 
-[
-"trading",
-"withdraw",
-"idcode",
-"profile"
-].forEach(function(x){
-
-document
-.getElementById(x)
-.classList.add("hidden");
-
+sections.forEach(function(section){
+document.getElementById(section).classList.add("hidden");
 });
 
-
-document
-.getElementById(id)
-.classList.remove("hidden");
-
+document.getElementById(id).classList.remove("hidden");
+window.scrollTo({top:0,behavior:"smooth"});
 }
-
 
 function submitTestPayment(){
 
-const reference=
-document.getElementById("reference")
-.value.trim();
-
-const proof=
-document.getElementById("proof")
-.files.length;
-
+const reference=document.getElementById("reference").value.trim();
+const proof=document.getElementById("proof").files.length;
 
 if(!reference&&!proof){
-
-msg(
-"paymentMessage",
-"Enter a test reference or upload test proof.",
-"error"
-);
-
+message("paymentMessage","Enter a test reference or upload test proof.","error");
 return;
 }
 
-
-msg(
-"paymentMessage",
-"Test payment submitted.",
-"success"
-);
-
+message("paymentMessage","Test payment submitted successfully.","success");
 }
 
+function sendChat(){
+
+const text=document.getElementById("chatMessage").value.trim();
+
+if(!text){
+message("chatResult","Please enter a message.","error");
+return;
+}
+
+message("chatResult","Test message submitted.","success");
+}
 
 function demo(id){
-
-msg(
-id,
-"Test action completed.",
-"success"
-);
-
+message(id,"Test action completed.","success");
 }
-
 
 function logout(){
 
-localStorage.removeItem(SESSION);
+localStorage.removeItem(SESSION_KEY);
 
-document
-.getElementById("dashboard")
-.classList.add("hidden");
+document.getElementById("dashboard").classList.add("hidden");
 
 showLogin();
-
 }
 
+function message(id,text,type){
 
-function msg(id,text,type){
+const box=document.getElementById(id);
 
-const box=
-document.getElementById(id);
-
-box.className=
-"message "+type;
-
+box.className="message "+type;
 box.textContent=text;
-
 }
-
 
 window.onload=function(){
 
-const email=
-localStorage.getItem(SESSION);
+const email=localStorage.getItem(SESSION_KEY);
+const users=getUsers();
 
-const data=users();
-
-
-if(email&&data[email]){
-
-dashboard(data[email]);
-
+if(email&&users[email]){
+openDashboard();
 }
 
 };
@@ -714,4 +550,4 @@ dashboard(data[email]);
 </script>
 
 </body>
-</html>
+  </html>
