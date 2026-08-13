@@ -1,87 +1,147 @@
-  max-width: 700px;
-  margin: auto;
-  padding: 20px;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HUNPAY Dashboard</title>
 
-.card {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 15px rgba(0,0,0,.07);
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-.balance {
-  background: #172033;
-  color: white;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #172033;
+    }
 
-.balance h2 {
-  margin: 0 0 10px;
-  font-size: 16px;
-}
+    header {
+      background: #111827;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
 
-.amount {
-  font-size: 36px;
-  font-weight: bold;
-}
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+    }
 
-.stat {
-  background: #eef2ff;
-  padding: 18px;
-  border-radius: 12px;
-}
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    }
 
-.stat strong {
-  display: block;
-  font-size: 24px;
-  margin-top: 5px;
-}
+    .balance {
+      background: #172033;
+      color: white;
+    }
 
-button {
-  width: 100%;
-  border: 0;
-  padding: 14px;
-  border-radius: 10px;
-  background: #2563eb;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
+    .balance h2 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
 
-button:hover {
-  background: #1d4ed8;
-}
+    .amount {
+      font-size: 36px;
+      font-weight: bold;
+    }
 
-input {
-  width: 100%;
-  padding: 13px;
-  border: 1px solid #d1d5db;
-  border-radius: 9px;
-  margin: 8px 0 12px;
-}
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
 
-.notice {
-  font-size: 13px;
-  color: #64748b;
-  margin-top: 10px;
-}
+    .stat {
+      background: #eef2ff;
+      padding: 18px;
+      border-radius: 12px;
+    }
 
-.hidden {
-  display: none;
-}
+    .stat strong {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
 
-.nav {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
-}
+    button {
+      width: 100%;
+      border: 0;
+      padding: 14px;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
-.nav button {
-  background:
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .notice {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>HUNPAY Dashboard</h1>
+  </header>
+
+  <main class="container">
+
+    <section class="card balance">
+      <h2>Demo Balance</h2>
+      <div class="amount">₦0.00</div>
+    </section>
+
+    <section class="card">
+      <h2>Account Overview</h2>
+
+      <div class="grid">
+        <div class="stat">
+          <strong>0</strong>
+          Referrals
+        </div>
+
+        <div class="stat">
+          <strong>₦0.00</strong>
+          Earnings
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Welcome</h2>
+      <p class="notice">
+        This is a demonstration dashboard. Account balances and earnings
+        should come from a real backend/database rather than being hard-coded
+        in the webpage.
+      </p>
+
+      <button onclick="alert('Demo button')">
+        Continue
+      </button>
+    </section>
+
+  </main>
+
+</body>
+</html>
