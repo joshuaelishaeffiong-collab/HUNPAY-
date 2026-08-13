@@ -4,56 +4,217 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>HUNPAY</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f7f2fa;color:#242331}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f7f2fa;
+  color:#242331
+}
 button,input,select{font:inherit}
 button{cursor:pointer;border:0}
 .hidden{display:none!important}
-.topbar{height:64px;background:#10151d;color:#fff;display:flex;
-align-items:center;justify-content:space-between;padding:0 20px}
+
+.topbar{
+  height:64px;
+  background:#10151d;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px
+}
 .logo{font-size:25px;font-weight:900}
-.container{max-width:720px;margin:auto;padding:18px 15px 50px}
-.card{background:#fff;border-radius:20px;padding:20px;margin-bottom:18px;
-box-shadow:0 5px 20px rgba(0,0,0,.07)}
-.wallet{background:linear-gradient(135deg,#7420d1,#9229df);color:white;
-border-radius:25px;padding:25px 22px}
-.wallet-head{display:flex;justify-content:space-between;align-items:center}
-.user{display:flex;align-items:center;gap:12px}
-.avatar{width:58px;height:58px;background:#fff;color:#7621ca;border-radius:50%;
-display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:900}
-.welcome{font-size:20px;font-weight:800}
-.muted{opacity:.8;margin-top:4px}
+
+.container{
+  max-width:720px;
+  margin:auto;
+  padding:18px 15px 50px
+}
+
+.card{
+  background:#fff;
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow:0 5px 20px rgba(0,0,0,.07)
+}
+
+.wallet{
+  background:linear-gradient(135deg,#7420d1,#9229df);
+  color:#fff;
+  border-radius:25px;
+  padding:25px 22px
+}
+
+.wallet-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center
+}
+
+.user{
+  display:flex;
+  align-items:center;
+  gap:12px
+}
+
+.avatar{
+  width:58px;
+  height:58px;
+  background:#fff;
+  color:#7621ca;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+  font-weight:900
+}
+
+.welcome{
+  font-size:20px;
+  font-weight:800
+}
+
+.muted{
+  opacity:.8;
+  margin-top:4px
+}
+
 .balance-label{margin-top:28px}
-.balance{font-size:40px;font-weight:900;margin:5px 0}
-.wallet-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
-.wallet-actions button{background:rgba(255,255,255,.18);color:white;padding:15px;
-border-radius:15px;font-weight:800}
-.menu{display:grid;grid-template-columns:repeat(4,1fr);gap:18px 7px;margin:22px 0}
-.menu button{background:transparent;color:#292938;text-align:center;font-weight:700}
-.icon{width:48px;height:48px;background:#fff;border-radius:14px;margin:auto auto 7px;
-display:flex;align-items:center;justify-content:center;font-size:25px;
-box-shadow:0 3px 12px rgba(0,0,0,.08)}
-.promo{border-radius:20px;padding:25px;min-height:160px;color:#fff;
-background:linear-gradient(135deg,#6d20c7,#b633c9)}
-label{display:block;font-weight:700;margin:15px 0 7px}
-input,select{width:100%;padding:14px;border:1px solid #ddd7e5;border-radius:11px}
-.primary{width:100%;margin-top:15px;padding:14px;border-radius:11px;
-background:#7820cf;color:#fff;font-weight:800}
-.secondary{width:100%;margin-top:10px;padding:14px;border-radius:11px;
-background:#292638;color:#fff;font-weight:800}
+
+.balance{
+  font-size:40px;
+  font-weight:900;
+  margin:5px 0
+}
+
+.wallet-actions{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  margin-top:20px
+}
+
+.wallet-actions button{
+  background:rgba(255,255,255,.18);
+  color:#fff;
+  padding:15px;
+  border-radius:15px;
+  font-weight:800
+}
+
+.menu{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px 7px;
+  margin:22px 0
+}
+
+.menu button{
+  background:transparent;
+  color:#292938;
+  text-align:center;
+  font-weight:700
+}
+
+.icon{
+  width:48px;
+  height:48px;
+  background:#fff;
+  border-radius:14px;
+  margin:auto auto 7px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08)
+}
+
+.promo{
+  border-radius:20px;
+  padding:25px;
+  min-height:160px;
+  color:#fff;
+  background:linear-gradient(135deg,#6d20c7,#b633c9)
+}
+
+label{
+  display:block;
+  font-weight:700;
+  margin:15px 0 7px
+}
+
+input,select{
+  width:100%;
+  padding:14px;
+  border:1px solid #ddd7e5;
+  border-radius:11px;
+  background:#fff
+}
+
+.primary{
+  width:100%;
+  margin-top:15px;
+  padding:14px;
+  border-radius:11px;
+  background:#7820cf;
+  color:#fff;
+  font-weight:800
+}
+
+.secondary{
+  width:100%;
+  margin-top:10px;
+  padding:14px;
+  border-radius:11px;
+  background:#292638;
+  color:#fff;
+  font-weight:800
+}
+
 .danger{background:#d93636}
-.payment-box{margin-top:15px;padding:16px;border-radius:14px;
-background:#faf7ff;border:1px solid #e5d8f1}
-.amount{font-size:30px;color:#7420ca;font-weight:900}
-.notice{padding:12px;border-radius:10px;background:#fff4d6;margin-top:12px}
-.message{margin-top:12px;padding:12px;border-radius:10px}
-.success{background:#e8f7ee;color:#176c3b}
-.error{background:#ffe9e9;color:#9d0000}
-.profile-row{padding:13px 0;border-bottom:1px solid #eee}
+
+.notice{
+  padding:12px;
+  border-radius:10px;
+  background:#fff4d6;
+  margin-top:12px
+}
+
+.message{
+  margin-top:12px;
+  padding:12px;
+  border-radius:10px
+}
+
+.success{
+  background:#e8f7ee;
+  color:#176c3b
+}
+
+.error{
+  background:#ffe9e9;
+  color:#9d0000
+}
+
+.profile-row{
+  padding:13px 0;
+  border-bottom:1px solid #eee
+}
+
 @media(max-width:520px){
-.balance{font-size:34px}.menu{grid-template-columns:repeat(4,1fr)}
-.menu button{font-size:12px}.icon{width:43px;height:43px;font-size:22px}
+  .balance{font-size:34px}
+  .menu{grid-template-columns:repeat(4,1fr)}
+  .menu button{font-size:12px}
+  .icon{
+    width:43px;
+    height:43px;
+    font-size:22px
+  }
 }
 </style>
 </head>
@@ -67,23 +228,52 @@ background:#faf7ff;border:1px solid #e5d8f1}
 
 <div class="container">
 
+<!-- LOGIN -->
+
 <section id="login" class="card">
-  <h1 style="text-align:center;color:#7420ca">HUNPAY</h1>
-  <p style="text-align:center">Login to your account</p>
+
+  <h1 style="text-align:center;color:#7420ca">
+    HUNPAY
+  </h1>
+
+  <p style="text-align:center">
+    Login to your account
+  </p>
 
   <label>Email</label>
-  <input id="loginEmail" type="email" placeholder="Email address">
+  <input
+    id="loginEmail"
+    type="email"
+    placeholder="Email address"
+  >
 
   <label>Password</label>
-  <input id="loginPassword" type="password" placeholder="Password">
+  <input
+    id="loginPassword"
+    type="password"
+    placeholder="Password"
+  >
 
-  <button class="primary" onclick="login()">Login</button>
-  <button class="secondary" onclick="showRegister()">Create Account</button>
+  <button class="primary" onclick="login()">
+    Login
+  </button>
+
+  <button class="secondary" onclick="showRegister()">
+    Create Account
+  </button>
+
   <div id="loginMsg"></div>
+
 </section>
 
+
+<!-- REGISTER -->
+
 <section id="register" class="card hidden">
-  <h1 style="text-align:center;color:#7420ca">HUNPAY</h1>
+
+  <h1 style="text-align:center;color:#7420ca">
+    HUNPAY
+  </h1>
 
   <label>Full Name</label>
   <input id="regName" placeholder="Full name">
@@ -92,367 +282,918 @@ background:#faf7ff;border:1px solid #e5d8f1}
   <input id="regUsername" placeholder="Username">
 
   <label>Email</label>
-  <input id="regEmail" type="email" placeholder="Email address">
+  <input
+    id="regEmail"
+    type="email"
+    placeholder="Email address"
+  >
 
   <label>Password</label>
-  <input id="regPassword" type="password" placeholder="Password">
+  <input
+    id="regPassword"
+    type="password"
+    placeholder="Password"
+  >
 
-  <button class="primary" onclick="register()">Register</button>
-  <button class="secondary" onclick="showLogin()">Back to Login</button>
+  <button class="primary" onclick="register()">
+    Register
+  </button>
+
+  <button class="secondary" onclick="showLogin()">
+    Back to Login
+  </button>
+
   <div id="regMsg"></div>
+
 </section>
+
+
+<!-- DASHBOARD -->
 
 <section id="dashboard" class="hidden">
 
   <div class="wallet">
+
     <div class="wallet-head">
+
       <div class="user">
-        <div class="avatar" id="avatar">H</div>
-        <div>
-          <div class="welcome">Hi, <span id="welcomeName">User</span> 👋</div>
-          <div class="muted">Welcome back!</div>
+
+        <div class="avatar" id="avatar">
+          H
         </div>
+
+        <div>
+
+          <div class="welcome">
+            Hi,
+            <span id="welcomeName">
+              User
+            </span>
+            👋
+          </div>
+
+          <div class="muted">
+            Welcome back!
+          </div>
+
+        </div>
+
       </div>
+
       <div>🔔</div>
+
     </div>
 
-    <div class="balance-label">Your Balance</div>
-    <div class="balance">₦0.00</div>
-    <div>Weekly Rewards: ₦0.00</div>
+
+    <div class="balance-label">
+      Your Balance
+    </div>
+
+    <div class="balance">
+      ₦0.00
+    </div>
+
+    <div>
+      Weekly Rewards: ₦0.00
+    </div>
+
 
     <div class="wallet-actions">
-      <button onclick="openPage('idcode')">💳 Buy PAY ID</button>
-      <button onclick="openPage('withdraw')">↑ Withdraw</button>
+
+      <button onclick="openPage('withdraw')">
+        ↑ Withdraw
+      </button>
+
     </div>
+
   </div>
+
+
+  <!-- SERVICE MENU -->
 
   <div class="menu">
-    <button onclick="openPage('idcode')"><div class="icon">💳</div>Buy PAY ID</button>
-    <button onclick="openPage('watch')"><div class="icon">📺</div>Watch</button>
-    <button onclick="openPage('airtime')"><div class="icon">📊</div>Airtime</button>
-    <button onclick="openPage('data')"><div class="icon">🛢️</div>Data</button>
-    <button onclick="openPage('support')"><div class="icon">🎧</div>Support</button>
-    <button onclick="openPage('group')"><div class="icon">🌐</div>Group</button>
-    <button onclick="openPage('earn')"><div class="icon">💰</div>Earn More</button>
-    <button onclick="openPage('profile')"><div class="icon">👤</div>Profile</button>
-  </div>
 
-  <h2>Current Promotions</h2>
-  <div class="promo">
-    <h2>Transact &amp; Win</h2>
-    <p>Explore available HUNPAY services and account features.</p>
-  </div>
-
-  <section id="withdraw" class="card hidden">
-    <h2>💸 Withdraw Profit</h2>
-
-    <div class="notice">
-      Prototype withdrawal interface. No funds are transferred.
-    </div>
-
-    <label>Country</label>
-    <select id="withdrawCountry" onchange="loadProviders()">
-      <option value="">Select country</option>
-      <option value="nigeria">🇳🇬 Nigeria</option>
-      <option value="cameroon">🇨🇲 Cameroon</option>
-    </select>
-
-    <label>Destination Bank / Wallet</label>
-    <select id="withdrawProvider">
-      <option value="">Select destination</option>
-    </select>
-
-    <label>Account Name</label>
-    <input id="destinationName" placeholder="Account name">
-
-    <label>Account Number</label>
-    <input id="destinationNumber" placeholder="Account number">
-
-    <label>Withdrawal Amount</label>
-    <input id="withdrawAmount" type="number" placeholder="Amount">
-
-    <button class="primary" onclick="withdraw()">Submit Withdrawal</button>
-    <div id="withdrawMsg"></div>
-  </section>
-
-  <section id="idcode" class="card hidden">
-    <h2>🪪 Buy PAY ID</h2>
-
-    <p>PAY ID Code</p>
-    <div class="amount">₦12,500</div>
-
-    <div class="notice">
-      Prototype payment screen. Replace the placeholder destination only in a
-      properly authorized production payment system.
-    </div>
-
-    <label>Country</label>
-    <select id="idCountry" onchange="showPayment()">
-      <option value="">Select country</option>
-      <option value="nigeria">🇳🇬 Nigeria</option>
-      <option value="cameroon">🇨🇲 Cameroon</option>
-    </select>
-
-    <div id="idPayment"></div>
-
-    <label>Payment Reference</label>
-    <input id="paymentReference" placeholder="Payment reference">
-
-    <label>Payment Proof</label>
-    <input id="paymentProof" type="file" accept="image/*,.pdf">
-
-    <button class="primary" onclick="submitProof()">
-      Submit Payment Proof
+    <button onclick="openPage('watch')">
+      <div class="icon">📺</div>
+      Watch
     </button>
 
-    <div id="paymentMsg"></div>
-  </section>
+    <button onclick="openPage('airtime')">
+      <div class="icon">📊</div>
+      Airtime
+    </button>
 
-  <section id="profile" class="card hidden">
-    <h2>👤 Profile</h2>
+    <button onclick="openPage('data')">
+      <div class="icon">🛢️</div>
+      Data
+    </button>
 
-    <div class="profile-row"><strong>Name</strong><br><span id="profileName"></span></div>
-    <div class="profile-row"><strong>Username</strong><br><span id="profileUsername"></span></div>
-    <div class="profile-row"><strong>Email</strong><br><span id="profileEmail"></span></div>
+    <button onclick="openPage('support')">
+      <div class="icon">🎧</div>
+      Support
+    </button>
 
-    <button class="primary danger" onclick="logout()">Logout</button>
-  </section>
+    <button onclick="openPage('group')">
+      <div class="icon">🌐</div>
+      Group
+    </button>
 
-  <section id="watch" class="card hidden">
-    <h2>📺 Watch</h2>
-    <p>Available videos and activities.</p>
-  </section>
+    <button onclick="openPage('earn')">
+      <div class="icon">💰</div>
+      Earn More
+    </button>
 
-  <section id="airtime" class="card hidden">
-    <h2>📊 Airtime</h2>
-    <label>Phone Number</label>
-    <input placeholder="Phone number">
-    <label>Amount</label>
-    <input type="number" placeholder="Amount">
-    <button class="primary">Continue</button>
-  </section>
+    <button onclick="openPage('profile')">
+      <div class="icon">👤</div>
+      Profile
+    </button>
 
-  <section id="data" class="card hidden">
-    <h2>🛢️ Data</h2>
-    <label>Phone Number</label>
-    <input placeholder="Phone number">
+  </div>
 
-    <label>Network</label>
-    <select>
-      <option>MTN</option>
-      <option>Airtel</option>
-      <option>Glo</option>
-      <option>9mobile</option>
+
+  <!-- PROMOTION -->
+
+  <h2>
+    Current Promotions
+  </h2>
+
+  <div class="promo">
+
+    <h2>
+      Transact &amp; Win
+    </h2>
+
+    <p>
+      Explore available HUNPAY services and
+      account features.
+    </p>
+
+  </div>
+
+
+  <!-- WITHDRAWAL -->
+
+  <section id="withdraw" class="card hidden">
+
+    <h2>
+      💸 Withdraw Profit
+    </h2>
+
+    <div class="notice">
+      Prototype withdrawal interface.
+      No funds are transferred.
+    </div>
+
+    <label>
+      Country
+    </label>
+
+    <select
+      id="withdrawCountry"
+      onchange="loadProviders()"
+    >
+
+      <option value="">
+        Select country
+      </option>
+
+      <option value="nigeria">
+        🇳🇬 Nigeria
+      </option>
+
+      <option value="cameroon">
+        🇨🇲 Cameroon
+      </option>
+
     </select>
 
-    <button class="primary">Continue</button>
+
+    <label>
+      Destination Bank / Wallet
+    </label>
+
+    <select id="withdrawProvider">
+
+      <option value="">
+        Select destination
+      </option>
+
+    </select>
+
+
+    <label>
+      Account Name
+    </label>
+
+    <input
+      id="destinationName"
+      placeholder="Account name"
+    >
+
+
+    <label>
+      Account Number
+    </label>
+
+    <input
+      id="destinationNumber"
+      placeholder="Account number"
+    >
+
+
+    <label>
+      Withdrawal Amount
+    </label>
+
+    <input
+      id="withdrawAmount"
+      type="number"
+      placeholder="Amount"
+    >
+
+
+    <button
+      class="primary"
+      onclick="withdraw()"
+    >
+      Submit Withdrawal
+    </button>
+
+    <div id="withdrawMsg"></div>
+
   </section>
+
+
+  <!-- PROFILE -->
+
+  <section id="profile" class="card hidden">
+
+    <h2>
+      👤 Profile
+    </h2>
+
+    <div class="profile-row">
+      <strong>Name</strong>
+      <br>
+      <span id="profileName"></span>
+    </div>
+
+    <div class="profile-row">
+      <strong>Username</strong>
+      <br>
+      <span id="profileUsername"></span>
+    </div>
+
+    <div class="profile-row">
+      <strong>Email</strong>
+      <br>
+      <span id="profileEmail"></span>
+    </div>
+
+    <button
+      class="primary danger"
+      onclick="logout()"
+    >
+      Logout
+    </button>
+
+  </section>
+
+
+  <!-- WATCH -->
+
+  <section id="watch" class="card hidden">
+
+    <h2>
+      📺 Watch
+    </h2>
+
+    <p>
+      Available videos and activities.
+    </p>
+
+  </section>
+
+
+  <!-- AIRTIME -->
+
+  <section id="airtime" class="card hidden">
+
+    <h2>
+      📊 Airtime
+    </h2>
+
+    <label>
+      Phone Number
+    </label>
+
+    <input
+      placeholder="Phone number"
+    >
+
+    <label>
+      Amount
+    </label>
+
+    <input
+      type="number"
+      placeholder="Amount"
+    >
+
+    <button class="primary">
+      Continue
+    </button>
+
+  </section>
+
+
+  <!-- DATA -->
+
+  <section id="data" class="card hidden">
+
+    <h2>
+      🛢️ Data
+    </h2>
+
+    <label>
+      Phone Number
+    </label>
+
+    <input
+      placeholder="Phone number"
+    >
+
+    <label>
+      Network
+    </label>
+
+    <select>
+
+      <option>
+        MTN
+      </option>
+
+      <option>
+        Airtel
+      </option>
+
+      <option>
+        Glo
+      </option>
+
+      <option>
+        9mobile
+      </option>
+
+    </select>
+
+    <button class="primary">
+      Continue
+    </button>
+
+  </section>
+
+
+  <!-- SUPPORT -->
 
   <section id="support" class="card hidden">
-    <h2>🎧 Customer Service</h2>
-    <input placeholder="Your message">
-    <button class="primary">Send Message</button>
+
+    <h2>
+      🎧 Customer Service
+    </h2>
+
+    <input
+      placeholder="Your message"
+    >
+
+    <button class="primary">
+      Send Message
+    </button>
+
   </section>
+
+
+  <!-- GROUP -->
 
   <section id="group" class="card hidden">
-    <h2>🌐 Group</h2>
-    <p>HUNPAY community.</p>
+
+    <h2>
+      🌐 Group
+    </h2>
+
+    <p>
+      HUNPAY community.
+    </p>
+
   </section>
 
+
+  <!-- EARN -->
+
   <section id="earn" class="card hidden">
-    <h2>💰 Earn More</h2>
-    <p>Available earning activities.</p>
+
+    <h2>
+      💰 Earn More
+    </h2>
+
+    <p>
+      Available earning activities.
+    </p>
+
   </section>
 
 </section>
+
 </div>
 
+
 <script>
-const pages=[
-  "withdraw","idcode","profile","watch","airtime",
-  "data","support","group","earn"
+
+const pages = [
+  "withdraw",
+  "profile",
+  "watch",
+  "airtime",
+  "data",
+  "support",
+  "group",
+  "earn"
 ];
 
-const providers={
-  nigeria:[
-    "UBA","PalmPay","Moniepoint","First Bank","Access Bank",
-    "GTBank","Zenith Bank","OPay","Fidelity Bank","Kuda"
+
+const providers = {
+
+  nigeria: [
+    "UBA",
+    "PalmPay",
+    "Moniepoint",
+    "First Bank",
+    "Access Bank",
+    "GTBank",
+    "Zenith Bank",
+    "OPay",
+    "Fidelity Bank",
+    "Kuda"
   ],
-  cameroon:[
-    "MTN MoMo","Orange Money","Ecobank Cameroon","UBA Cameroon",
-    "CCA Bank","Afriland First Bank","BICEC","SCB Cameroun",
-    "Société Générale Cameroun","Commercial Bank Cameroon",
-    "BGFI Bank Cameroon","Access Bank Cameroon"
+
+  cameroon: [
+    "MTN MoMo",
+    "Orange Money",
+    "Ecobank Cameroon",
+    "UBA Cameroon",
+    "CCA Bank",
+    "Afriland First Bank",
+    "BICEC",
+    "SCB Cameroun",
+    "Société Générale Cameroun",
+    "Commercial Bank Cameroon",
+    "BGFI Bank Cameroon",
+    "Access Bank Cameroon"
   ]
+
 };
 
-/* Placeholder payment destinations for the prototype. */
-const paymentDestinations={
-  nigeria:[
-    {method:"Moniepoint MFB",name:"HUNPAY Nigeria",number:"9019946815"}
-  ],
-  cameroon:[
-    {method:"MTN MoMo",name:"HUNPAY Cameroon",number:"678652697"},
-    {method:"Orange Money",name:"HUNPAY Cameroon",number:""}
-  ]
-};
 
 function register(){
-  const name=document.getElementById("regName").value.trim();
-  const username=document.getElementById("regUsername").value.trim();
-  const email=document.getElementById("regEmail").value.trim();
-  const password=document.getElementById("regPassword").value;
 
-  if(!name||!username||!email||!password){
-    document.getElementById("regMsg").innerHTML=
-      '<div class="message error">Complete all fields.</div>';
+  const name =
+    document.getElementById("regName")
+      .value.trim();
+
+  const username =
+    document.getElementById("regUsername")
+      .value.trim();
+
+  const email =
+    document.getElementById("regEmail")
+      .value.trim();
+
+  const password =
+    document.getElementById("regPassword")
+      .value;
+
+
+  if(
+    !name ||
+    !username ||
+    !email ||
+    !password
+  ){
+
+    document.getElementById("regMsg").innerHTML =
+      '<div class="message error">' +
+      'Complete all fields.' +
+      '</div>';
+
     return;
   }
 
-  localStorage.setItem("hunpayUser",
-    JSON.stringify({name,username,email}));
+
+  localStorage.setItem(
+    "hunpayUser",
+    JSON.stringify({
+      name:name,
+      username:username,
+      email:email
+    })
+  );
+
+
   loadUser();
+
 }
+
 
 function login(){
-  const email=document.getElementById("loginEmail").value.trim();
-  const password=document.getElementById("loginPassword").value;
-  const stored=localStorage.getItem("hunpayUser");
 
-  if(!email||!password){
-    document.getElementById("loginMsg").innerHTML=
-      '<div class="message error">Enter your login details.</div>';
+  const email =
+    document.getElementById("loginEmail")
+      .value.trim();
+
+  const password =
+    document.getElementById("loginPassword")
+      .value;
+
+  const stored =
+    localStorage.getItem("hunpayUser");
+
+
+  if(!email || !password){
+
+    document.getElementById("loginMsg").innerHTML =
+      '<div class="message error">' +
+      'Enter your login details.' +
+      '</div>';
+
     return;
+
   }
+
 
   if(!stored){
-    document.getElementById("loginMsg").innerHTML=
-      '<div class="message error">Create an account first.</div>';
+
+    document.getElementById("loginMsg").innerHTML =
+      '<div class="message error">' +
+      'Create an account first.' +
+      '</div>';
+
     return;
+
   }
 
-  const user=JSON.parse(stored);
 
-  if(email!==user.email){
-    document.getElementById("loginMsg").innerHTML=
-      '<div class="message error">Email does not match.</div>';
+  const user =
+    JSON.parse(stored);
+
+
+  if(email !== user.email){
+
+    document.getElementById("loginMsg").innerHTML =
+      '<div class="message error">' +
+      'Email does not match.' +
+      '</div>';
+
     return;
+
   }
+
 
   loadUser();
+
 }
+
 
 function loadUser(){
-  const stored=localStorage.getItem("hunpayUser");
-  if(!stored)return;
 
-  const user=JSON.parse(stored);
+  const stored =
+    localStorage.getItem("hunpayUser");
 
-  document.getElementById("login").classList.add("hidden");
-  document.getElementById("register").classList.add("hidden");
-  document.getElementById("dashboard").classList.remove("hidden");
+  if(!stored) return;
 
-  document.getElementById("welcomeName").textContent=user.name;
-  document.getElementById("profileName").textContent=user.name;
-  document.getElementById("profileUsername").textContent=user.username;
-  document.getElementById("profileEmail").textContent=user.email;
-  document.getElementById("avatar").textContent=
-    user.name.charAt(0).toUpperCase();
+
+  const user =
+    JSON.parse(stored);
+
+
+  document.getElementById("login")
+    .classList.add("hidden");
+
+  document.getElementById("register")
+    .classList.add("hidden");
+
+  document.getElementById("dashboard")
+    .classList.remove("hidden");
+
+
+  document.getElementById("welcomeName")
+    .textContent = user.name;
+
+  document.getElementById("profileName")
+    .textContent = user.name;
+
+  document.getElementById("profileUsername")
+    .textContent = user.username;
+
+  document.getElementById("profileEmail")
+    .textContent = user.email;
+
+  document.getElementById("avatar")
+    .textContent =
+      user.name.charAt(0).toUpperCase();
+
 }
+
 
 function showRegister(){
-  document.getElementById("login").classList.add("hidden");
-  document.getElementById("register").classList.remove("hidden");
+
+  document.getElementById("login")
+    .classList.add("hidden");
+
+  document.getElementById("register")
+    .classList.remove("hidden");
+
 }
+
 
 function showLogin(){
-  document.getElementById("register").classList.add("hidden");
-  document.getElementById("login").classList.remove("hidden");
+
+  document.getElementById("register")
+    .classList.add("hidden");
+
+  document.getElementById("login")
+    .classList.remove("hidden");
+
 }
+
 
 function openPage(id){
-  pages.forEach(p=>document.getElementById(p).classList.add("hidden"));
-  document.getElementById(id).classList.remove("hidden");
-  window.scrollTo({top:0,behavior:"smooth"});
+
+  pages.forEach(function(page){
+
+    document.getElementById(page)
+      .classList.add("hidden");
+
+  });
+
+
+  document.getElementById(id)
+    .classList.remove("hidden");
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
 }
+
 
 function loadProviders(){
-  const country=document.getElementById("withdrawCountry").value;
-  const select=document.getElementById("withdrawProvider");
 
-  select.innerHTML='<option value="">Select destination</option>';
+  const country =
+    document.getElementById("withdrawCountry")
+      .value;
 
-  if(!country)return;
+  const select =
+    document.getElementById("withdrawProvider");
 
-  providers[country].forEach(item=>{
-    const option=document.createElement("option");
-    option.value=item;
-    option.textContent=item;
+
+  select.innerHTML =
+    '<option value="">Select destination</option>';
+
+
+  if(!country) return;
+
+
+  providers[country].forEach(function(provider){
+
+    const option =
+      document.createElement("option");
+
+    option.value = provider;
+    option.textContent = provider;
+
     select.appendChild(option);
+
   });
+
 }
+
 
 function withdraw(){
-  const provider=document.getElementById("withdrawProvider").value;
-  const name=document.getElementById("destinationName").value.trim();
-  const number=document.getElementById("destinationNumber").value.trim();
-  const amount=Number(document.getElementById("withdrawAmount").value);
 
-  if(!provider||!name||!number||amount<=0){
-    document.getElementById("withdrawMsg").innerHTML=
-      '<div class="message error">Complete the withdrawal fields.</div>';
+  const provider =
+    document.getElementById("withdrawProvider")
+      .value;
+
+  const name =
+    document.getElementById("destinationName")
+      .value.trim();
+
+  const number =
+    document.getElementById("destinationNumber")
+      .value.trim();
+
+  const amount =
+    Number(
+      document.getElementById("withdrawAmount")
+        .value
+    );
+
+
+  if(
+    !provider ||
+    !name ||
+    !number ||
+    amount <= 0
+  ){
+
+    document.getElementById("withdrawMsg")
+      .innerHTML =
+      '<div class="message error">' +
+      'Complete the withdrawal fields.' +
+      '</div>';
+
     return;
+
   }
 
-  document.getElementById("withdrawMsg").innerHTML=
-    '<div class="message success">Prototype withdrawal request recorded. No money was transferred.</div>';
+
+  document.getElementById("withdrawMsg")
+    .innerHTML =
+    '<div class="message success">' +
+    'Prototype withdrawal request recorded. ' +
+    'No money was transferred.' +
+    '</div>';
+
 }
 
-function showPayment(){
-  const country=document.getElementById("idCountry").value;
-  const box=document.getElementById("idPayment");
-  box.innerHTML="";
-
-  if(!country)return;
-
-  paymentDestinations[country].forEach(account=>{
-    box.innerHTML+=`
-      <div class="payment-box">
-        <strong>${account.method}</strong>
-        <p><strong>Account Name</strong><br>${account.name}</p>
-        <p><strong>Account Number</strong><br>${account.number}</p>
-        <p><strong>PAY ID Amount</strong><br>₦12,500</p>
-      </div>
-    `;
-  });
-}
-
-function submitProof(){
-  const country=document.getElementById("idCountry").value;
-  const reference=document.getElementById("paymentReference").value.trim();
-  const file=document.getElementById("paymentProof").files.length;
-
-  if(!country||(!reference&&!file)){
-    document.getElementById("paymentMsg").innerHTML=
-      '<div class="message error">Select a country and provide a reference or proof.</div>';
-    return;
-  }
-
-  document.getElementById("paymentMsg").innerHTML=
-    '<div class="message success">Proof recorded for this prototype. No payment was verified.</div>';
-}
 
 function logout(){
+
   localStorage.removeItem("hunpayUser");
-  document.getElementById("dashboard").classList.add("hidden");
-  pages.forEach(p=>document.getElementById(p).classList.add("hidden"));
+
+
+  document.getElementById("dashboard")
+    .classList.add("hidden");
+
+
+  pages.forEach(function(page){
+
+    document.getElementById(page)
+      .classList.add("hidden");
+
+  });
+
+
   showLogin();
+
 }
 
-window.onload=()=>{
-  if(localStorage.getItem("hunpayUser"))loadUser();
+
+window.onload = function(){
+
+  if(
+    localStorage.getItem("hunpayUser")
+  ){
+
+    loadUser();
+
+  }
+
 };
+
 </script>
 
 </body>
-</html>
+</html><!-- HUNPAY PAY ID PAYMENT SECTION -->
+
+<section id="idcode" class="card hidden">
+
+  <h2>🪪 Buy PAY ID</h2>
+
+  <p>PAY ID Code</p>
+
+  <div class="amount">₦12,500</div>
+
+  <label>Country</label>
+
+  <select id="idCountry" onchange="showPayment()">
+    <option value="">Select country</option>
+    <option value="nigeria">🇳🇬 Nigeria</option>
+    <option value="cameroon">🇨🇲 Cameroon</option>
+  </select>
+
+  <div id="idPayment"></div>
+
+  <label>Payment Reference</label>
+  <input
+    id="paymentReference"
+    type="text"
+    placeholder="Enter payment reference"
+  >
+
+  <label>Payment Proof</label>
+  <input
+    id="paymentProof"
+    type="file"
+    accept="image/*,.pdf"
+  >
+
+  <button class="primary" onclick="submitProof()">
+    Submit Payment Proof
+  </button>
+
+  <div id="paymentMsg"></div>
+
+</section>
+
+<script>
+
+const paymentAccounts = {
+
+  nigeria: {
+    method: "Moniepoint MFB",
+    name: "Joshua Elisha Effiong",
+    number: "9019946815"
+  },
+
+  cameroon: {
+    method: "MTN MoMo",
+    name: "PATRICK RICARDO ZEKENG KEMKA",
+    number: "678652697"
+  }
+
+};
+
+function showPayment() {
+
+  const country =
+    document.getElementById("idCountry").value;
+
+  const box =
+    document.getElementById("idPayment");
+
+  box.innerHTML = "";
+
+  if (!country) return;
+
+  const account =
+    paymentAccounts[country];
+
+  box.innerHTML = `
+    <div class="payment-box">
+
+      <strong>${account.method}</strong>
+
+      <p>
+        <strong>Account Name</strong><br>
+        ${account.name}
+      </p>
+
+      <p>
+        <strong>Account Number</strong><br>
+        <span class="account-number">
+          ${account.number}
+        </span>
+      </p>
+
+      <p>
+        <strong>PAY ID Amount</strong><br>
+        ₦12,500
+      </p>
+
+    </div>
+  `;
+}
+
+function submitProof() {
+
+  const country =
+    document.getElementById("idCountry").value;
+
+  const reference =
+    document.getElementById("paymentReference")
+      .value.trim();
+
+  const file =
+    document.getElementById("paymentProof")
+      .files.length;
+
+  if (!country || (!reference && !file)) {
+
+    document.getElementById("paymentMsg").innerHTML =
+      '<div class="message error">' +
+      'Select a country and provide a reference or payment proof.' +
+      '</div>';
+
+    return;
+  }
+
+  document.getElementById("paymentMsg").innerHTML =
+    '<div class="message success">' +
+    'Payment proof has been recorded for review.' +
+    '</div>';
+}
+
+      </script>
