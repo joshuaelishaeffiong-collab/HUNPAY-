@@ -13,21 +13,21 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f7f3fa;
+      background: #f5f2f8;
       color: #172033;
     }
 
     .header {
-      background: linear-gradient(135deg, #7416c9, #9229e8);
+      background: linear-gradient(135deg, #7015c5, #982ce9);
       color: white;
-      padding: 28px 22px 30px;
+      padding: 25px 20px 30px;
       border-radius: 0 0 28px 28px;
     }
 
     .top {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       margin-bottom: 25px;
     }
 
@@ -42,76 +42,72 @@
       height: 55px;
       border-radius: 50%;
       background: white;
-      color: #7b1dcc;
+      color: #751ac8;
       display: flex;
-      align-items: center;
       justify-content: center;
-      font-size: 27px;
+      align-items: center;
+      font-size: 26px;
       font-weight: bold;
     }
 
     .welcome {
-      font-size: 24px;
+      font-size: 21px;
       font-weight: bold;
     }
 
     .small {
+      font-size: 13px;
       margin-top: 5px;
       opacity: .9;
-      font-size: 15px;
     }
 
     .bell {
-      background: rgba(255,255,255,.18);
-      width: 52px;
-      height: 52px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
+      background: rgba(255,255,255,.18);
       display: flex;
-      align-items: center;
       justify-content: center;
-      font-size: 25px;
+      align-items: center;
+      font-size: 23px;
     }
 
     .balance-title {
-      font-size: 17px;
-      margin-bottom: 5px;
+      font-size: 15px;
+      margin-bottom: 6px;
     }
 
     .balance {
-      font-size: 42px;
+      font-size: 38px;
       font-weight: bold;
-      margin-bottom: 7px;
     }
 
     .reward {
-      font-size: 16px;
-      margin-bottom: 25px;
+      margin-top: 6px;
+      font-size: 14px;
     }
 
-    .balance-buttons {
+    .header-buttons {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 10px;
+      margin-top: 22px;
     }
 
-    button {
+    .header-buttons button {
       border: 0;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .action {
+      padding: 14px;
+      border-radius: 30px;
       background: rgba(255,255,255,.18);
       color: white;
-      padding: 16px;
-      border-radius: 35px;
       font-weight: bold;
+      font-size: 15px;
     }
 
     .container {
       max-width: 700px;
       margin: auto;
-      padding: 22px 18px 40px;
+      padding: 20px;
     }
 
     .services {
@@ -127,127 +123,106 @@
     }
 
     .service-icon {
-      width: 58px;
-      height: 58px;
+      width: 56px;
+      height: 56px;
       margin: auto;
-      border-radius: 17px;
+      border-radius: 16px;
       background: white;
-      box-shadow: 0 5px 18px rgba(0,0,0,.08);
+      box-shadow: 0 4px 15px rgba(0,0,0,.08);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
+      font-size: 26px;
     }
 
     .service-name {
       margin-top: 8px;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 12px;
+      font-weight: bold;
     }
 
     h2 {
-      font-size: 25px;
+      font-size: 23px;
       margin: 20px 0 14px;
     }
 
     .card {
       background: white;
-      padding: 22px;
-      border-radius: 22px;
-      box-shadow: 0 5px 20px rgba(0,0,0,.07);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.07);
       margin-bottom: 18px;
     }
 
-    .card h3 {
-      margin-top: 0;
-      font-size: 21px;
-    }
-
     .promotion {
-      min-height: 180px;
-      border-radius: 22px;
       padding: 25px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #6612b6, #c32de8);
       color: white;
-      background: linear-gradient(135deg, #6714b9, #c02be8);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
 
     .promotion h3 {
-      font-size: 28px;
-      margin: 0 0 10px;
+      margin: 0 0 8px;
+      font-size: 25px;
     }
 
-    .promotion p {
-      line-height: 1.5;
-    }
-
-    .demo-note {
-      text-align: center;
-      font-size: 12px;
-      color: #777;
-      margin-top: 25px;
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.55);
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      z-index: 100;
-    }
-
-    .modal-box {
+    .button {
+      display: block;
       width: 100%;
-      max-width: 420px;
-      background: white;
-      border-radius: 22px;
-      padding: 25px;
-    }
-
-    .modal-box h2 {
-      margin-top: 0;
-    }
-
-    .input {
-      width: 100%;
+      border: 0;
+      border-radius: 11px;
       padding: 14px;
+      margin-top: 10px;
+      background: #7620d0;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .secondary {
+      background: #eeeaf2;
+      color: #333;
+    }
+
+    .amount {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 8px 0 15px;
+    }
+
+    .section {
+      display: none;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 13px;
+      margin: 7px 0;
       border: 1px solid #ddd;
       border-radius: 10px;
-      margin: 8px 0;
       font-size: 15px;
     }
 
-    .primary {
-      width: 100%;
-      padding: 15px;
-      border-radius: 12px;
-      background: #7620d0;
-      color: white;
-      font-weight: bold;
-      margin-top: 10px;
+    .notice {
+      color: #666;
+      font-size: 13px;
+      line-height: 1.5;
     }
 
-    .close {
-      background: #eee;
-      color: #333;
-      width: 100%;
-      padding: 13px;
-      border-radius: 12px;
-      margin-top: 8px;
+    .demo {
+      text-align: center;
+      color: #777;
+      font-size: 12px;
+      padding: 20px 0;
     }
 
     @media (max-width: 500px) {
       .balance {
-        font-size: 36px;
-      }
-
-      .services {
-        grid-template-columns: repeat(4, 1fr);
+        font-size: 34px;
       }
 
       .service-icon {
@@ -257,7 +232,7 @@
       }
 
       .service-name {
-        font-size: 12px;
+        font-size: 11px;
       }
     }
   </style>
@@ -265,10 +240,14 @@
 
 <body>
 
-  <div class="header">
+  <!-- HEADER -->
+  <header class="header">
+
     <div class="top">
+
       <div class="user">
         <div class="avatar">H</div>
+
         <div>
           <div class="welcome">Hi, Welcome 👋</div>
           <div class="small">Welcome back to HUNPAY</div>
@@ -276,243 +255,428 @@
       </div>
 
       <div class="bell">🔔</div>
+
     </div>
 
-    <div class="balance-title">Your Demo Balance</div>
-    <div class="balance">₦200,000.00</div>
-    <div class="reward">Demo Rewards: ₦0.00</div>
+    <div class="balance-title">Demo Balance</div>
 
-    <div class="balance-buttons">
-      <button class="action" onclick="showModal('upgrade')">
+    <div class="balance">₦200,000.00</div>
+
+    <div class="reward">
+      Demo Rewards: ₦0.00
+    </div>
+
+    <div class="header-buttons">
+      <button onclick="openSection('upgrade')">
         ↗ Upgrade
       </button>
 
-      <button class="action" onclick="showModal('transfer')">
+      <button onclick="openSection('transfer')">
         ↑ Transfer
       </button>
     </div>
-  </div>
 
-  <div class="container">
+  </header>
+
+
+  <main class="container">
+
+    <!-- SERVICES -->
 
     <div class="services">
 
-      <div class="service" onclick="showModal('id')">
+      <div class="service" onclick="openSection('idcode')">
         <div class="service-icon">🪪</div>
         <div class="service-name">ID Code</div>
       </div>
 
-      <div class="service" onclick="showModal('withdraw')">
+      <div class="service" onclick="openSection('withdraw')">
         <div class="service-icon">💸</div>
         <div class="service-name">Withdraw</div>
       </div>
 
-      <div class="service" onclick="showModal('airtime')">
-        <div class="service-icon">📶</div>
+      <div class="service" onclick="openSection('airtime')">
+        <div class="service-icon">📱</div>
         <div class="service-name">Airtime</div>
       </div>
 
-      <div class="service" onclick="showModal('data')">
+      <div class="service" onclick="openSection('data')">
         <div class="service-icon">🌐</div>
         <div class="service-name">Data</div>
       </div>
 
-      <div class="service" onclick="showModal('bank')">
+      <div class="service" onclick="openSection('bank')">
         <div class="service-icon">🏦</div>
         <div class="service-name">Bank Account</div>
       </div>
 
-      <div class="service" onclick="showModal('support')">
+      <div class="service" onclick="openSection('support')">
         <div class="service-icon">🎧</div>
         <div class="service-name">Support</div>
       </div>
 
-      <div class="service" onclick="showModal('earn')">
+      <div class="service" onclick="openSection('earn')">
         <div class="service-icon">💰</div>
         <div class="service-name">Earn More</div>
       </div>
 
-      <div class="service" onclick="showModal('profile')">
+      <div class="service" onclick="openSection('profile')">
         <div class="service-icon">👤</div>
         <div class="service-name">Profile</div>
       </div>
 
     </div>
 
-    <h2>Account Overview</h2>
 
-    <div class="card">
-      <h3>Demo Account</h3>
-      <p><strong>Balance:</strong> ₦200,000.00</p>
-      <p><strong>Referrals:</strong> 0</p>
-      <p><strong>Earnings:</strong> ₦0.00</p>
+    <!-- DASHBOARD -->
+
+    <div id="dashboard" class="section" style="display:block">
+
+      <h2>Account Overview</h2>
+
+      <div class="card">
+
+        <p><strong>Demo Balance</strong></p>
+
+        <div class="amount">
+          ₦200,000.00
+        </div>
+
+        <p>Referrals: <strong>0</strong></p>
+
+        <p>Earnings: <strong>₦0.00</strong></p>
+
+      </div>
+
+      <h2>Current Promotions</h2>
+
+      <div class="promotion">
+
+        <h3>HUNPAY Rewards 🎁</h3>
+
+        <p>
+          Explore HUNPAY services and available demo rewards.
+        </p>
+
+      </div>
+
     </div>
 
-    <h2>Current Promotions</h2>
 
-    <div class="promotion">
-      <h3>HUNPAY Rewards 🎁</h3>
-      <p>
-        Explore the available HUNPAY services and earn rewards
-        in this demonstration dashboard.
-      </p>
+    <!-- ID CODE -->
+
+    <div id="idcode" class="section">
+
+      <div class="card">
+
+        <h2>🪪 Get ID Code</h2>
+
+        <p>ID Code purchase fee:</p>
+
+        <div class="amount">
+          ₦12,500.00
+        </div>
+
+        <p class="notice">
+          Complete payment through the authorized payment page.
+          The ID Code should only be issued after successful payment verification.
+        </p>
+
+        <!-- Replace with your real Paystack Payment Page URL later -->
+        <a
+          class="button"
+          href="#"
+          onclick="paymentNotice()">
+          Make Payment — ₦12,500
+        </a>
+
+        <button class="button secondary" onclick="goHome()">
+          Back to Dashboard
+        </button>
+
+      </div>
+
     </div>
 
-    <h2>Quick Actions</h2>
 
-    <div class="card">
-      <button class="primary" onclick="showModal('withdraw')">
-        Withdraw to Bank Account
-      </button>
+    <!-- WITHDRAW -->
 
-      <button class="primary" onclick="showModal('airtime')">
-        Buy Airtime
-      </button>
+    <div id="withdraw" class="section">
 
-      <button class="primary" onclick="showModal('data')">
-        Buy Data
-      </button>
+      <div class="card">
+
+        <h2>💸 Withdraw</h2>
+
+        <p>Available demo balance:</p>
+
+        <div class="amount">
+          ₦200,000.00
+        </div>
+
+        <input type="number" placeholder="Withdrawal amount">
+
+        <input type="text" placeholder="Account name">
+
+        <input type="text" placeholder="Account number">
+
+        <input type="text" placeholder="Bank name">
+
+        <button class="button" onclick="demoMessage()">
+          Continue
+        </button>
+
+        <p class="notice">
+          Demo interface only. No real withdrawal is processed.
+        </p>
+
+      </div>
+
     </div>
 
-    <div class="demo-note">
-      HUNPAY is currently a demonstration dashboard.
-      No real money transfers or purchases are processed by this page.
+
+    <!-- AIRTIME -->
+
+    <div id="airtime" class="section">
+
+      <div class="card">
+
+        <h2>📱 Buy Airtime</h2>
+
+        <input type="tel" placeholder="Phone number">
+
+        <select>
+          <option>Select network</option>
+          <option>MTN</option>
+          <option>Airtel</option>
+          <option>Glo</option>
+          <option>9mobile</option>
+        </select>
+
+        <input type="number" placeholder="Amount">
+
+        <button class="button" onclick="demoMessage()">
+          Continue
+        </button>
+
+      </div>
+
     </div>
 
-  </div>
 
-  <div class="modal" id="modal">
-    <div class="modal-box">
-      <h2 id="modalTitle">HUNPAY</h2>
-      <div id="modalContent"></div>
+    <!-- DATA -->
 
-      <button class="close" onclick="closeModal()">
-        Close
-      </button>
+    <div id="data" class="section">
+
+      <div class="card">
+
+        <h2>🌐 Buy Data</h2>
+
+        <input type="tel" placeholder="Phone number">
+
+        <select>
+          <option>Select network</option>
+          <option>MTN</option>
+          <option>Airtel</option>
+          <option>Glo</option>
+          <option>9mobile</option>
+        </select>
+
+        <select>
+          <option>Select data plan</option>
+          <option>500MB</option>
+          <option>1GB</option>
+          <option>2GB</option>
+          <option>5GB</option>
+          <option>10GB</option>
+        </select>
+
+        <button class="button" onclick="demoMessage()">
+          Continue
+        </button>
+
+      </div>
+
     </div>
-  </div>
+
+
+    <!-- BANK -->
+
+    <div id="bank" class="section">
+
+      <div class="card">
+
+        <h2>🏦 Bank Account</h2>
+
+        <input type="text" placeholder="Account name">
+
+        <input type="text" placeholder="Account number">
+
+        <input type="text" placeholder="Bank name">
+
+        <button class="button" onclick="demoMessage()">
+          Save Account
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- SUPPORT -->
+
+    <div id="support" class="section">
+
+      <div class="card">
+
+        <h2>🎧 Support</h2>
+
+        <p>
+          Need help? Contact HUNPAY support.
+        </p>
+
+        <button class="button" onclick="demoMessage()">
+          Contact Support
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- EARN -->
+
+    <div id="earn" class="section">
+
+      <div class="card">
+
+        <h2>💰 Earn More</h2>
+
+        <p>
+          Referral and earning opportunities can appear here.
+        </p>
+
+        <button class="button" onclick="demoMessage()">
+          Explore
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- PROFILE -->
+
+    <div id="profile" class="section">
+
+      <div class="card">
+
+        <h2>👤 Profile</h2>
+
+        <p><strong>Name:</strong> Demo User</p>
+
+        <p><strong>Status:</strong> Demo Account</p>
+
+        <button class="button" onclick="demoMessage()">
+          Edit Profile
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- UPGRADE -->
+
+    <div id="upgrade" class="section">
+
+      <div class="card">
+
+        <h2>↗ Upgrade</h2>
+
+        <p>
+          Account upgrade options can be added here.
+        </p>
+
+        <button class="button" onclick="demoMessage()">
+          Continue
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- TRANSFER -->
+
+    <div id="transfer" class="section">
+
+      <div class="card">
+
+        <h2>↑ Transfer</h2>
+
+        <input type="text" placeholder="Recipient">
+
+        <input type="number" placeholder="Amount">
+
+        <button class="button" onclick="demoMessage()">
+          Continue
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="demo">
+      HUNPAY demo dashboard. Real payments, withdrawals,
+      airtime and data require verified backend/payment services.
+    </div>
+
+  </main>
+
 
   <script>
-    function showModal(type) {
 
-      const modal = document.getElementById("modal");
-      const title = document.getElementById("modalTitle");
-      const content = document.getElementById("modalContent");
+    function openSection(id) {
 
-      const pages = {
+      const sections = document.querySelectorAll(".section");
 
-        id: {
-          title: "ID Code",
-          text: `
-            <p>Your demo ID code:</p>
-            <h2>HUNPAY-DEMO</h2>
-          `
-        },
+      sections.forEach(function(section) {
+        section.style.display = "none";
+      });
 
-        withdraw: {
-          title: "Withdraw",
-          text: `
-            <p>Demo withdrawal to bank account.</p>
-            <input class="input" placeholder="Amount">
-            <input class="input" placeholder="Bank name">
-            <input class="input" placeholder="Account number">
-            <button class="primary" onclick="demoMessage()">
-              Continue
-            </button>
-          `
-        },
+      document.getElementById(id).style.display = "block";
 
-        bank: {
-          title: "Bank Account",
-          text: `
-            <input class="input" placeholder="Account name">
-            <input class="input" placeholder="Bank name">
-            <input class="input" placeholder="Account number">
-            <button class="primary" onclick="demoMessage()">
-              Save Demo Account
-            </button>
-          `
-        },
-
-        airtime: {
-          title: "Airtime",
-          text: `
-            <input class="input" placeholder="Phone number">
-            <input class="input" placeholder="Amount">
-            <button class="primary" onclick="demoMessage()">
-              Continue
-            </button>
-          `
-        },
-
-        data: {
-          title: "Data",
-          text: `
-            <input class="input" placeholder="Phone number">
-            <input class="input" placeholder="Network">
-            <input class="input" placeholder="Data plan">
-            <button class="primary" onclick="demoMessage()">
-              Continue
-            </button>
-          `
-        },
-
-        transfer: {
-          title: "Transfer",
-          text: `
-            <p>Demo transfer feature.</p>
-            <input class="input" placeholder="Recipient">
-            <input class="input" placeholder="Amount">
-            <button class="primary" onclick="demoMessage()">
-              Continue
-            </button>
-          `
-        },
-
-        upgrade: {
-          title: "Upgrade",
-          text: `
-            <p>Account upgrade options will appear here.</p>
-          `
-        },
-
-        support: {
-          title: "Support",
-          text: `
-            <p>HUNPAY Support</p>
-            <p>Contact support for assistance.</p>
-          `
-        },
-
-        earn: {
-          title: "Earn More",
-          text: `
-            <p>Referral and earning opportunities can be displayed here.</p>
-          `
-        },
-
-        profile: {
-          title: "Profile",
-          text: `
-            <p><strong>Account:</strong> Demo User</p>
-            <p><strong>Status:</strong> Demo Account</p>
-          `
-        }
-      };
-
-      title.textContent = pages[type].title;
-      content.innerHTML = pages[type].text;
-      modal.style.display = "flex";
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     }
 
-    function closeModal() {
-      document.getElementById("modal").style.display = "none";
+
+    function goHome() {
+      openSection("dashboard");
     }
+
 
     function demoMessage() {
-      alert("Demo feature only. No real transaction was processed.");
+
+      alert(
+        "Demo feature only. No real transaction has been processed."
+      );
+
     }
+
+
+    function paymentNotice() {
+
+      alert(
+        "Payment page will be connected after the official payment link is configured."
+      );
+
+    }
+
   </script>
 
 </body>
-</html>
+          </html>
