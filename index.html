@@ -108,6 +108,116 @@
   <main class="container">
 
     <section class="card balance">
+      <h2>Demo Balance</h2>
+      <div class="amount">₦0.00</div>
+    </section>
+
+    <section class="card">
+      <h2>Account Overview</h2>
+
+      <div class="grid">
+        <div class="stat">
+          <strong>0</strong>
+          Referrals
+        </div>
+
+        <div class="stat">
+          <strong>₦0.00</strong>
+          Earnings
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Welcome</h2>
+      <p class="notice">
+        This is a demonstration dashboard. Account balances and earnings
+        should come from a real backend/database rather than being hard-coded
+        in the webpage.
+      </p>
+
+      <button onclick="alert('Demo button')">
+        Continue
+      </button>
+    </section>
+
+  </main>
+
+</body>
+</html>
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    }
+
+    .balance {
+      background: #172033;
+      color: white;
+    }
+
+    .balance h2 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .amount {
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .stat {
+      background: #eef2ff;
+      padding: 18px;
+      border-radius: 12px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    button {
+      width: 100%;
+      border: 0;
+      padding: 14px;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .notice {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>HUNPAY Dashboard</h1>
+  </header>
+
+  <main class="container">
+
+    <section class="card balance">
       <div class="amount">₦200,000.00</div></div>.
   
 
