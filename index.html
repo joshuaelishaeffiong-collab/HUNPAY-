@@ -1,1213 +1,663 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>HUNPAY Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HUNPAY Dashboard</title>
 
-<style>
-*{box-sizing:border-box}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f5f2f8;
-  color:#171827
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6fb;
+      color: #172033;
+    }
 
-.header{
-  background:linear-gradient(135deg,#7418c8,#9c2de8);
-  color:#fff;
-  padding:24px 20px 30px;
-  border-radius:0 0 28px 28px
-}
+    header {
+      background: #172033;
+      color: white;
+      text-align: center;
+      padding: 24px 15px;
+      font-size: 28px;
+      font-weight: bold;
+    }
 
-.top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center
-}
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+    }
 
-.user{
-  display:flex;
-  align-items:center;
-  gap:12px
-}
+    .balance {
+      background: linear-gradient(135deg, #7b18e6, #9b35ee);
+      color: white;
+      border-radius: 25px;
+      padding: 28px;
+      margin-bottom: 20px;
+    }
 
-.avatar{
-  width:54px;
-  height:54px;
-  border-radius:50%;
-  background:#fff;
-  color:#761bc8;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:25px;
-  font-weight:bold
-}
+    .balance small {
+      font-size: 17px;
+    }
 
-.welcome{
-  font-size:20px;
-  font-weight:bold
-}
+    .balance h1 {
+      font-size: 42px;
+      margin: 10px 0;
+    }
 
-.small{
-  font-size:13px;
-  margin-top:5px
-}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 25px;
+    }
 
-.bell{
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  background:#ffffff2b;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:22px
-}
+    .menu {
+      background: white;
+      border-radius: 18px;
+      padding: 18px 8px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,.06);
+    }
 
-.balance-title{
-  margin-top:25px;
-  font-size:14px
-}
+    .menu .icon {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
 
-.balance{
-  font-size:38px;
-  font-weight:bold;
-  margin:6px 0
-}
+    .card {
+      background: white;
+      border-radius: 22px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 18px rgba(0,0,0,.07);
+    }
 
-.reward{
-  font-size:14px
-}
+    h2 {
+      margin-top: 0;
+    }
 
-.header-buttons{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:20px
-}
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 15px 0 7px;
+    }
 
-.header-buttons button{
-  border:0;
-  padding:14px;
-  border-radius:30px;
-  background:#ffffff2b;
-  color:#fff;
-  font-weight:bold
-}
+    input, select {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      font-size: 16px;
+    }
 
-.container{
-  max-width:700px;
-  margin:auto;
-  padding:20px
-}
+    button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      background: #7b20e6;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      margin-top: 15px;
+      cursor: pointer;
+    }
 
-.services{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px 8px;
-  margin-bottom:25px
-}
+    button:hover {
+      opacity: .9;
+    }
 
-.service{
-  text-align:center;
-  cursor:pointer
-}
+    .payment-box {
+      background: #f3efff;
+      border: 2px solid #8735e8;
+      border-radius: 18px;
+      padding: 20px;
+      margin-top: 20px;
+    }
 
-.icon{
-  width:55px;
-  height:55px;
-  margin:auto;
-  background:#fff;
-  border-radius:16px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:25px;
-  box-shadow:0 4px 15px #00000012
-}
+    .payment-row {
+      margin: 12px 0;
+      padding: 12px;
+      background: white;
+      border-radius: 10px;
+    }
 
-.service-name{
-  font-size:11px;
-  font-weight:bold;
-  margin-top:8px
-}
+    .payment-row strong {
+      display: block;
+      margin-bottom: 5px;
+    }
 
-.card{
-  background:#fff;
-  padding:21px;
-  border-radius:20px;
-  margin-bottom:18px;
-  box-shadow:0 4px 16px #0000000d
-}
+    .success {
+      background: #e8f8ee;
+      color: #146c36;
+      padding: 14px;
+      border-radius: 12px;
+      margin-top: 15px;
+      display: none;
+    }
 
-.section{
-  display:none
-}
+    .hidden {
+      display: none;
+    }
 
-.price{
-  font-size:34px;
-  font-weight:bold;
-  margin:15px 0
-}
+    .price {
+      font-size: 30px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
 
-label{
-  display:block;
-  font-weight:bold;
-  margin-top:10px
-}
+    @media(max-width:600px) {
+      .grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
 
-input,select{
-  width:100%;
-  padding:14px;
-  margin:7px 0 12px;
-  border:1px solid #d9dce5;
-  border-radius:10px;
-  font-size:15px;
-  background:#fff
-}
+      .menu {
+        font-size: 12px;
+      }
 
-.primary,
-.back{
-  width:100%;
-  border:0;
-  padding:15px;
-  border-radius:11px;
-  font-size:15px;
-  font-weight:bold;
-  cursor:pointer;
-  margin-top:8px
-}
-
-.primary{
-  background:#7824d4;
-  color:#fff
-}
-
-.back{
-  background:#eceaf0;
-  color:#222
-}
-
-.result{
-  margin-top:12px;
-  padding:14px;
-  border-radius:10px;
-  background:#eee8ff;
-  line-height:1.6
-}
-
-.purple{
-  color:#7824d4;
-  font-weight:bold
-}
-
-@media(max-width:500px){
-  .balance{font-size:33px}
-
-  .icon{
-    width:50px;
-    height:50px;
-    font-size:23px
-  }
-
-  .service-name{
-    font-size:10px
-  }
-}
-</style>
+      .balance h1 {
+        font-size: 34px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
+<header>
+  HUNPAY Dashboard
+</header>
 
-<header class="header">
+<div class="container">
 
-  <div class="top">
+  <!-- BALANCE -->
+  <div class="balance">
+    <small>Your Balance</small>
+    <h1>₦200,000.00</h1>
+    <small>Weekly Rewards: ₦0.00</small>
+  </div>
 
-    <div class="user">
+  <!-- MENU -->
+  <div class="grid">
 
-      <div class="avatar">H</div>
+    <div class="menu" onclick="showIDCode()">
+      <div class="icon">🪪</div>
+      ID Code
+    </div>
 
-      <div>
-        <div class="welcome">Hi, Welcome 👋</div>
-        <div class="small">Welcome back to HUNPAY</div>
+    <div class="menu" onclick="showWithdraw()">
+      <div class="icon">💸</div>
+      Withdraw
+    </div>
+
+    <div class="menu" onclick="showAirtime()">
+      <div class="icon">📶</div>
+      Airtime
+    </div>
+
+    <div class="menu" onclick="showData()">
+      <div class="icon">🌐</div>
+      Data
+    </div>
+
+    <div class="menu" onclick="showBankAccount()">
+      <div class="icon">🏦</div>
+      Bank Account
+    </div>
+
+    <div class="menu">
+      <div class="icon">🎧</div>
+      Support
+    </div>
+
+    <div class="menu">
+      <div class="icon">💰</div>
+      Earn More
+    </div>
+
+    <div class="menu">
+      <div class="icon">👤</div>
+      Profile
+    </div>
+
+  </div>
+
+  <!-- ID CODE -->
+  <div class="card" id="idCodeSection">
+
+    <h2>🪪 Buy ID Code</h2>
+
+    <label>Select Country</label>
+
+    <select id="idCountry" onchange="updateIDPayment()">
+      <option value="nigeria">Nigeria 🇳🇬</option>
+      <option value="cameroon">Cameroon 🇨🇲</option>
+    </select>
+
+    <div class="price" id="idPrice">
+      ₦12,500
+    </div>
+
+    <div class="payment-box">
+
+      <h3>Payment Details</h3>
+
+      <div class="payment-row">
+        <strong>Payment Account Name</strong>
+        <span id="paymentName"></span>
+      </div>
+
+      <div class="payment-row">
+        <strong>Account / MoMo Number</strong>
+        <span id="paymentNumber"></span>
+      </div>
+
+      <div class="payment-row">
+        <strong>Bank / Network</strong>
+        <span id="paymentBank"></span>
       </div>
 
     </div>
 
-    <div class="bell">🔔</div>
+    <label>Payment Reference</label>
+    <input
+      type="text"
+      id="paymentReference"
+      placeholder="Enter payment reference"
+    >
 
-  </div>
+    <label>Payment Proof</label>
+    <input type="file" id="paymentProof">
 
-  <div class="balance-title">Balance</div>
-
-  <div class="balance">
-    ₦200,000.00
-  </div>
-
-  <div class="reward">
-    Rewards: ₦0.00
-  </div>
-
-  <div class="header-buttons">
-
-    <button onclick="page('upgrade')">
-      ↗ Upgrade
+    <button onclick="submitIDPayment()">
+      Make Payment / Submit Proof
     </button>
 
-    <button onclick="page('transfer')">
-      ↑ Transfer
+    <div class="success" id="paymentSuccess">
+      Payment information submitted successfully.
+    </div>
+
+  </div>
+
+  <!-- BANK ACCOUNT -->
+  <div class="card hidden" id="bankAccountSection">
+
+    <h2>🏦 Company Payment Account</h2>
+
+    <label>Country</label>
+
+    <select id="accountCountry">
+      <option value="cameroon">Cameroon 🇨🇲</option>
+      <option value="nigeria">Nigeria 🇳🇬</option>
+    </select>
+
+    <label>Account Name</label>
+    <input id="accountName" type="text">
+
+    <label>Account / MoMo Number</label>
+    <input id="accountNumber" type="text">
+
+    <label>Bank / Network</label>
+    <input id="accountBank" type="text">
+
+    <button onclick="saveAccount()">
+      Save Account
+    </button>
+
+    <div class="success" id="accountSuccess">
+      Account details saved successfully.
+    </div>
+
+  </div>
+
+  <!-- WITHDRAW -->
+  <div class="card hidden" id="withdrawSection">
+
+    <h2>💸 Transfer To Bank</h2>
+
+    <label>Country</label>
+
+    <select id="withdrawCountry" onchange="updateWithdrawForm()">
+      <option value="nigeria">Nigeria 🇳🇬</option>
+      <option value="cameroon">Cameroon 🇨🇲</option>
+    </select>
+
+    <label>Account Name</label>
+    <input type="text" placeholder="Enter account name">
+
+    <label id="withdrawNumberLabel">
+      Account Number
+    </label>
+
+    <input
+      type="text"
+      placeholder="Enter account number or MoMo number"
+    >
+
+    <label>Bank / Mobile Money</label>
+
+    <select>
+      <option>Select bank / network</option>
+      <option>Access Bank</option>
+      <option>GTBank</option>
+      <option>UBA</option>
+      <option>First Bank</option>
+      <option>Zenith Bank</option>
+      <option>Moniepoint</option>
+      <option>OPay</option>
+      <option>Palmpay</option>
+      <option>MTN MoMo</option>
+      <option>Orange Money</option>
+    </select>
+
+    <label>Amount</label>
+    <input type="number" placeholder="Enter amount">
+
+    <button onclick="submitWithdraw()">
+      Transfer
     </button>
 
   </div>
 
-</header>
+  <!-- AIRTIME -->
+  <div class="card hidden" id="airtimeSection">
 
+    <h2>📶 Airtime</h2>
 
-<main class="container">
+    <label>Country</label>
 
+    <select>
+      <option>Nigeria 🇳🇬</option>
+      <option>Cameroon 🇨🇲</option>
+    </select>
 
-<!-- SERVICES -->
+    <label>Phone Number</label>
+    <input type="tel" placeholder="Enter phone number">
 
-<div class="services">
+    <label>Amount</label>
+    <input type="number" placeholder="Enter amount">
 
-  <div class="service" onclick="page('idcode')">
-    <div class="icon">🪪</div>
-    <div class="service-name">ID Code</div>
+    <button>Continue</button>
+
   </div>
 
-  <div class="service" onclick="page('withdraw')">
-    <div class="icon">💸</div>
-    <div class="service-name">Withdraw</div>
-  </div>
+  <!-- DATA -->
+  <div class="card hidden" id="dataSection">
 
-  <div class="service" onclick="page('airtime')">
-    <div class="icon">📱</div>
-    <div class="service-name">Airtime</div>
-  </div>
+    <h2>🌐 Data</h2>
 
-  <div class="service" onclick="page('data')">
-    <div class="icon">🌐</div>
-    <div class="service-name">Data</div>
-  </div>
+    <label>Country</label>
 
-  <div class="service" onclick="page('bank')">
-    <div class="icon">🏦</div>
-    <div class="service-name">Bank Account</div>
-  </div>
+    <select>
+      <option>Nigeria 🇳🇬</option>
+      <option>Cameroon 🇨🇲</option>
+    </select>
 
-  <div class="service" onclick="page('support')">
-    <div class="icon">🎧</div>
-    <div class="service-name">Support</div>
-  </div>
+    <label>Phone Number</label>
+    <input type="tel" placeholder="Enter phone number">
 
-  <div class="service" onclick="page('earn')">
-    <div class="icon">💰</div>
-    <div class="service-name">Earn More</div>
-  </div>
+    <label>Data Amount</label>
+    <input type="number" placeholder="Enter amount">
 
-  <div class="service" onclick="page('profile')">
-    <div class="icon">👤</div>
-    <div class="service-name">Profile</div>
+    <button>Continue</button>
+
   </div>
 
 </div>
 
-
-<!-- DASHBOARD -->
-
-<section id="dashboard" class="card section" style="display:block">
-
-  <h2>Account Overview</h2>
-
-  <p>
-    <b>Balance:</b> ₦200,000.00
-  </p>
-
-  <p>
-    <b>Referrals:</b> 0
-  </p>
-
-  <p>
-    <b>Earnings:</b> ₦0.00
-  </p>
-
-</section>
-
-
-<!-- ID CODE -->
-
-<section id="idcode" class="card section">
-
-  <h2>🪪 ID Code</h2>
-
-  <p>PAY ID Code</p>
-
-  <div class="price">
-    ₦12,500.00
-  </div>
-
-  <label>Full Name</label>
-
-  <input
-    id="idName"
-    type="text"
-    placeholder="Enter full name"
-  >
-
-  <label>Phone Number</label>
-
-  <input
-    id="idPhone"
-    type="tel"
-    placeholder="Enter phone number"
-  >
-
-  <button
-    class="primary"
-    onclick="idCode()"
-  >
-    Get ID Code — ₦12,500
-  </button>
-
-  <div id="idResult"></div>
-
-  <button
-    class="back"
-    onclick="page('dashboard')"
-  >
-    Back
-  </button>
-
-</section>
-
-
-<!-- WITHDRAW -->
-
-<section id="withdraw" class="card section">
-
-  <h2>💸 Withdraw</h2>
-
-  <label>Country</label>
-
-  <select
-    id="country"
-    onchange="countryChange()"
-  >
-
-    <option value="">
-      Select country
-    </option>
-
-    <option value="ng">
-      🇳🇬 Nigeria
-    </option>
-
-    <option value="cm">
-      🇨🇲 Cameroon
-    </option>
-
-  </select>
-
-
-  <!-- NIGERIA -->
-
-  <div
-    id="ng"
-    style="display:none"
-  >
-
-    <label>Currency</label>
-
-    <input
-      value="NGN — ₦"
-      readonly
-    >
-
-    <label>Account Name</label>
-
-    <input
-      type="text"
-      placeholder="Account name"
-    >
-
-    <label>Account Number</label>
-
-    <input
-      type="text"
-      placeholder="Account number"
-    >
-
-    <label>Bank</label>
-
-    <select>
-
-      <option>
-        Select Nigerian bank
-      </option>
-
-      <option>
-        Access Bank
-      </option>
-
-      <option>
-        First Bank
-      </option>
-
-      <option>
-        GTBank
-      </option>
-
-      <option>
-        UBA
-      </option>
-
-      <option>
-        Zenith Bank
-      </option>
-
-      <option>
-        Fidelity Bank
-      </option>
-
-      <option>
-        Union Bank
-      </option>
-
-      <option>
-        Stanbic IBTC
-      </option>
-
-      <option>
-        FCMB
-      </option>
-
-      <option>
-        Wema Bank
-      </option>
-
-      <option>
-        Polaris Bank
-      </option>
-
-      <option>
-        Ecobank
-      </option>
-
-      <option>
-        Moniepoint
-      </option>
-
-      <option>
-        OPay
-      </option>
-
-      <option>
-        PalmPay
-      </option>
-
-      <option>
-        Other
-      </option>
-
-    </select>
-
-    <label>Amount</label>
-
-    <input
-      type="number"
-      placeholder="Amount in NGN"
-    >
-
-  </div>
-
-
-  <!-- CAMEROON -->
-
-  <div
-    id="cm"
-    style="display:none"
-  >
-
-    <label>Currency</label>
-
-    <input
-      value="XAF — FCFA"
-      readonly
-    >
-
-    <label>Payment Method</label>
-
-    <select
-      id="cmMethod"
-      onchange="cameroonMethod()"
-    >
-
-      <option value="">
-        Select method
-      </option>
-
-      <option value="mtn">
-        MTN Mobile Money
-      </option>
-
-      <option value="orange">
-        Orange Money
-      </option>
-
-      <option value="bank">
-        Bank Account
-      </option>
-
-    </select>
-
-
-    <!-- MTN MOMO -->
-
-    <div
-      id="mtnDetails"
-      style="display:none"
-    >
-
-      <div class="result">
-
-        <strong>
-          MTN Mobile Money
-        </strong>
-
-        <br><br>
-
-        <b>Account Name:</b><br>
-        PATRICK RICARDO ZEKENG KEMKA
-
-        <br><br>
-
-        <b>Account Number:</b><br>
-        678652697
-
-      </div>
-
-    </div>
-
-
-    <!-- ORANGE MONEY -->
-
-    <div
-      id="orangeDetails"
-      style="display:none"
-    >
-
-      <label>Recipient Name</label>
-
-      <input
-        type="text"
-        placeholder="Recipient name"
-      >
-
-      <label>Mobile Money Number</label>
-
-      <input
-        type="tel"
-        placeholder="Mobile Money number"
-      >
-
-    </div>
-
-
-    <!-- CAMEROON BANK -->
-
-    <div
-      id="cmBank"
-      style="display:none"
-    >
-
-      <label>Account Name</label>
-
-      <input
-        type="text"
-        placeholder="Account name"
-      >
-
-      <label>Account Number</label>
-
-      <input
-        type="text"
-        placeholder="Account number"
-      >
-
-      <label>Bank</label>
-
-      <select>
-
-        <option>
-          Select bank
-        </option>
-
-        <option>
-          UBA Cameroon
-        </option>
-
-        <option>
-          Ecobank Cameroon
-        </option>
-
-        <option>
-          SCB Cameroon
-        </option>
-
-        <option>
-          Afriland First Bank
-        </option>
-
-        <option>
-          BICEC
-        </option>
-
-        <option>
-          Other
-        </option>
-
-      </select>
-
-    </div>
-
-
-    <label>Amount</label>
-
-    <input
-      type="number"
-      placeholder="Amount in XAF"
-    >
-
-  </div>
-
-
-  <button
-    class="primary"
-    onclick="transfer()"
-  >
-    Transfer
-  </button>
-
-  <div id="transferResult"></div>
-
-  <button
-    class="back"
-    onclick="page('dashboard')"
-  >
-    Back
-  </button>
-
-</section>
-
-
-<!-- AIRTIME -->
-
-<section id="airtime" class="card section">
-
-  <h2>📱 Airtime</h2>
-
-  <label>Country</label>
-
-  <select>
-    <option>
-      Nigeria 🇳🇬
-    </option>
-
-    <option>
-      Cameroon 🇨🇲
-    </option>
-  </select>
-
-  <label>Phone Number</label>
-
-  <input
-    type="tel"
-    placeholder="Phone number"
-  >
-
-  <label>Network</label>
-
-  <select>
-
-    <option>
-      Select network
-    </option>
-
-    <option>
-      MTN
-    </option>
-
-    <option>
-      Airtel
-    </option>
-
-    <option>
-      Glo
-    </option>
-
-    <option>
-      9mobile
-    </option>
-
-    <option>
-      MTN Cameroon
-    </option>
-
-    <option>
-      Orange Cameroon
-    </option>
-
-  </select>
-
-  <label>Amount</label>
-
-  <input
-    type="number"
-    placeholder="Amount"
-  >
-
-  <button class="primary">
-    Continue
-  </button>
-
-  <button
-    class="back"
-    onclick="page('dashboard')"
-  >
-    Back
-  </button>
-
-</section>
-
-
-<!-- DATA -->
-
-<section id="data" class="card section">
-
-  <h2>🌐 Data</h2>
-
-  <label>Country</label>
-
-  <select>
-
-    <option>
-      Nigeria 🇳🇬
-    </option>
-
-    <option>
-      Cameroon 🇨🇲
-    </option>
-
-  </select>
-
-  <label>Phone Number</label>
-
-  <input
-    type="tel"
-    placeholder="Phone number"
-  >
-
-  <label>Network</label>
-
-  <select>
-
-    <option>
-      Select network
-    </option>
-
-    <option>
-      MTN
-    </option>
-
-    <option>
-      Airtel
-    </option>
-
-    <option>
-      Glo
-    </option>
-
-    <option>
-      9mobile
-    </option>
-
-    <option>
-      MTN Cameroon
-    </option>
-
-    <option>
-      Orange Cameroon
-    </option>
-
-  </select>
-
-  <label>Data Plan</label>
-
-  <select>
-
-    <option>
-      Select data plan
-    </option>
-
-    <option>
-      500 MB
-    </option>
-
-    <option>
-      1 GB
-    </option>
-
-    <option>
-      2 GB
-    </option>
-
-    <option>
-      5 GB
-    </option>
-
-    <option>
-      10 GB
-    </option>
-
-  </select>
-
-  <button class="primary">
-    Continue
-  </button>
-
-  <button
-    class="back"
-    onclick="page('dashboard')"
-  >
-    Back
-  </button>
-
-</section>
-
-
-<!-- BANK ACCOUNT -->
-
-<section id="bank" class="card section">
-
-  <h2>🏦 Bank Account</h2>
-
-  <label>Country</label>
-
-  <select>
-
-    <option>
-      Nigeria 🇳🇬
-    </option>
-
-    <option>
-      Cameroon 🇨🇲
-    </option>
-
-  </select>
-
-  <label>Account Name</label>
-
-  <input
-    type="text"
-    placeholder="Account name"
-  >
-
-  <label>Account Number</label>
-
-  <input
-    type="text"
-    placeholder="Account number"
-  >
-
-  <label>Bank</label>
-
-  <input
-    type="text"
-    placeholder="Bank name"
-  >
-
-  <button class="primary">
-    Save Account
-  </button>
-
-  <button
-    class="back"
-    onclick="page('dashboard')"
-  >
-    Back
-  </button>
-
-</section>
-
-
-<!-- SUPPORT -->
-
-<section id="support" class="card section">
-
-  <h2>🎧 Support</h2>
-
-  <label>Message</label>
-
-  <input
-    type="text"
-    placeholder="Enter your message"
-  >
-
-  <button class="primary">
-    Contact Support
-  </button>
-
-  <button
-    class="back"
-    onclick="page('dashboard')"
-  >
-    Back
-  </button>
-
-</section>
-
-
-<!-- EARN MORE -->
-
-<section id="earn" class="card section">
-
-  <h2>💰 Earn More</h2>
-
-  <p>
-    Referral and earning opportunities.
-  </p>
-
-  <button class="primary">
-    Continue
-  </button>
-
-  <button
-    class="back"
-    onclick="page('dashboard')"
-  >
-    Back
-  </button>
-
-</section>
-
-
-<!-- PROFILE -->
-
-<section id="profile" class="card section">
-
-  <h2>👤 Profile</h2>
-
-  <label>Full Name</label>
-
-  <input
-    type="text"
-    placeholder="Full name"
-  >
-
-  <label>Phone Number</label>
-
-  <input
-    type="tel"
-    placeholder="Phone number"
-  >
-
-  <label>Email</label>
-
-  <input
-    type="email"
-    placeholder="Email address"
-  >
-
-  <button class="primary">
-    Save Profile
-  </button>
-
-  <button
-    class="back"
-    onclick="page('dashboard')"
-  >
-    Back
-  </button>
-
-</section>
-
-
-<!-- UPGRADE -->
-
-<section id="upgrade" class="card section">
-
-  <h2>↗ Upgrade</h2>
-
-  <p>
-    Account upgrade options.
-  </p>
-
-  <button class="primary">
-    Continue
-  </button>
-
-  <button
-    class="back"
-    onclick="page('dashboard')"
-  >
-    Back
-  </button>
-
-</section>
-
-
-<!-- TRANSFER -->
-
-<section id="transfer" class="card section">
-
-  <h2>↑ Transfer</h2>
-
-  <label>Recipient</label>
-
-  <input
-    type="text"
-    placeholder="Recipient"
-  >
-
-  <label>Amount</label>
-
-  <input
-    type="number"
-    placeholder="Amount"
-  >
-
-  <button class="primary">
-    Transfer
-  </button>
-
-  <button
-    class="back"
-    onclick="page('dashboard')"
-  >
-    Back
-  </button>
-
-</section>
-
-</main>
-
-
 <script>
 
-function page(id){
+  /*
+   * DEFAULT COMPANY PAYMENT ACCOUNTS
+   *
+   * Cameroon:
+   * Patrick Ricardo Zekeng Kemka
+   * 678652697
+   * MTN MOMO
+   *
+   * Nigeria:
+   * Joshua Elisha Effiong
+   * 9019946815
+   * Moniepoint MFB
+   */
 
-  document
-    .querySelectorAll(".section")
-    .forEach(function(section){
+  const defaultAccounts = {
 
-      section.style.display="none";
+    cameroon: {
+      name: "PATRICK RICARDO ZEKENG KEMKA",
+      number: "678652697",
+      bank: "MTN MOMO"
+    },
+
+    nigeria: {
+      name: "Joshua Elisha Effiong",
+      number: "9019946815",
+      bank: "Moniepoint MFB"
+    }
+
+  };
+
+
+  function getAccounts() {
+
+    const saved =
+      localStorage.getItem("hunpay_company_accounts");
+
+    if (saved) {
+      return JSON.parse(saved);
+    }
+
+    return defaultAccounts;
+  }
+
+
+  function updateIDPayment() {
+
+    const country =
+      document.getElementById("idCountry").value;
+
+    const accounts = getAccounts();
+
+    const account = accounts[country];
+
+    document.getElementById("paymentName").textContent =
+      account.name;
+
+    document.getElementById("paymentNumber").textContent =
+      account.number;
+
+    document.getElementById("paymentBank").textContent =
+      account.bank;
+
+    if (country === "nigeria") {
+
+      document.getElementById("idPrice").textContent =
+        "₦12,500";
+
+    } else {
+
+      document.getElementById("idPrice").textContent =
+        "12,500 XAF";
+
+    }
+  }
+
+
+  function saveAccount() {
+
+    const country =
+      document.getElementById("accountCountry").value;
+
+    const name =
+      document.getElementById("accountName").value.trim();
+
+    const number =
+      document.getElementById("accountNumber").value.trim();
+
+    const bank =
+      document.getElementById("accountBank").value.trim();
+
+    if (!name || !number || !bank) {
+
+      alert("Please complete all account details.");
+
+      return;
+    }
+
+    const accounts = getAccounts();
+
+    accounts[country] = {
+      name: name,
+      number: number,
+      bank: bank
+    };
+
+    localStorage.setItem(
+      "hunpay_company_accounts",
+      JSON.stringify(accounts)
+    );
+
+    document.getElementById(
+      "accountSuccess"
+    ).style.display = "block";
+
+    updateIDPayment();
+  }
+
+
+  function submitIDPayment() {
+
+    const reference =
+      document.getElementById("paymentReference").value.trim();
+
+    const proof =
+      document.getElementById("paymentProof").files.length;
+
+    if (!reference && !proof) {
+
+      alert(
+        "Please enter a payment reference or upload your payment proof."
+      );
+
+      return;
+    }
+
+    document.getElementById(
+      "paymentSuccess"
+    ).style.display = "block";
+  }
+
+
+  function showSection(id) {
+
+    const sections = [
+      "idCodeSection",
+      "bankAccountSection",
+      "withdrawSection",
+      "airtimeSection",
+      "dataSection"
+    ];
+
+    sections.forEach(function(section) {
+
+      document
+        .getElementById(section)
+        .classList.add("hidden");
 
     });
 
-  document
-    .getElementById(id)
-    .style.display="block";
+    document
+      .getElementById(id)
+      .classList.remove("hidden");
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
 
-}
+
+  function showIDCode() {
+    showSection("idCodeSection");
+  }
 
 
-function countryChange(){
+  function showBankAccount() {
 
-  const country =
-    document.getElementById("country").value;
+    showSection("bankAccountSection");
 
-  document.getElementById("ng")
-    .style.display="none";
+    const country =
+      document.getElementById("accountCountry").value;
 
-  document.getElementById("cm")
-    .style.display="none";
+    const accounts = getAccounts();
 
-  if(country==="ng"){
+    document.getElementById("accountName").value =
+      accounts[country].name;
 
-    document.getElementById("ng")
-      .style.display="block";
+    document.getElementById("accountNumber").value =
+      accounts[country].number;
+
+    document.getElementById("accountBank").value =
+      accounts[country].bank;
+  }
+
+
+  function showWithdraw() {
+    showSection("withdrawSection");
+  }
+
+
+  function showAirtime() {
+    showSection("airtimeSection");
+  }
+
+
+  function showData() {
+    showSection("dataSection");
+  }
+
+
+  function updateWithdrawForm() {
+
+    const country =
+      document.getElementById("withdrawCountry").value;
+
+    const label =
+      document.getElementById("withdrawNumberLabel");
+
+    if (country === "cameroon") {
+
+      label.textContent =
+        "Account Number / MoMo Number";
+
+    } else {
+
+      label.textContent =
+        "Account Number";
+
+    }
+  }
+
+
+  function submitWithdraw() {
+
+    alert(
+      "Transfer request submitted."
+    );
 
   }
 
-  if(country==="cm"){
 
-    document.getElementById("cm")
-      .style.display="block";
-
-  }
-
-}
-
-
-function cameroonMethod(){
-
-  const method =
-    document.getElementById("cmMethod").value;
-
-  document.getElementById("mtnDetails")
-    .style.display="none";
-
-  document.getElementById("orangeDetails")
-    .style.display="none";
-
-  document.getElementById("cmBank")
-    .style.display="none";
-
-  if(method==="mtn"){
-
-    document.getElementById("mtnDetails")
-      .style.display="block";
-
-  }
-
-  if(method==="orange"){
-
-    document.getElementById("orangeDetails")
-      .style.display="block";
-
-  }
-
-  if(method==="bank"){
-
-    document.getElementById("cmBank")
-      .style.display="block";
-
-  }
-
-}
-
-
-function idCode(){
-
-  document.getElementById("idResult").innerHTML=
-    '<div class="result">' +
-    'ID Code selected — ₦12,500.00' +
-    '</div>';
-
-}
-
-
-function transfer(){
-
-  document.getElementById("transferResult").innerHTML=
-    '<div class="result">' +
-    'Transfer request submitted.' +
-    '</div>';
-
-}
+  // Load payment account when page opens
+  updateIDPayment();
 
 </script>
 
 </body>
-  </html>
+      </html>
