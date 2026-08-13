@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>HUNPAY Dashboard</title>
+
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f4f6fb;color:#172033}
@@ -20,7 +21,6 @@ h2{margin-top:0}
 label{display:block;font-weight:bold;margin:14px 0 7px}
 input,select,textarea{width:100%;padding:14px;border:1px solid #ddd;border-radius:11px;font-size:16px}
 button{width:100%;padding:14px;border:0;border-radius:11px;background:#7b20e6;color:white;font-size:16px;font-weight:bold;margin-top:14px;cursor:pointer}
-.secondary{background:#172033}
 .price{font-size:29px;font-weight:bold;margin:15px 0}
 .box{background:#f4efff;border:2px solid #8735e8;border-radius:16px;padding:16px;margin-top:15px}
 .row{background:#fff;padding:12px;border-radius:9px;margin:9px 0}
@@ -30,6 +30,20 @@ button{width:100%;padding:14px;border:0;border-radius:11px;background:#7b20e6;co
 .status{font-weight:bold}
 table{width:100%;border-collapse:collapse;font-size:13px}
 th,td{padding:10px;border-bottom:1px solid #eee;text-align:left}
+
+.whatsapp{
+background:#25D366;
+color:white;
+text-decoration:none;
+display:block;
+text-align:center;
+padding:14px;
+border-radius:11px;
+font-size:16px;
+font-weight:bold;
+margin-top:14px;
+}
+
 @media(max-width:600px){
 header{font-size:21px;padding:18px}
 .container{padding:11px}
@@ -54,20 +68,54 @@ header{font-size:21px;padding:18px}
 </div>
 
 <div class="grid">
-<div class="menu" onclick="show('register')"><div class="icon">📝</div>Register</div>
-<div class="menu" onclick="show('login')"><div class="icon">🔐</div>Login</div>
-<div class="menu" onclick="show('id')"><div class="icon">🪪</div>ID Code</div>
-<div class="menu" onclick="show('withdraw')"><div class="icon">💸</div>Withdraw</div>
-<div class="menu" onclick="show('airtime')"><div class="icon">📱</div>Airtime</div>
-<div class="menu" onclick="show('data')"><div class="icon">🌐</div>Data</div>
-<div class="menu" onclick="show('bank')"><div class="icon">🏦</div>Payment Account</div>
-<div class="menu" onclick="show('profile')"><div class="icon">👤</div>Profile</div>
-<div class="menu" onclick="show('transactions')"><div class="icon">📋</div>Transactions</div>
-<div class="menu" onclick="show('support')"><div class="icon">🎧</div>Support</div>
+
+<div class="menu" onclick="show('register')">
+<div class="icon">📝</div>Register
 </div>
 
+<div class="menu" onclick="show('login')">
+<div class="icon">🔐</div>Login
+</div>
+
+<div class="menu" onclick="show('id')">
+<div class="icon">🪪</div>ID Code
+</div>
+
+<div class="menu" onclick="show('withdraw')">
+<div class="icon">💸</div>Withdraw
+</div>
+
+<div class="menu" onclick="show('airtime')">
+<div class="icon">📱</div>Airtime
+</div>
+
+<div class="menu" onclick="show('data')">
+<div class="icon">🌐</div>Data
+</div>
+
+<div class="menu" onclick="show('bank')">
+<div class="icon">🏦</div>Payment Account
+</div>
+
+<div class="menu" onclick="show('profile')">
+<div class="icon">👤</div>Profile
+</div>
+
+<div class="menu" onclick="show('transactions')">
+<div class="icon">📋</div>Transactions
+</div>
+
+<div class="menu" onclick="show('support')">
+<div class="icon">🎧</div>Support
+</div>
+
+</div>
+
+
 <!-- REGISTER -->
+
 <div class="card hidden" id="register">
+
 <h2>📝 Create Account</h2>
 
 <label>Full Name</label>
@@ -80,20 +128,37 @@ header{font-size:21px;padding:18px}
 <input id="regEmail" type="email" placeholder="Enter email">
 
 <label>Country</label>
+
 <select id="regCountry">
-<option value="nigeria">Nigeria 🇳🇬</option>
-<option value="cameroon">Cameroon 🇨🇲</option>
+
+<option value="nigeria">
+Nigeria 🇳🇬
+</option>
+
+<option value="cameroon">
+Cameroon 🇨🇲
+</option>
+
 </select>
 
 <label>Password</label>
 <input id="regPassword" type="password" placeholder="Create password">
 
-<button onclick="registerUser()">Create Account</button>
-<div class="success" id="registerSuccess">Account created successfully.</div>
+<button onclick="registerUser()">
+Create Account
+</button>
+
+<div class="success" id="registerSuccess">
+Account created successfully.
 </div>
 
+</div>
+
+
 <!-- LOGIN -->
+
 <div class="card hidden" id="login">
+
 <h2>🔐 Login</h2>
 
 <label>Email or Phone</label>
@@ -102,23 +167,41 @@ header{font-size:21px;padding:18px}
 <label>Password</label>
 <input id="loginPassword" type="password" placeholder="Password">
 
-<button onclick="loginUser()">Login</button>
+<button onclick="loginUser()">
+Login
+</button>
+
 <div class="success" id="loginSuccess"></div>
+
 </div>
 
+
 <!-- ID CODE -->
+
 <div class="card hidden" id="id">
+
 <h2>🪪 ID Code</h2>
 
 <label>Country</label>
+
 <select id="idCountry" onchange="updatePayment()">
-<option value="nigeria">Nigeria 🇳🇬</option>
-<option value="cameroon">Cameroon 🇨🇲</option>
+
+<option value="nigeria">
+Nigeria 🇳🇬
+</option>
+
+<option value="cameroon">
+Cameroon 🇨🇲
+</option>
+
 </select>
 
-<div class="price" id="idPrice">₦12,500</div>
+<div class="price" id="idPrice">
+₦12,500
+</div>
 
 <div class="box">
+
 <h3>Payment Information</h3>
 
 <div class="row">
@@ -135,86 +218,150 @@ header{font-size:21px;padding:18px}
 <strong>Bank / Network</strong>
 <span id="paymentBank"></span>
 </div>
+
 </div>
 
 <div class="notice">
-Payment submissions are recorded for review. No payment is automatically confirmed by this demo.
+Payment submissions are recorded for review.
 </div>
 
 <label>Transaction Reference</label>
-<input id="paymentReference" placeholder="Enter transaction reference">
+
+<input
+id="paymentReference"
+placeholder="Enter transaction reference">
 
 <label>Payment Proof</label>
-<input id="paymentProof" type="file" accept="image/*,.pdf">
 
-<button onclick="submitPayment()">Submit Payment Record</button>
+<input
+id="paymentProof"
+type="file"
+accept="image/*,.pdf">
+
+<button onclick="submitPayment()">
+Submit Payment Record
+</button>
+
 <div class="success" id="paymentSuccess">
 Payment record submitted for review.
 </div>
+
 </div>
 
+
 <!-- WITHDRAW -->
+
 <div class="card hidden" id="withdraw">
+
 <h2>💸 Withdrawal Request</h2>
 
 <label>Country</label>
+
 <select id="withdrawCountry" onchange="updateWithdraw()">
-<option value="nigeria">Nigeria 🇳🇬</option>
-<option value="cameroon">Cameroon 🇨🇲</option>
+
+<option value="nigeria">
+Nigeria 🇳🇬
+</option>
+
+<option value="cameroon">
+Cameroon 🇨🇲
+</option>
+
 </select>
 
 <label>Account Name</label>
-<input id="withdrawName" placeholder="Enter account name">
+
+<input
+id="withdrawName"
+placeholder="Enter account name">
 
 <label>Account / MoMo Number</label>
-<input id="withdrawNumber" placeholder="Enter account number">
+
+<input
+id="withdrawNumber"
+placeholder="Enter account number">
 
 <label>Bank / Mobile Money</label>
+
 <select id="withdrawProvider"></select>
 
 <label>Amount</label>
-<input id="withdrawAmount" type="number" placeholder="Enter amount">
 
-<button onclick="submitWithdraw()">Submit Withdrawal</button>
+<input
+id="withdrawAmount"
+type="number"
+placeholder="Enter amount">
+
+<button onclick="submitWithdraw()">
+Submit Withdrawal
+</button>
+
 <div class="success" id="withdrawSuccess">
 Withdrawal request submitted for review.
 </div>
+
 </div>
 
+
 <!-- AIRTIME -->
+
 <div class="card hidden" id="airtime">
+
 <h2>📱 Airtime</h2>
 
 <label>Country</label>
+
 <select>
+
 <option>Nigeria 🇳🇬</option>
 <option>Cameroon 🇨🇲</option>
+
 </select>
 
 <label>Phone Number</label>
-<input type="tel" placeholder="Enter phone number">
+
+<input
+type="tel"
+placeholder="Enter phone number">
 
 <label>Amount</label>
-<input type="number" placeholder="Enter amount">
 
-<button onclick="simpleNotice('Airtime request recorded.')">Continue</button>
+<input
+type="number"
+placeholder="Enter amount">
+
+<button onclick="simpleNotice('Airtime request recorded.')">
+Continue
+</button>
+
 </div>
 
+
 <!-- DATA -->
+
 <div class="card hidden" id="data">
+
 <h2>🌐 Data</h2>
 
 <label>Country</label>
+
 <select>
+
 <option>Nigeria 🇳🇬</option>
 <option>Cameroon 🇨🇲</option>
+
 </select>
 
 <label>Phone Number</label>
-<input type="tel" placeholder="Enter phone number">
+
+<input
+type="tel"
+placeholder="Enter phone number">
 
 <label>Network</label>
+
 <select>
+
 <option>Select network</option>
 <option>MTN</option>
 <option>Airtel</option>
@@ -222,39 +369,69 @@ Withdrawal request submitted for review.
 <option>9mobile</option>
 <option>MTN Cameroon</option>
 <option>Orange Cameroon</option>
+
 </select>
 
 <label>Amount</label>
-<input type="number" placeholder="Enter amount">
 
-<button onclick="simpleNotice('Data request recorded.')">Continue</button>
+<input
+type="number"
+placeholder="Enter amount">
+
+<button onclick="simpleNotice('Data request recorded.')">
+Continue
+</button>
+
 </div>
 
+
 <!-- PAYMENT ACCOUNT -->
+
 <div class="card hidden" id="bank">
+
 <h2>🏦 Company Payment Account</h2>
 
 <label>Country</label>
+
 <select id="accountCountry" onchange="loadAccount()">
-<option value="cameroon">Cameroon 🇨🇲</option>
-<option value="nigeria">Nigeria 🇳🇬</option>
+
+<option value="cameroon">
+Cameroon 🇨🇲
+</option>
+
+<option value="nigeria">
+Nigeria 🇳🇬
+</option>
+
 </select>
 
 <label>Account Name</label>
+
 <input id="accountName">
 
 <label>Account / MoMo Number</label>
+
 <input id="accountNumber">
 
 <label>Bank / Network</label>
+
 <input id="accountBank">
 
-<button onclick="saveAccount()">Save Account</button>
-<div class="success" id="accountSuccess">Account details saved.</div>
+<button onclick="saveAccount()">
+Save Account
+</button>
+
+<div class="success" id="accountSuccess">
+Account details saved.
 </div>
 
+</div>
+
+
 <!-- PROFILE -->
+
 <div class="card hidden" id="profile">
+
 <h2>👤 Profile</h2>
 
 <label>Full Name</label>
@@ -267,183 +444,389 @@ Withdrawal request submitted for review.
 <input id="profileEmail">
 
 <label>Country</label>
+
 <select id="profileCountry">
-<option value="nigeria">Nigeria 🇳🇬</option>
-<option value="cameroon">Cameroon 🇨🇲</option>
+
+<option value="nigeria">
+Nigeria 🇳🇬
+</option>
+
+<option value="cameroon">
+Cameroon 🇨🇲
+</option>
+
 </select>
 
-<button onclick="saveProfile()">Save Profile</button>
-<div class="success" id="profileSuccess">Profile saved.</div>
+<button onclick="saveProfile()">
+Save Profile
+</button>
+
+<div class="success" id="profileSuccess">
+Profile saved.
 </div>
 
+</div>
+
+
 <!-- TRANSACTIONS -->
+
 <div class="card hidden" id="transactions">
+
 <h2>📋 Transactions</h2>
+
 <div id="transactionList">
 <p>No transactions yet.</p>
 </div>
+
 </div>
+
 
 <!-- SUPPORT -->
+
 <div class="card hidden" id="support">
-<h2>🎧 Support</h2>
 
-<label>Name</label>
-<input id="supportName" placeholder="Your name">
+<h2>🎧 Contact Support</h2>
 
-<label>Message</label>
-<textarea id="supportMessage" rows="5" placeholder="How can we help?"></textarea>
+<p>
+Need help? Select your country and contact the support team directly on WhatsApp.
+</p>
 
-<button onclick="sendSupport()">Send Message</button>
-<div class="success" id="supportSuccess">Message recorded.</div>
+<label>Country</label>
+
+<select id="supportCountry" onchange="updateSupport()">
+
+<option value="nigeria">
+Nigeria 🇳🇬
+</option>
+
+<option value="cameroon">
+Cameroon 🇨🇲
+</option>
+
+</select>
+
+<div class="box">
+
+<div class="row">
+
+<strong>Support WhatsApp</strong>
+
+<span id="supportNumber">
++234 901 994 6815
+</span>
+
 </div>
 
 </div>
+
+<button onclick="contactSupport()">
+💬 Chat With Support on WhatsApp
+</button>
+
+</div>
+
+</div>
+
 
 <script>
 
 const defaultAccounts={
+
 nigeria:{
 name:"Joshua Elisha Effiong",
 number:"9019946815",
 bank:"Moniepoint MFB"
 },
+
 cameroon:{
 name:"PATRICK RICARDO ZEKENG KEMKA",
 number:"678652697",
 bank:"MTN MOMO"
 }
+
 };
 
+
+const supportNumbers={
+
+nigeria:"2349019946815",
+
+cameroon:"237672863741"
+
+};
+
+
 const nigeriaProviders=[
-"Access Bank","GTBank","UBA","First Bank","Zenith Bank",
-"Moniepoint","OPay","PalmPay","Kuda","Union Bank",
-"Stanbic IBTC","Fidelity Bank","FCMB","Sterling Bank",
-"Ecobank","Wema Bank","Keystone Bank","Polaris Bank"
+
+"Access Bank",
+"GTBank",
+"UBA",
+"First Bank",
+"Zenith Bank",
+"Moniepoint",
+"OPay",
+"PalmPay",
+"Kuda",
+"Union Bank",
+"Stanbic IBTC",
+"Fidelity Bank",
+"FCMB",
+"Sterling Bank",
+"Ecobank",
+"Wema Bank",
+"Keystone Bank",
+"Polaris Bank"
+
 ];
+
 
 const cameroonProviders=[
-"MTN MoMo","Orange Money","Express Union",
-"UBA Cameroon","Afriland First Bank","CCA Bank",
-"Commercial Bank Cameroon","Ecobank Cameroon"
+
+"MTN MoMo",
+"Orange Money",
+"Express Union",
+"UBA Cameroon",
+"Afriland First Bank",
+"CCA Bank",
+"Commercial Bank Cameroon",
+"Ecobank Cameroon"
+
 ];
 
+
 function getAccounts(){
-const saved=localStorage.getItem("hunpay_accounts");
-return saved?JSON.parse(saved):defaultAccounts;
+
+const saved=
+localStorage.getItem("hunpay_accounts");
+
+return saved
+?JSON.parse(saved)
+:defaultAccounts;
+
 }
+
 
 function updatePayment(){
 
-const country=document.getElementById("idCountry").value;
-const account=getAccounts()[country];
+const country=
+document.getElementById("idCountry").value;
 
-document.getElementById("paymentName").textContent=account.name;
-document.getElementById("paymentNumber").textContent=account.number;
-document.getElementById("paymentBank").textContent=account.bank;
+const account=
+getAccounts()[country];
 
-document.getElementById("idPrice").textContent=
-country==="nigeria"?"₦12,500":"12,500 XAF";
+document.getElementById("paymentName")
+.textContent=account.name;
+
+document.getElementById("paymentNumber")
+.textContent=account.number;
+
+document.getElementById("paymentBank")
+.textContent=account.bank;
+
+document.getElementById("idPrice")
+.textContent=
+country==="nigeria"
+?"₦12,500"
+:"12,500 XAF";
+
 }
+
 
 function saveAccount(){
 
-const country=document.getElementById("accountCountry").value;
-const name=document.getElementById("accountName").value.trim();
-const number=document.getElementById("accountNumber").value.trim();
-const bank=document.getElementById("accountBank").value.trim();
+const country=
+document.getElementById("accountCountry").value;
+
+const name=
+document.getElementById("accountName").value.trim();
+
+const number=
+document.getElementById("accountNumber").value.trim();
+
+const bank=
+document.getElementById("accountBank").value.trim();
 
 if(!name||!number||!bank){
+
 alert("Please complete all fields.");
+
 return;
+
 }
 
 const accounts=getAccounts();
 
-accounts[country]={name,number,bank};
+accounts[country]={
+name:name,
+number:number,
+bank:bank
+};
 
 localStorage.setItem(
 "hunpay_accounts",
 JSON.stringify(accounts)
 );
 
-document.getElementById("accountSuccess").style.display="block";
+document.getElementById(
+"accountSuccess"
+).style.display="block";
 
 updatePayment();
+
 }
+
 
 function loadAccount(){
 
-const country=document.getElementById("accountCountry").value;
-const account=getAccounts()[country];
+const country=
+document.getElementById("accountCountry").value;
 
-document.getElementById("accountName").value=account.name;
-document.getElementById("accountNumber").value=account.number;
-document.getElementById("accountBank").value=account.bank;
+const account=
+getAccounts()[country];
+
+document.getElementById(
+"accountName"
+).value=account.name;
+
+document.getElementById(
+"accountNumber"
+).value=account.number;
+
+document.getElementById(
+"accountBank"
+).value=account.bank;
+
 }
+
 
 function registerUser(){
 
 const user={
-name:document.getElementById("regName").value.trim(),
-phone:document.getElementById("regPhone").value.trim(),
-email:document.getElementById("regEmail").value.trim(),
-country:document.getElementById("regCountry").value,
-password:document.getElementById("regPassword").value
+
+name:
+document.getElementById("regName").value.trim(),
+
+phone:
+document.getElementById("regPhone").value.trim(),
+
+email:
+document.getElementById("regEmail").value.trim(),
+
+country:
+document.getElementById("regCountry").value,
+
+password:
+document.getElementById("regPassword").value
+
 };
 
-if(!user.name||!user.phone||!user.email||!user.password){
+if(
+!user.name||
+!user.phone||
+!user.email||
+!user.password
+){
+
 alert("Please complete all registration fields.");
+
 return;
+
 }
 
-localStorage.setItem("hunpay_user",JSON.stringify(user));
+localStorage.setItem(
+"hunpay_user",
+JSON.stringify(user)
+);
 
-document.getElementById("registerSuccess").style.display="block";
+document.getElementById(
+"registerSuccess"
+).style.display="block";
+
 }
+
 
 function loginUser(){
 
-const saved=localStorage.getItem("hunpay_user");
+const saved=
+localStorage.getItem("hunpay_user");
 
 if(!saved){
+
 alert("No local demo account found.");
+
 return;
+
 }
 
 const user=JSON.parse(saved);
-const id=document.getElementById("loginId").value.trim();
-const password=document.getElementById("loginPassword").value;
-const box=document.getElementById("loginSuccess");
 
-if((id===user.email||id===user.phone)&&password===user.password){
+const id=
+document.getElementById("loginId").value.trim();
+
+const password=
+document.getElementById("loginPassword").value;
+
+const box=
+document.getElementById("loginSuccess");
+
+if(
+(id===user.email||id===user.phone)&&
+password===user.password
+){
+
 box.textContent="Login successful.";
+
 }else{
+
 box.textContent="Incorrect login details.";
+
 }
 
 box.style.display="block";
+
 }
+
 
 function submitPayment(){
 
-const reference=document.getElementById("paymentReference").value.trim();
-const proof=document.getElementById("paymentProof").files.length;
+const reference=
+document.getElementById(
+"paymentReference"
+).value.trim();
+
+const proof=
+document.getElementById(
+"paymentProof"
+).files.length;
 
 if(!reference&&!proof){
-alert("Please provide a transaction reference or payment proof.");
+
+alert(
+"Please provide a transaction reference or payment proof."
+);
+
 return;
+
 }
 
-const transactions=JSON.parse(
-localStorage.getItem("hunpay_transactions")||"[]"
+const transactions=
+JSON.parse(
+localStorage.getItem(
+"hunpay_transactions"
+)||"[]"
 );
 
 transactions.push({
+
 type:"ID Code Payment",
-reference:reference||"Proof uploaded",
+
+reference:
+reference||"Proof uploaded",
+
 status:"Pending",
+
 date:new Date().toLocaleString()
+
 });
 
 localStorage.setItem(
@@ -451,31 +834,59 @@ localStorage.setItem(
 JSON.stringify(transactions)
 );
 
-document.getElementById("paymentSuccess").style.display="block";
+document.getElementById(
+"paymentSuccess"
+).style.display="block";
 
 loadTransactions();
+
 }
+
 
 function submitWithdraw(){
 
-const name=document.getElementById("withdrawName").value.trim();
-const number=document.getElementById("withdrawNumber").value.trim();
-const amount=document.getElementById("withdrawAmount").value;
+const name=
+document.getElementById(
+"withdrawName"
+).value.trim();
+
+const number=
+document.getElementById(
+"withdrawNumber"
+).value.trim();
+
+const amount=
+document.getElementById(
+"withdrawAmount"
+).value;
 
 if(!name||!number||!amount){
-alert("Please complete the withdrawal details.");
+
+alert(
+"Please complete the withdrawal details."
+);
+
 return;
+
 }
 
-const transactions=JSON.parse(
-localStorage.getItem("hunpay_transactions")||"[]"
+const transactions=
+JSON.parse(
+localStorage.getItem(
+"hunpay_transactions"
+)||"[]"
 );
 
 transactions.push({
+
 type:"Withdrawal",
+
 amount:amount,
+
 status:"Pending",
+
 date:new Date().toLocaleString()
+
 });
 
 localStorage.setItem(
@@ -483,15 +894,26 @@ localStorage.setItem(
 JSON.stringify(transactions)
 );
 
-document.getElementById("withdrawSuccess").style.display="block";
+document.getElementById(
+"withdrawSuccess"
+).style.display="block";
 
 loadTransactions();
+
 }
+
 
 function updateWithdraw(){
 
-const country=document.getElementById("withdrawCountry").value;
-const select=document.getElementById("withdrawProvider");
+const country=
+document.getElementById(
+"withdrawCountry"
+).value;
+
+const select=
+document.getElementById(
+"withdrawProvider"
+);
 
 select.innerHTML="";
 
@@ -502,20 +924,42 @@ country==="nigeria"
 
 providers.forEach(function(provider){
 
-const option=document.createElement("option");
+const option=
+document.createElement("option");
+
 option.textContent=provider;
+
 select.appendChild(option);
 
 });
+
 }
+
 
 function saveProfile(){
 
 const profile={
-name:document.getElementById("profileName").value,
-phone:document.getElementById("profilePhone").value,
-email:document.getElementById("profileEmail").value,
-country:document.getElementById("profileCountry").value
+
+name:
+document.getElementById(
+"profileName"
+).value,
+
+phone:
+document.getElementById(
+"profilePhone"
+).value,
+
+email:
+document.getElementById(
+"profileEmail"
+).value,
+
+country:
+document.getElementById(
+"profileCountry"
+).value
+
 };
 
 localStorage.setItem(
@@ -523,81 +967,174 @@ localStorage.setItem(
 JSON.stringify(profile)
 );
 
-document.getElementById("profileSuccess").style.display="block";
+document.getElementById(
+"profileSuccess"
+).style.display="block";
+
 }
+
 
 function loadTransactions(){
 
-const list=document.getElementById("transactionList");
+const list=
+document.getElementById(
+"transactionList"
+);
 
-const transactions=JSON.parse(
-localStorage.getItem("hunpay_transactions")||"[]"
+const transactions=
+JSON.parse(
+localStorage.getItem(
+"hunpay_transactions"
+)||"[]"
 );
 
 if(!transactions.length){
-list.innerHTML="<p>No transactions yet.</p>";
+
+list.innerHTML=
+"<p>No transactions yet.</p>";
+
 return;
+
 }
 
-let html="<table><tr><th>Type</th><th>Amount/Ref</th><th>Status</th></tr>";
+let html=
+"<table>"+
+"<tr>"+
+"<th>Type</th>"+
+"<th>Amount/Ref</th>"+
+"<th>Status</th>"+
+"</tr>";
 
-transactions.slice().reverse().forEach(function(t){
+transactions
+.slice()
+.reverse()
+.forEach(function(t){
 
-html+=`
-<tr>
-<td>${t.type}</td>
-<td>${t.amount||t.reference||"-"}</td>
-<td class="status">${t.status}</td>
-</tr>`;
+html+=
+"<tr>"+
+"<td>"+t.type+"</td>"+
+"<td>"+(t.amount||t.reference||"-")+"</td>"+
+"<td>"+t.status+"</td>"+
+"</tr>";
 
 });
 
 html+="</table>";
 
 list.innerHTML=html;
+
 }
 
-function sendSupport(){
 
-const message=document.getElementById("supportMessage").value.trim();
+function updateSupport(){
 
-if(!message){
-alert("Please enter your message.");
-return;
+const country=
+document.getElementById(
+"supportCountry"
+).value;
+
+const number=
+supportNumbers[country];
+
+document.getElementById(
+"supportNumber"
+).textContent=
+country==="nigeria"
+?"+234 901 994 6815"
+:"+237 672 863 741";
+
 }
 
-document.getElementById("supportSuccess").style.display="block";
+
+function contactSupport(){
+
+const country=
+document.getElementById(
+"supportCountry"
+).value;
+
+const number=
+supportNumbers[country];
+
+const message=
+"Hello HUNPAY Support, I need assistance with my account.";
+
+const url=
+"https://wa.me/"+
+number+
+"?text="+
+encodeURIComponent(message);
+
+window.open(url,"_blank");
+
 }
+
 
 function simpleNotice(message){
+
 alert(message);
+
 }
+
 
 function show(id){
 
 const sections=[
-"register","login","id","withdraw",
-"airtime","data","bank","profile",
-"transactions","support"
+
+"register",
+"login",
+"id",
+"withdraw",
+"airtime",
+"data",
+"bank",
+"profile",
+"transactions",
+"support"
+
 ];
 
 sections.forEach(function(section){
-document.getElementById(section).classList.add("hidden");
+
+document
+.getElementById(section)
+.classList.add("hidden");
+
 });
 
-document.getElementById(id).classList.remove("hidden");
+document
+.getElementById(id)
+.classList.remove("hidden");
 
-if(id==="id")updatePayment();
-if(id==="bank")loadAccount();
-if(id==="withdraw")updateWithdraw();
-if(id==="transactions")loadTransactions();
+if(id==="id")
+updatePayment();
 
-window.scrollTo({top:0,behavior:"smooth"});
+if(id==="bank")
+loadAccount();
+
+if(id==="withdraw")
+updateWithdraw();
+
+if(id==="transactions")
+loadTransactions();
+
+if(id==="support")
+updateSupport();
+
+window.scrollTo({
+
+top:0,
+behavior:"smooth"
+
+});
+
 }
+
 
 updatePayment();
 updateWithdraw();
 loadTransactions();
+updateSupport();
 
 </script>
 
