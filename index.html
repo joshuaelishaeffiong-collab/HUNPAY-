@@ -7,25 +7,24 @@
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f4f6fb;color:#172033}
-header{background:#172033;color:#fff;text-align:center;padding:22px;font-size:25px;font-weight:700}
+header{background:#172033;color:#fff;padding:22px;text-align:center;font-size:25px;font-weight:bold}
 .container{max-width:720px;margin:auto;padding:15px}
-.card{background:#fff;border-radius:20px;padding:22px;margin:15px 0;box-shadow:0 5px 20px #00000012}
+.card{background:#fff;border-radius:20px;padding:22px;margin:15px 0;box-shadow:0 5px 20px #0001}
 .hidden{display:none!important}
-label{display:block;font-weight:700;margin:14px 0 7px}
+label{display:block;font-weight:bold;margin:14px 0 7px}
 input,select{width:100%;padding:14px;border:1px solid #ddd;border-radius:11px;font-size:16px}
-button{width:100%;padding:14px;margin-top:15px;border:0;border-radius:11px;background:#7620df;color:#fff;font-size:16px;font-weight:700;cursor:pointer}
-.secondary{background:#172033}
-.danger{background:#d93025}
-.balance{background:linear-gradient(135deg,#7019d8,#a238ed);color:#fff;padding:25px;border-radius:23px}
+button{width:100%;padding:14px;margin-top:15px;border:0;border-radius:11px;background:#7620df;color:#fff;font-size:16px;font-weight:bold}
+.secondary{background:#172033}.danger{background:#d93025}
+.balance{background:linear-gradient(135deg,#7019d8,#a238ed);color:white;padding:25px;border-radius:23px}
 .balance h1{font-size:38px;margin:10px 0}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:15px 0}
-.menu{background:#fff;border-radius:16px;padding:15px 5px;text-align:center;cursor:pointer;box-shadow:0 3px 12px #0000000f}
+.menu{background:#fff;border-radius:16px;padding:15px 5px;text-align:center;cursor:pointer;box-shadow:0 3px 12px #0001}
 .icon{display:block;font-size:27px;margin-bottom:6px}
-.notice{padding:13px;border-radius:10px;margin-top:12px}
+.notice{padding:13px;border-radius:10px;margin-top:12px;background:#f3efff}
 .success{background:#e7f7ed;color:#176b38}
 .error{background:#fdeaea;color:#a51d1d}
 .history{border-bottom:1px solid #eee;padding:12px 0}
-.small-link{text-align:center;margin-top:15px;color:#7620df;cursor:pointer;font-weight:700}
+.link{text-align:center;margin-top:15px;color:#7620df;cursor:pointer;font-weight:bold}
 @media(max-width:600px){
 header{font-size:21px}.container{padding:10px}
 .grid{grid-template-columns:repeat(2,1fr)}
@@ -33,8 +32,8 @@ header{font-size:21px}.container{padding:10px}
 }
 </style>
 </head>
-<body>
 
+<body>
 <header>HUNPAY</header>
 
 <div class="container">
@@ -61,7 +60,7 @@ header{font-size:21px}.container{padding:10px}
 <button onclick="register()">Create Account</button>
 <div id="registerMsg"></div>
 
-<div class="small-link" onclick="showLogin()">
+<div class="link" onclick="showLogin()">
 Already have an account? Login
 </div>
 </div>
@@ -79,7 +78,7 @@ Already have an account? Login
 <button onclick="login()">Login</button>
 <div id="loginMsg"></div>
 
-<div class="small-link" onclick="showRegister()">
+<div class="link" onclick="showRegister()">
 Create a new account
 </div>
 </div>
@@ -88,23 +87,21 @@ Create a new account
 <div id="dashboardPage" class="hidden">
 
 <div class="balance">
-<small>Account Balance</small>
+<small>Available Balance</small>
 <h1 id="balance">₦0.00</h1>
-<small>Demo account balance</small>
+<small>Account balance</small>
 </div>
 
 <div class="grid">
-<div class="menu" onclick="section('profile')"><span class="icon">👤</span>Profile</div>
-<div class="menu" onclick="section('trading')"><span class="icon">📈</span>Trading</div>
-<div class="menu" onclick="section('withdraw')"><span class="icon">💸</span>Withdraw</div>
-<div class="menu" onclick="section('history')"><span class="icon">📜</span>History</div>
-<div class="menu" onclick="section('support')"><span class="icon">🎧</span>Support</div>
-<div class="menu" onclick="section('settings')"><span class="icon">⚙️</span>Settings</div>
+<div class="menu" onclick="openSection('profile')">👤<br>Profile</div>
+<div class="menu" onclick="openSection('withdraw')">💸<br>Withdraw</div>
+<div class="menu" onclick="openSection('history')">📜<br>History</div>
+<div class="menu" onclick="openSection('support')">🎧<br>Support</div>
 </div>
 
 <!-- PROFILE -->
-<div class="card dash hidden" id="profile">
-<h2>👤 Profile</h2>
+<div class="card section hidden" id="profile">
+<h2>👤 My Profile</h2>
 
 <label>Full Name</label>
 <input id="profileName">
@@ -121,73 +118,57 @@ Create a new account
 <button onclick="saveProfile()">Save Profile</button>
 </div>
 
-<!-- TRADING -->
-<div class="card dash hidden" id="trading">
-<h2>📈 Trading</h2>
-
-<div class="notice">
-This section is for recording genuine trading/investment activity.
-</div>
-
-<label>Investment Amount</label>
-<input id="tradeAmount" type="number" placeholder="Enter amount">
-
-<label>Trade Description</label>
-<input id="tradeDescription" placeholder="Description">
-
-<button onclick="recordTrade()">Record Transaction</button>
-<div id="tradeMsg"></div>
-</div>
-
 <!-- WITHDRAW -->
-<div class="card dash hidden" id="withdraw">
+<div class="card section hidden" id="withdraw">
 <h2>💸 Withdraw</h2>
 
+<label>Country</label>
+<select id="withdrawCountry" onchange="loadProviders()">
+<option value="nigeria">Nigeria 🇳🇬</option>
+<option value="cameroon">Cameroon 🇨🇲</option>
+</select>
+
 <label>Account Name</label>
-<input id="withdrawName" placeholder="Account name">
+<input id="withdrawName" placeholder="Enter account name">
 
 <label>Account / MoMo Number</label>
-<input id="withdrawNumber" placeholder="Account or MoMo number">
+<input id="withdrawNumber" placeholder="Enter account or MoMo number">
 
 <label>Bank / Mobile Money</label>
-<input id="withdrawProvider" placeholder="Bank or network">
+<select id="withdrawProvider"></select>
 
 <label>Amount</label>
-<input id="withdrawAmount" type="number" placeholder="Amount">
+<input id="withdrawAmount" type="number" placeholder="Enter amount">
 
-<button onclick="withdraw()">Submit Withdrawal</button>
+<button onclick="submitWithdrawal()">
+Submit Withdrawal
+</button>
 
 <div class="notice">
-Withdrawal requests are recorded for review. Only genuine available funds
-and legitimate charges should be used.
+Withdrawal requests are recorded for processing. Only genuine available
+funds and legitimate charges should be used.
 </div>
 
 <div id="withdrawMsg"></div>
 </div>
 
 <!-- HISTORY -->
-<div class="card dash hidden" id="history">
+<div class="card section hidden" id="history">
 <h2>📜 Transaction History</h2>
 <div id="historyList">No transactions yet.</div>
 </div>
 
 <!-- SUPPORT -->
-<div class="card dash hidden" id="support">
+<div class="card section hidden" id="support">
 <h2>🎧 Support</h2>
+<p>Contact support for account assistance.</p>
 
-<p>Need help with your account?</p>
-
-<button onclick="support()">
+<button onclick="contactSupport()">
 Contact Support on WhatsApp
 </button>
 </div>
 
-<!-- SETTINGS -->
-<div class="card dash hidden" id="settings">
-<h2>⚙️ Settings</h2>
-
-<p>Manage your account session.</p>
-
+<div class="card">
 <button class="danger" onclick="logout()">Logout</button>
 </div>
 
@@ -196,43 +177,64 @@ Contact Support on WhatsApp
 
 <script>
 
-const USERS="hunpay_users";
-const SESSION="hunpay_session";
+const USERS_KEY="hunpay_users";
+const SESSION_KEY="hunpay_session";
 
-function users(){
-return JSON.parse(localStorage.getItem(USERS)||"{}");
+/* Country-specific providers */
+const providers={
+nigeria:[
+"Access Bank",
+"GTBank",
+"UBA",
+"First Bank",
+"Zenith Bank",
+"Moniepoint",
+"OPay",
+"PalmPay"
+],
+cameroon:[
+"MTN MoMo",
+"Orange Money",
+"UBA Cameroon",
+"Ecobank Cameroon",
+"Express Union",
+"CCA Bank",
+"SCB Cameroon"
+]
+};
+
+function getUsers(){
+const data=localStorage.getItem(USERS_KEY);
+return data?JSON.parse(data):{};
 }
 
 function saveUsers(data){
-localStorage.setItem(USERS,JSON.stringify(data));
+localStorage.setItem(USERS_KEY,JSON.stringify(data));
 }
 
-function current(){
-const email=localStorage.getItem(SESSION);
-const data=users();
-return email && data[email] ? data[email] : null;
+function currentUser(){
+const email=localStorage.getItem(SESSION_KEY);
+const users=getUsers();
+return email&&users[email]?users[email]:null;
 }
 
-function message(id,text,type){
-const el=document.getElementById(id);
-el.className="notice "+type;
-el.textContent=text;
-}
-
-function hidePages(){
-document.getElementById("registerPage").classList.add("hidden");
+function showRegister(){
+document.getElementById("registerPage").classList.remove("hidden");
 document.getElementById("loginPage").classList.add("hidden");
 document.getElementById("dashboardPage").classList.add("hidden");
 }
 
-function showRegister(){
-hidePages();
-document.getElementById("registerPage").classList.remove("hidden");
+function showLogin(){
+document.getElementById("registerPage").classList.add("hidden");
+document.getElementById("loginPage").classList.remove("hidden");
+document.getElementById("dashboardPage").classList.add("hidden");
 }
 
-function showLogin(){
-hidePages();
-document.getElementById("loginPage").classList.remove("hidden");
+function showDashboard(){
+document.getElementById("registerPage").classList.add("hidden");
+document.getElementById("loginPage").classList.add("hidden");
+document.getElementById("dashboardPage").classList.remove("hidden");
+loadDashboard();
 }
 
 function register(){
@@ -243,23 +245,30 @@ const password=document.getElementById("regPassword").value;
 const country=document.getElementById("regCountry").value;
 
 if(!name||!email||!password){
-message("registerMsg","Please complete all fields.","error");
+showMsg("registerMsg","Complete all fields.","error");
 return;
 }
 
 if(password.length<6){
-message("registerMsg","Password must contain at least 6 characters.","error");
+showMsg("registerMsg","Password must contain at least 6 characters.","error");
 return;
 }
 
-const data=users();
+const users=getUsers();
 
-if(data[email]){
-message("registerMsg","This email already has an account. Please login.","error");
+if(users[email]){
+showMsg("registerMsg",
+"This email already has an account. Please login.",
+"error");
 return;
 }
 
-data[email]={
+/*
+  Each user has an independent record.
+  The balance starts at zero until genuine
+  funds are recorded by the backend/admin system.
+*/
+users[email]={
 name,
 email,
 password,
@@ -268,8 +277,8 @@ balance:0,
 history:[]
 };
 
-saveUsers(data);
-localStorage.setItem(SESSION,email);
+saveUsers(users);
+localStorage.setItem(SESSION_KEY,email);
 
 showDashboard();
 }
@@ -278,33 +287,25 @@ function login(){
 
 const email=document.getElementById("loginEmail").value.trim().toLowerCase();
 const password=document.getElementById("loginPassword").value;
-const data=users();
+const users=getUsers();
 
-if(!data[email]){
-message("loginMsg","No account found with this email.","error");
+if(!users[email]){
+showMsg("loginMsg","Account not found. Create an account first.","error");
 return;
 }
 
-if(data[email].password!==password){
-message("loginMsg","Incorrect password.","error");
+if(users[email].password!==password){
+showMsg("loginMsg","Incorrect password.","error");
 return;
 }
 
-localStorage.setItem(SESSION,email);
+localStorage.setItem(SESSION_KEY,email);
 showDashboard();
-}
-
-function showDashboard(){
-
-hidePages();
-document.getElementById("dashboardPage").classList.remove("hidden");
-
-loadDashboard();
 }
 
 function loadDashboard(){
 
-const user=current();
+const user=currentUser();
 
 if(!user){
 showLogin();
@@ -312,122 +313,118 @@ return;
 }
 
 document.getElementById("balance").textContent=
-new Intl.NumberFormat("en-NG",{style:"currency",currency:"NGN"})
-.format(user.balance||0);
+new Intl.NumberFormat("en-NG",{
+style:"currency",
+currency:"NGN"
+}).format(user.balance||0);
 
 document.getElementById("profileName").value=user.name;
 document.getElementById("profileEmail").value=user.email;
 document.getElementById("profileCountry").value=user.country;
 
+document.getElementById("withdrawCountry").value=user.country;
+
+loadProviders();
 loadHistory();
-}
-
-function section(id){
-
-document.querySelectorAll(".dash").forEach(x=>{
-x.classList.add("hidden");
-});
-
-document.getElementById(id).classList.remove("hidden");
-
-window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function saveProfile(){
 
-const email=localStorage.getItem(SESSION);
-const data=users();
+const email=localStorage.getItem(SESSION_KEY);
+const users=getUsers();
 
-data[email].name=document.getElementById("profileName").value.trim();
-data[email].country=document.getElementById("profileCountry").value;
+users[email].name=
+document.getElementById("profileName").value.trim();
 
-saveUsers(data);
+users[email].country=
+document.getElementById("profileCountry").value;
+
+saveUsers(users);
 
 alert("Profile saved.");
 }
 
-function recordTrade(){
+function loadProviders(){
 
-const amount=Number(document.getElementById("tradeAmount").value);
-const description=document.getElementById("tradeDescription").value.trim();
+const country=
+document.getElementById("withdrawCountry").value;
 
-if(!amount||amount<=0){
-message("tradeMsg","Enter a valid amount.","error");
-return;
-}
+const select=
+document.getElementById("withdrawProvider");
 
-const email=localStorage.getItem(SESSION);
-const data=users();
+select.innerHTML="";
 
-data[email].history.unshift({
-type:"Trading transaction",
-amount,
-description,
-date:new Date().toLocaleString(),
-status:"Recorded"
+providers[country].forEach(function(provider){
+
+const option=document.createElement("option");
+option.value=provider;
+option.textContent=provider;
+select.appendChild(option);
+
 });
-
-saveUsers(data);
-
-message("tradeMsg","Transaction recorded.","success");
-
-document.getElementById("tradeAmount").value="";
-document.getElementById("tradeDescription").value="";
-
-loadHistory();
 }
 
-function withdraw(){
+function submitWithdrawal(){
 
-const name=document.getElementById("withdrawName").value.trim();
-const number=document.getElementById("withdrawNumber").value.trim();
-const provider=document.getElementById("withdrawProvider").value.trim();
-const amount=Number(document.getElementById("withdrawAmount").value);
+const name=
+document.getElementById("withdrawName").value.trim();
+
+const number=
+document.getElementById("withdrawNumber").value.trim();
+
+const provider=
+document.getElementById("withdrawProvider").value;
+
+const amount=
+Number(document.getElementById("withdrawAmount").value);
 
 if(!name||!number||!provider||!amount){
-message("withdrawMsg","Please complete all withdrawal details.","error");
+showMsg("withdrawMsg",
+"Complete all withdrawal details.",
+"error");
 return;
 }
 
 if(amount<=0){
-message("withdrawMsg","Enter a valid withdrawal amount.","error");
+showMsg("withdrawMsg",
+"Enter a valid amount.",
+"error");
 return;
 }
 
-const email=localStorage.getItem(SESSION);
-const data=users();
+const email=localStorage.getItem(SESSION_KEY);
+const users=getUsers();
 
-data[email].history.unshift({
+users[email].history.unshift({
 type:"Withdrawal request",
 amount,
+provider,
 date:new Date().toLocaleString(),
 status:"Pending"
 });
 
-saveUsers(data);
+saveUsers(users);
 
-message(
-"withdrawMsg",
+showMsg("withdrawMsg",
 "Withdrawal request recorded successfully.",
-"success"
-);
+"success");
 
 loadHistory();
 }
 
 function loadHistory(){
 
-const user=current();
+const user=currentUser();
 const list=document.getElementById("historyList");
 
 if(!user||!user.history.length){
-list.innerHTML="No transactions yet.";
+list.textContent="No transactions yet.";
 return;
 }
 
 list.innerHTML="";
 
-user.history.forEach(item=>{
+user.history.forEach(function(item){
 
 const div=document.createElement("div");
 div.className="history";
@@ -435,19 +432,35 @@ div.className="history";
 div.innerHTML=
 "<strong>"+item.type+"</strong><br>"+
 "Amount: ₦"+Number(item.amount).toLocaleString()+"<br>"+
+"Provider: "+(item.provider||"-")+"<br>"+
 "<small>"+item.date+"</small><br>"+
-"<span>"+item.status+"</span>";
+"Status: "+item.status;
 
 list.appendChild(div);
+
 });
 }
 
-function support(){
+function openSection(id){
+
+document.querySelectorAll(".section").forEach(function(section){
+section.classList.add("hidden");
+});
+
+document.getElementById(id).classList.remove("hidden");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+}
+
+function contactSupport(){
 
 const number="2349019946815";
 
 const text=encodeURIComponent(
-"Hello HUNPAY Support, I need assistance with my account."
+"Hello HUNPAY Support, I need help with my account."
 );
 
 window.open(
@@ -458,13 +471,22 @@ window.open(
 
 function logout(){
 
-localStorage.removeItem(SESSION);
+localStorage.removeItem(SESSION_KEY);
 showLogin();
+}
+
+function showMsg(id,text,type){
+
+const el=document.getElementById(id);
+
+el.className="notice "+type;
+el.textContent=text;
+el.style.display="block";
 }
 
 window.onload=function(){
 
-if(current()){
+if(currentUser()){
 showDashboard();
 }else{
 showRegister();
