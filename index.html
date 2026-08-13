@@ -1,4 +1,523 @@
+HUNPAY Demo Dashboard — "index.html"
+
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HUNPAY Dashboard</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f3fa;
+      color: #172033;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7416c9, #9229e8);
+      color: white;
+      padding: 28px 22px 30px;
+      border-radius: 0 0 28px 28px;
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: white;
+      color: #7b1dcc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 27px;
+      font-weight: bold;
+    }
+
+    .welcome {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .small {
+      margin-top: 5px;
+      opacity: .9;
+      font-size: 15px;
+    }
+
+    .bell {
+      background: rgba(255,255,255,.18);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+    }
+
+    .balance-title {
+      font-size: 17px;
+      margin-bottom: 5px;
+    }
+
+    .balance {
+      font-size: 42px;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    .reward {
+      font-size: 16px;
+      margin-bottom: 25px;
+    }
+
+    .balance-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .action {
+      background: rgba(255,255,255,.18);
+      color: white;
+      padding: 16px;
+      border-radius: 35px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 22px 18px 40px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px 10px;
+      margin: 10px 0 30px;
+    }
+
+    .service {
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .service-icon {
+      width: 58px;
+      height: 58px;
+      margin: auto;
+      border-radius: 17px;
+      background: white;
+      box-shadow: 0 5px 18px rgba(0,0,0,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    .service-name {
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    h2 {
+      font-size: 25px;
+      margin: 20px 0 14px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 22px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.07);
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 21px;
+    }
+
+    .promotion {
+      min-height: 180px;
+      border-radius: 22px;
+      padding: 25px;
+      color: white;
+      background: linear-gradient(135deg, #6714b9, #c02be8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .promotion h3 {
+      font-size: 28px;
+      margin: 0 0 10px;
+    }
+
+    .promotion p {
+      line-height: 1.5;
+    }
+
+    .demo-note {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      margin-top: 25px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      border-radius: 22px;
+      padding: 25px;
+    }
+
+    .modal-box h2 {
+      margin-top: 0;
+    }
+
+    .input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      margin: 8px 0;
+      font-size: 15px;
+    }
+
+    .primary {
+      width: 100%;
+      padding: 15px;
+      border-radius: 12px;
+      background: #7620d0;
+      color: white;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .close {
+      background: #eee;
+      color: #333;
+      width: 100%;
+      padding: 13px;
+      border-radius: 12px;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 500px) {
+      .balance {
+        font-size: 36px;
+      }
+
+      .services {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .service-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 23px;
+      }
+
+      .service-name {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <div class="top">
+      <div class="user">
+        <div class="avatar">H</div>
+        <div>
+          <div class="welcome">Hi, Welcome 👋</div>
+          <div class="small">Welcome back to HUNPAY</div>
+        </div>
+      </div>
+
+      <div class="bell">🔔</div>
+    </div>
+
+    <div class="balance-title">Your Demo Balance</div>
+    <div class="balance">₦200,000.00</div>
+    <div class="reward">Demo Rewards: ₦0.00</div>
+
+    <div class="balance-buttons">
+      <button class="action" onclick="showModal('upgrade')">
+        ↗ Upgrade
+      </button>
+
+      <button class="action" onclick="showModal('transfer')">
+        ↑ Transfer
+      </button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="services">
+
+      <div class="service" onclick="showModal('id')">
+        <div class="service-icon">🪪</div>
+        <div class="service-name">ID Code</div>
+      </div>
+
+      <div class="service" onclick="showModal('withdraw')">
+        <div class="service-icon">💸</div>
+        <div class="service-name">Withdraw</div>
+      </div>
+
+      <div class="service" onclick="showModal('airtime')">
+        <div class="service-icon">📶</div>
+        <div class="service-name">Airtime</div>
+      </div>
+
+      <div class="service" onclick="showModal('data')">
+        <div class="service-icon">🌐</div>
+        <div class="service-name">Data</div>
+      </div>
+
+      <div class="service" onclick="showModal('bank')">
+        <div class="service-icon">🏦</div>
+        <div class="service-name">Bank Account</div>
+      </div>
+
+      <div class="service" onclick="showModal('support')">
+        <div class="service-icon">🎧</div>
+        <div class="service-name">Support</div>
+      </div>
+
+      <div class="service" onclick="showModal('earn')">
+        <div class="service-icon">💰</div>
+        <div class="service-name">Earn More</div>
+      </div>
+
+      <div class="service" onclick="showModal('profile')">
+        <div class="service-icon">👤</div>
+        <div class="service-name">Profile</div>
+      </div>
+
+    </div>
+
+    <h2>Account Overview</h2>
+
+    <div class="card">
+      <h3>Demo Account</h3>
+      <p><strong>Balance:</strong> ₦200,000.00</p>
+      <p><strong>Referrals:</strong> 0</p>
+      <p><strong>Earnings:</strong> ₦0.00</p>
+    </div>
+
+    <h2>Current Promotions</h2>
+
+    <div class="promotion">
+      <h3>HUNPAY Rewards 🎁</h3>
+      <p>
+        Explore the available HUNPAY services and earn rewards
+        in this demonstration dashboard.
+      </p>
+    </div>
+
+    <h2>Quick Actions</h2>
+
+    <div class="card">
+      <button class="primary" onclick="showModal('withdraw')">
+        Withdraw to Bank Account
+      </button>
+
+      <button class="primary" onclick="showModal('airtime')">
+        Buy Airtime
+      </button>
+
+      <button class="primary" onclick="showModal('data')">
+        Buy Data
+      </button>
+    </div>
+
+    <div class="demo-note">
+      HUNPAY is currently a demonstration dashboard.
+      No real money transfers or purchases are processed by this page.
+    </div>
+
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <h2 id="modalTitle">HUNPAY</h2>
+      <div id="modalContent"></div>
+
+      <button class="close" onclick="closeModal()">
+        Close
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function showModal(type) {
+
+      const modal = document.getElementById("modal");
+      const title = document.getElementById("modalTitle");
+      const content = document.getElementById("modalContent");
+
+      const pages = {
+
+        id: {
+          title: "ID Code",
+          text: `
+            <p>Your demo ID code:</p>
+            <h2>HUNPAY-DEMO</h2>
+          `
+        },
+
+        withdraw: {
+          title: "Withdraw",
+          text: `
+            <p>Demo withdrawal to bank account.</p>
+            <input class="input" placeholder="Amount">
+            <input class="input" placeholder="Bank name">
+            <input class="input" placeholder="Account number">
+            <button class="primary" onclick="demoMessage()">
+              Continue
+            </button>
+          `
+        },
+
+        bank: {
+          title: "Bank Account",
+          text: `
+            <input class="input" placeholder="Account name">
+            <input class="input" placeholder="Bank name">
+            <input class="input" placeholder="Account number">
+            <button class="primary" onclick="demoMessage()">
+              Save Demo Account
+            </button>
+          `
+        },
+
+        airtime: {
+          title: "Airtime",
+          text: `
+            <input class="input" placeholder="Phone number">
+            <input class="input" placeholder="Amount">
+            <button class="primary" onclick="demoMessage()">
+              Continue
+            </button>
+          `
+        },
+
+        data: {
+          title: "Data",
+          text: `
+            <input class="input" placeholder="Phone number">
+            <input class="input" placeholder="Network">
+            <input class="input" placeholder="Data plan">
+            <button class="primary" onclick="demoMessage()">
+              Continue
+            </button>
+          `
+        },
+
+        transfer: {
+          title: "Transfer",
+          text: `
+            <p>Demo transfer feature.</p>
+            <input class="input" placeholder="Recipient">
+            <input class="input" placeholder="Amount">
+            <button class="primary" onclick="demoMessage()">
+              Continue
+            </button>
+          `
+        },
+
+        upgrade: {
+          title: "Upgrade",
+          text: `
+            <p>Account upgrade options will appear here.</p>
+          `
+        },
+
+        support: {
+          title: "Support",
+          text: `
+            <p>HUNPAY Support</p>
+            <p>Contact support for assistance.</p>
+          `
+        },
+
+        earn: {
+          title: "Earn More",
+          text: `
+            <p>Referral and earning opportunities can be displayed here.</p>
+          `
+        },
+
+        profile: {
+          title: "Profile",
+          text: `
+            <p><strong>Account:</strong> Demo User</p>
+            <p><strong>Status:</strong> Demo Account</p>
+          `
+        }
+      };
+
+      title.textContent = pages[type].title;
+      content.innerHTML = pages[type].text;
+      modal.style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    function demoMessage() {
+      alert("Demo feature only. No real transaction was processed.");
+    }
+  </script>
+
+</body>
+</html><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
