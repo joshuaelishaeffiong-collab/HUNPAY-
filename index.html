@@ -1,5 +1,4 @@
-
-   <!DOCTYPE html>
+      color: #33<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -236,6 +235,287 @@
     .close {
       background: #eee;
       color: #333;
+      width: 100%;
+      padding: 13px;
+      border-radius: 12px;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 500px) {
+      .balance {
+        font-size: 36px;
+      }
+
+      .services {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .service-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 23px;
+      }
+
+      .service-name {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <div class="top">
+      <div class="user">
+        <div class="avatar">H</div>
+        <div>
+          <div class="welcome">Hi, Welcome 👋</div>
+          <div class="small">Welcome back to HUNPAY</div>
+        </div>
+      </div>
+
+      <div class="bell">🔔</div>
+    </div>
+
+    <div class="balance-title">Your Demo Balance</div>
+    <div class="balance">₦200,000.00</div>
+    <div class="reward">Demo Rewards: ₦0.00</div>
+
+    <div class="balance-buttons">
+      <button class="action" onclick="showModal('upgrade')">
+        ↗ Upgrade
+      </button>
+
+      <button class="action" onclick="showModal('transfer')">
+        ↑ Transfer
+      </button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="services">
+
+      <div class="service" onclick="showModal('id')">
+        <div class="service-icon">🪪</div>
+        <div class="service-name">ID Code</div>
+      </div>
+
+      <div class="service" onclick="showModal('withdraw')">
+        <div class="service-icon">💸</div>
+        <div class="service-name">Withdraw</div>
+      </div>
+
+      <div class="service" onclick="showModal('airtime')">
+        <div class="service-icon">📶</div>
+        <div class="service-name">Airtime</div>
+      </div>
+
+      <div class="service" onclick="showModal('data')">
+        <div class="service-icon">🌐</div>
+        <div class="service-name">Data</div>
+      </div>
+
+      <div class="service" onclick="showModal('bank')">
+        <div class="service-icon">🏦</div>
+        <div class="service-name">Bank Account</div>
+      </div>
+
+      <div class="service" onclick="showModal('support')">
+        <div class="service-icon">🎧</div>
+        <div class="service-name">Support</div>
+      </div>
+
+      <div class="service" onclick="showModal('earn')">
+        <div class="service-icon">💰</div>
+        <div class="service-name">Earn More</div>
+      </div>
+
+      <div class="service" onclick="showModal('profile')">
+        <div class="service-icon">👤</div>
+        <div class="service-name">Profile</div>
+      </div>
+
+    </div>
+
+    <h2>Account Overview</h2>
+
+    <div class="card">
+      <h3>Demo Account</h3>
+      <p><strong>Balance:</strong> ₦200,000.00</p>
+      <p><strong>Referrals:</strong> 0</p>
+      <p><strong>Earnings:</strong> ₦0.00</p>
+    </div>
+
+    <h2>Current Promotions</h2>
+
+    <div class="promotion">
+      <h3>HUNPAY Rewards 🎁</h3>
+      <p>
+        Explore the available HUNPAY services and earn rewards
+        in this demonstration dashboard.
+      </p>
+    </div>
+
+    <h2>Quick Actions</h2>
+
+    <div class="card">
+      <button class="primary" onclick="showModal('withdraw')">
+        Withdraw to Bank Account
+      </button>
+
+      <button class="primary" onclick="showModal('airtime')">
+        Buy Airtime
+      </button>
+
+      <button class="primary" onclick="showModal('data')">
+        Buy Data
+      </button>
+    </div>
+
+    <div class="demo-note">
+      HUNPAY is currently a demonstration dashboard.
+      No real money transfers or purchases are processed by this page.
+    </div>
+
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <h2 id="modalTitle">HUNPAY</h2>
+      <div id="modalContent"></div>
+
+      <button class="close" onclick="closeModal()">
+        Close
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function showModal(type) {
+
+      const modal = document.getElementById("modal");
+      const title = document.getElementById("modalTitle");
+      const content = document.getElementById("modalContent");
+
+      const pages = {
+
+        id: {
+          title: "ID Code",
+          text: `
+            <p>Your demo ID code:</p>
+            <h2>HUNPAY-DEMO</h2>
+          `
+        },
+
+        withdraw: {
+          title: "Withdraw",
+          text: `
+            <p>Demo withdrawal to bank account.</p>
+            <input class="input" placeholder="Amount">
+            <input class="input" placeholder="Bank name">
+            <input class="input" placeholder="Account number">
+            <button class="primary" onclick="demoMessage()">
+              Continue
+            </button>
+          `
+        },
+
+        bank: {
+          title: "Bank Account",
+          text: `
+            <input class="input" placeholder="Account name">
+            <input class="input" placeholder="Bank name">
+            <input class="input" placeholder="Account number">
+            <button class="primary" onclick="demoMessage()">
+              Save Demo Account
+            </button>
+          `
+        },
+
+        airtime: {
+          title: "Airtime",
+          text: `
+            <input class="input" placeholder="Phone number">
+            <input class="input" placeholder="Amount">
+            <button class="primary" onclick="demoMessage()">
+              Continue
+            </button>
+          `
+        },
+
+        data: {
+          title: "Data",
+          text: `
+            <input class="input" placeholder="Phone number">
+            <input class="input" placeholder="Network">
+            <input class="input" placeholder="Data plan">
+            <button class="primary" onclick="demoMessage()">
+              Continue
+            </button>
+          `
+        },
+
+        transfer: {
+          title: "Transfer",
+          text: `
+            <p>Demo transfer feature.</p>
+            <input class="input" placeholder="Recipient">
+            <input class="input" placeholder="Amount">
+            <button class="primary" onclick="demoMessage()">
+              Continue
+            </button>
+          `
+        },
+
+        upgrade: {
+          title: "Upgrade",
+          text: `
+            <p>Account upgrade options will appear here.</p>
+          `
+        },
+
+        support: {
+          title: "Support",
+          text: `
+            <p>HUNPAY Support</p>
+            <p>Contact support for assistance.</p>
+          `
+        },
+
+        earn: {
+          title: "Earn More",
+          text: `
+            <p>Referral and earning opportunities can be displayed here.</p>
+          `
+        },
+
+        profile: {
+          title: "Profile",
+          text: `
+            <p><strong>Account:</strong> Demo User</p>
+            <p><strong>Status:</strong> Demo Account</p>
+          `
+        }
+      };
+
+      title.textContent = pages[type].title;
+      content.innerHTML = pages[type].text;
+      modal.style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    function demoMessage() {
+      alert("Demo feature only. No real transaction was processed.");
+    }
+  </script>
+
+</body>
+   </html>3;
       width: 100%;
       padding: 13px;
       border-radius: 12px;
