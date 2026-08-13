@@ -1,682 +1,569 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HUNPAY Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HUNPAY Demo Dashboard</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f2f8;
-      color: #172033;
-    }
-
-    .header {
-      background: linear-gradient(135deg, #7015c5, #982ce9);
-      color: white;
-      padding: 25px 20px 30px;
-      border-radius: 0 0 28px 28px;
-    }
-
-    .top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 25px;
-    }
-
-    .user {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .avatar {
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      background: white;
-      color: #751ac8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 26px;
-      font-weight: bold;
-    }
-
-    .welcome {
-      font-size: 21px;
-      font-weight: bold;
-    }
-
-    .small {
-      font-size: 13px;
-      margin-top: 5px;
-      opacity: .9;
-    }
-
-    .bell {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.18);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 23px;
-    }
-
-    .balance-title {
-      font-size: 15px;
-      margin-bottom: 6px;
-    }
-
-    .balance {
-      font-size: 38px;
-      font-weight: bold;
-    }
-
-    .reward {
-      margin-top: 6px;
-      font-size: 14px;
-    }
-
-    .header-buttons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 22px;
-    }
-
-    .header-buttons button {
-      border: 0;
-      padding: 14px;
-      border-radius: 30px;
-      background: rgba(255,255,255,.18);
-      color: white;
-      font-weight: bold;
-      font-size: 15px;
-    }
-
-    .container {
-      max-width: 700px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px 10px;
-      margin: 10px 0 30px;
-    }
-
-    .service {
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .service-icon {
-      width: 56px;
-      height: 56px;
-      margin: auto;
-      border-radius: 16px;
-      background: white;
-      box-shadow: 0 4px 15px rgba(0,0,0,.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-    }
-
-    .service-name {
-      margin-top: 8px;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    h2 {
-      font-size: 23px;
-      margin: 20px 0 14px;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 4px 16px rgba(0,0,0,.07);
-      margin-bottom: 18px;
-    }
-
-    .promotion {
-      padding: 25px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, #6612b6, #c32de8);
-      color: white;
-    }
-
-    .promotion h3 {
-      margin: 0 0 8px;
-      font-size: 25px;
-    }
-
-    .button {
-      display: block;
-      width: 100%;
-      border: 0;
-      border-radius: 11px;
-      padding: 14px;
-      margin-top: 10px;
-      background: #7620d0;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .secondary {
-      background: #eeeaf2;
-      color: #333;
-    }
-
-    .amount {
-      font-size: 32px;
-      font-weight: bold;
-      margin: 8px 0 15px;
-    }
-
-    .section {
-      display: none;
-    }
-
-    input,
-    select {
-      width: 100%;
-      padding: 13px;
-      margin: 7px 0;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      font-size: 15px;
-    }
-
-    .notice {
-      color: #666;
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .demo {
-      text-align: center;
-      color: #777;
-      font-size: 12px;
-      padding: 20px 0;
-    }
-
-    @media (max-width: 500px) {
-      .balance {
-        font-size: 34px;
-      }
-
-      .service-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 23px;
-      }
-
-      .service-name {
-        font-size: 11px;
-      }
-    }
-  </style>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f4f7fb;
+  color:#172033
+}
+header{
+  background:#111b32;
+  color:white;
+  padding:25px 20px;
+  text-align:center
+}
+header h1{margin:0;font-size:30px}
+.demo{
+  background:#fff3cd;
+  color:#664d03;
+  padding:10px;
+  text-align:center;
+  font-size:13px;
+  font-weight:bold
+}
+.container{
+  max-width:700px;
+  margin:auto;
+  padding:20px
+}
+.card{
+  background:white;
+  border-radius:18px;
+  padding:22px;
+  margin-bottom:18px;
+  box-shadow:0 4px 15px rgba(0,0,0,.07)
+}
+.balance{
+  background:#172033;
+  color:white;
+  border-radius:18px;
+  padding:25px
+}
+.balance small{font-size:16px}
+.amount{
+  font-size:38px;
+  font-weight:bold;
+  margin-top:8px
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px
+}
+.menu{
+  border:0;
+  background:white;
+  border-radius:15px;
+  padding:18px 8px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+  cursor:pointer;
+  font-size:14px
+}
+.menu span{
+  display:block;
+  font-size:28px;
+  margin-bottom:8px
+}
+button{
+  width:100%;
+  border:0;
+  padding:15px;
+  border-radius:10px;
+  background:#7c2ce8;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:10px
+}
+button.secondary{background:#e9eaf0;color:#172033}
+input,select{
+  width:100%;
+  padding:15px;
+  margin:7px 0 12px;
+  border:1px solid #d8dce5;
+  border-radius:10px;
+  font-size:16px;
+  background:white
+}
+label{
+  display:block;
+  font-weight:bold;
+  margin-top:8px
+}
+.hidden{display:none}
+.notice{
+  background:#eef4ff;
+  padding:15px;
+  border-radius:10px;
+  line-height:1.5
+}
+.price{
+  font-size:32px;
+  font-weight:bold;
+  margin:15px 0
+}
+.success{
+  background:#e7f8ed;
+  color:#176b35;
+  padding:15px;
+  border-radius:10px;
+  margin-top:12px
+}
+.error{
+  background:#ffe8e8;
+  color:#9b2222;
+  padding:15px;
+  border-radius:10px;
+  margin-top:12px
+}
+@media(max-width:600px){
+  .grid{grid-template-columns:repeat(4,1fr)}
+  .menu{font-size:12px;padding:13px 4px}
+  .menu span{font-size:24px}
+  .amount{font-size:34px}
+}
+</style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header class="header">
+<header>
+  <h1>HUNPAY Dashboard</h1>
+</header>
 
-    <div class="top">
+<div class="demo">
+  DEMO / SANDBOX — No real money or bank transfer is processed.
+</div>
 
-      <div class="user">
-        <div class="avatar">H</div>
+<div class="container">
 
-        <div>
-          <div class="welcome">Hi, Welcome 👋</div>
-          <div class="small">Welcome back to HUNPAY</div>
-        </div>
-      </div>
+  <!-- DASHBOARD -->
+  <section id="dashboard">
 
-      <div class="bell">🔔</div>
-
+    <div class="card balance">
+      <small>Your Demo Balance</small>
+      <div class="amount">₦200,000.00</div>
+      <p>Demo Rewards: ₦0.00</p>
     </div>
 
-    <div class="balance-title">Demo Balance</div>
+    <div class="grid">
 
-    <div class="balance">₦200,000.00</div>
-
-    <div class="reward">
-      Demo Rewards: ₦0.00
-    </div>
-
-    <div class="header-buttons">
-      <button onclick="openSection('upgrade')">
-        ↗ Upgrade
+      <button class="menu" onclick="showPage('id')">
+        <span>🪪</span>
+        ID Code
       </button>
 
-      <button onclick="openSection('transfer')">
-        ↑ Transfer
+      <button class="menu" onclick="showPage('withdraw')">
+        <span>💸</span>
+        Withdraw
       </button>
-    </div>
 
-  </header>
+      <button class="menu" onclick="showPage('airtime')">
+        <span>📊</span>
+        Airtime
+      </button>
 
+      <button class="menu" onclick="showPage('data')">
+        <span>🌐</span>
+        Data
+      </button>
 
-  <main class="container">
+      <button class="menu" onclick="showPage('bank')">
+        <span>🏦</span>
+        Bank Account
+      </button>
 
-    <!-- SERVICES -->
+      <button class="menu" onclick="showPage('support')">
+        <span>🎧</span>
+        Support
+      </button>
 
-    <div class="services">
+      <button class="menu" onclick="showPage('earn')">
+        <span>💰</span>
+        Earn More
+      </button>
 
-      <div class="service" onclick="openSection('idcode')">
-        <div class="service-icon">🪪</div>
-        <div class="service-name">ID Code</div>
-      </div>
-
-      <div class="service" onclick="openSection('withdraw')">
-        <div class="service-icon">💸</div>
-        <div class="service-name">Withdraw</div>
-      </div>
-
-      <div class="service" onclick="openSection('airtime')">
-        <div class="service-icon">📱</div>
-        <div class="service-name">Airtime</div>
-      </div>
-
-      <div class="service" onclick="openSection('data')">
-        <div class="service-icon">🌐</div>
-        <div class="service-name">Data</div>
-      </div>
-
-      <div class="service" onclick="openSection('bank')">
-        <div class="service-icon">🏦</div>
-        <div class="service-name">Bank Account</div>
-      </div>
-
-      <div class="service" onclick="openSection('support')">
-        <div class="service-icon">🎧</div>
-        <div class="service-name">Support</div>
-      </div>
-
-      <div class="service" onclick="openSection('earn')">
-        <div class="service-icon">💰</div>
-        <div class="service-name">Earn More</div>
-      </div>
-
-      <div class="service" onclick="openSection('profile')">
-        <div class="service-icon">👤</div>
-        <div class="service-name">Profile</div>
-      </div>
+      <button class="menu" onclick="showPage('profile')">
+        <span>👤</span>
+        Profile
+      </button>
 
     </div>
 
-
-    <!-- DASHBOARD -->
-
-    <div id="dashboard" class="section" style="display:block">
-
+    <div class="card">
       <h2>Account Overview</h2>
+      <p><b>Demo Balance:</b> ₦200,000.00</p>
+      <p><b>Referrals:</b> 0</p>
+      <p><b>Earnings:</b> ₦0.00</p>
+    </div>
 
-      <div class="card">
+  </section>
 
-        <p><strong>Demo Balance</strong></p>
 
-        <div class="amount">
-          ₦200,000.00
-        </div>
+  <!-- ID CODE -->
+  <section id="id" class="card hidden">
+    <h2>🪪 Buy PAY ID Code</h2>
 
-        <p>Referrals: <strong>0</strong></p>
+    <div class="notice">
+      This is a demonstration purchase. No real payment is collected.
+    </div>
 
-        <p>Earnings: <strong>₦0.00</strong></p>
+    <div class="price">₦2,500.00</div>
 
-      </div>
+    <label>Full Name</label>
+    <input id="idName" placeholder="Enter your name">
 
-      <h2>Current Promotions</h2>
+    <label>Phone Number</label>
+    <input id="idPhone" placeholder="Enter phone number">
 
-      <div class="promotion">
+    <button onclick="demoIdPurchase()">Continue</button>
+    <button class="secondary" onclick="showPage('dashboard')">Back</button>
 
-        <h3>HUNPAY Rewards 🎁</h3>
+    <div id="idResult"></div>
+  </section>
 
-        <p>
-          Explore HUNPAY services and available demo rewards.
-        </p>
 
-      </div>
+  <!-- WITHDRAW -->
+  <section id="withdraw" class="card hidden">
+    <h2>💸 Transfer To Bank / Mobile Money</h2>
+
+    <div class="notice">
+      Demo withdrawal form. Submitting this form does not transfer real money.
+    </div>
+
+    <label>Country</label>
+    <select id="country" onchange="changeCountry()">
+      <option value="">Select country</option>
+      <option value="NG">🇳🇬 Nigeria</option>
+      <option value="CM">🇨🇲 Cameroon</option>
+    </select>
+
+    <div id="ngFields" class="hidden">
+
+      <label>Account Name</label>
+      <input placeholder="Account name">
+
+      <label>Account Number</label>
+      <input maxlength="10" placeholder="10-digit account number">
+
+      <label>Bank</label>
+      <select>
+        <option>Select Nigerian bank</option>
+        <option>Access Bank</option>
+        <option>Opay</option>
+        <option>Moniepoint</option>
+        <option>Palmpay</option>
+        <option>GTBank</option>
+        <option>First Bank</option>
+        <option>UBA</option>
+        <option>Zenith Bank</option>
+        <option>Fidelity Bank</option>
+        <option>Union Bank</option>
+        <option>Stanbic IBTC</option>
+        <option>FCMB</option>
+        <option>Wema Bank</option>
+        <option>Polaris Bank</option>
+        <option>Keystone Bank</option>
+        <option>Ecobank</option>
+        <option>Heritage Bank</option>
+        <option>Jaiz Bank</option>
+        <option>Other</option>
+      </select>
+
+      <label>Amount (NGN)</label>
+      <input type="number" placeholder="Enter amount">
 
     </div>
 
 
-    <!-- ID CODE -->
+    <div id="cmFields" class="hidden">
 
-    <div id="idcode" class="section">
+      <label>Account / Mobile Money Name</label>
+      <input placeholder="Enter account name">
 
-      <div class="card">
+      <label>Account Number / Mobile Money Number</label>
+      <input placeholder="Enter number">
 
-        <h2>🪪 Get ID Code</h2>
+      <label>Payment Method</label>
+      <select>
+        <option>Select method</option>
+        <option>MTN Mobile Money</option>
+        <option>Orange Money</option>
+        <option>Bank Account</option>
+      </select>
 
-        <p>ID Code purchase fee:</p>
+      <label>Bank / Provider</label>
+      <select>
+        <option>Select bank/provider</option>
+        <option>MTN Mobile Money</option>
+        <option>Orange Money</option>
+        <option>UBA Cameroon</option>
+        <option>Ecobank Cameroon</option>
+        <option>SCB Cameroon</option>
+        <option>Other</option>
+      </select>
 
-        <div class="amount">
-          ₦12,500.00
-        </div>
-
-        <p class="notice">
-          Complete payment through the authorized payment page.
-          The ID Code should only be issued after successful payment verification.
-        </p>
-
-        <!-- Replace with your real Paystack Payment Page URL later -->
-        <a
-          class="button"
-          href="#"
-          onclick="paymentNotice()">
-          Make Payment — ₦12,500
-        </a>
-
-        <button class="button secondary" onclick="goHome()">
-          Back to Dashboard
-        </button>
-
-      </div>
+      <label>Amount (XAF)</label>
+      <input type="number" placeholder="Enter amount">
 
     </div>
 
+    <button onclick="demoWithdraw()">Submit Transfer</button>
+    <button class="secondary" onclick="showPage('dashboard')">Back</button>
 
-    <!-- WITHDRAW -->
+    <div id="withdrawResult"></div>
+  </section>
 
-    <div id="withdraw" class="section">
 
-      <div class="card">
+  <!-- AIRTIME -->
+  <section id="airtime" class="card hidden">
+    <h2>📊 Airtime</h2>
 
-        <h2>💸 Withdraw</h2>
+    <label>Country</label>
+    <select>
+      <option>Nigeria 🇳🇬</option>
+      <option>Cameroon 🇨🇲</option>
+    </select>
 
-        <p>Available demo balance:</p>
+    <label>Phone Number</label>
+    <input placeholder="Phone number">
 
-        <div class="amount">
-          ₦200,000.00
-        </div>
+    <label>Amount</label>
+    <input type="number" placeholder="Amount">
 
-        <input type="number" placeholder="Withdrawal amount">
+    <button onclick="demoAction('airtimeResult','Airtime request saved as DEMO.')">
+      Continue
+    </button>
 
-        <input type="text" placeholder="Account name">
+    <div id="airtimeResult"></div>
 
-        <input type="text" placeholder="Account number">
+    <button class="secondary" onclick="showPage('dashboard')">Back</button>
+  </section>
 
-        <input type="text" placeholder="Bank name">
 
-        <button class="button" onclick="demoMessage()">
-          Continue
-        </button>
+  <!-- DATA -->
+  <section id="data" class="card hidden">
+    <h2>🌐 Data</h2>
 
-        <p class="notice">
-          Demo interface only. No real withdrawal is processed.
-        </p>
+    <label>Country</label>
+    <select>
+      <option>Nigeria 🇳🇬</option>
+      <option>Cameroon 🇨🇲</option>
+    </select>
 
-      </div>
+    <label>Phone Number</label>
+    <input placeholder="Phone number">
 
+    <label>Data Plan</label>
+    <select>
+      <option>Select data plan</option>
+      <option>500 MB</option>
+      <option>1 GB</option>
+      <option>2 GB</option>
+      <option>5 GB</option>
+      <option>10 GB</option>
+    </select>
+
+    <button onclick="demoAction('dataResult','Data request saved as DEMO.')">
+      Continue
+    </button>
+
+    <div id="dataResult"></div>
+
+    <button class="secondary" onclick="showPage('dashboard')">Back</button>
+  </section>
+
+
+  <!-- BANK ACCOUNT -->
+  <section id="bank" class="card hidden">
+    <h2>🏦 Bank Account</h2>
+
+    <label>Country</label>
+    <select>
+      <option>Nigeria 🇳🇬</option>
+      <option>Cameroon 🇨🇲</option>
+    </select>
+
+    <label>Account Name</label>
+    <input placeholder="Account name">
+
+    <label>Account Number</label>
+    <input placeholder="Account number">
+
+    <label>Bank</label>
+    <input placeholder="Bank name">
+
+    <button onclick="demoAction('bankResult','Bank details saved locally for this DEMO.')">
+      Save Details
+    </button>
+
+    <div id="bankResult"></div>
+
+    <button class="secondary" onclick="showPage('dashboard')">Back</button>
+  </section>
+
+
+  <!-- SUPPORT -->
+  <section id="support" class="card hidden">
+    <h2>🎧 Support</h2>
+    <p>For this demo, support requests are not sent to a real support team.</p>
+
+    <label>Message</label>
+    <input placeholder="Enter your message">
+
+    <button onclick="demoAction('supportResult','Support message recorded as DEMO.')">
+      Send
+    </button>
+
+    <div id="supportResult"></div>
+
+    <button class="secondary" onclick="showPage('dashboard')">Back</button>
+  </section>
+
+
+  <!-- EARN -->
+  <section id="earn" class="card hidden">
+    <h2>💰 Earn More</h2>
+
+    <div class="notice">
+      Referral and earning features are demonstration features only.
     </div>
 
+    <p>Invite friends and track your demo referrals here.</p>
 
-    <!-- AIRTIME -->
+    <button onclick="demoAction('earnResult','Referral link generated for DEMO.')">
+      Generate Referral
+    </button>
 
-    <div id="airtime" class="section">
+    <div id="earnResult"></div>
 
-      <div class="card">
+    <button class="secondary" onclick="showPage('dashboard')">Back</button>
+  </section>
 
-        <h2>📱 Buy Airtime</h2>
 
-        <input type="tel" placeholder="Phone number">
+  <!-- PROFILE -->
+  <section id="profile" class="card hidden">
+    <h2>👤 Profile</h2>
 
-        <select>
-          <option>Select network</option>
-          <option>MTN</option>
-          <option>Airtel</option>
-          <option>Glo</option>
-          <option>9mobile</option>
-        </select>
+    <label>Full Name</label>
+    <input placeholder="Your name">
 
-        <input type="number" placeholder="Amount">
+    <label>Phone Number</label>
+    <input placeholder="Phone number">
 
-        <button class="button" onclick="demoMessage()">
-          Continue
-        </button>
+    <label>Email</label>
+    <input type="email" placeholder="Email address">
 
-      </div>
+    <button onclick="demoAction('profileResult','Profile saved as DEMO.')">
+      Save Profile
+    </button>
 
-    </div>
+    <div id="profileResult"></div>
 
+    <button class="secondary" onclick="showPage('dashboard')">Back</button>
+  </section>
 
-    <!-- DATA -->
+</div>
 
-    <div id="data" class="section">
 
-      <div class="card">
+<script>
+function showPage(page){
 
-        <h2>🌐 Buy Data</h2>
+  const pages = [
+    "dashboard",
+    "id",
+    "withdraw",
+    "airtime",
+    "data",
+    "bank",
+    "support",
+    "earn",
+    "profile"
+  ];
 
-        <input type="tel" placeholder="Phone number">
+  pages.forEach(function(p){
+    document.getElementById(p).classList.add("hidden");
+  });
 
-        <select>
-          <option>Select network</option>
-          <option>MTN</option>
-          <option>Airtel</option>
-          <option>Glo</option>
-          <option>9mobile</option>
-        </select>
+  document.getElementById(page).classList.remove("hidden");
 
-        <select>
-          <option>Select data plan</option>
-          <option>500MB</option>
-          <option>1GB</option>
-          <option>2GB</option>
-          <option>5GB</option>
-          <option>10GB</option>
-        </select>
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
 
-        <button class="button" onclick="demoMessage()">
-          Continue
-        </button>
 
-      </div>
+function changeCountry(){
 
-    </div>
+  const country = document.getElementById("country").value;
 
+  document.getElementById("ngFields").classList.add("hidden");
+  document.getElementById("cmFields").classList.add("hidden");
 
-    <!-- BANK -->
+  if(country === "NG"){
+    document.getElementById("ngFields").classList.remove("hidden");
+  }
 
-    <div id="bank" class="section">
+  if(country === "CM"){
+    document.getElementById("cmFields").classList.remove("hidden");
+  }
+}
 
-      <div class="card">
 
-        <h2>🏦 Bank Account</h2>
+function demoIdPurchase(){
 
-        <input type="text" placeholder="Account name">
+  const name = document.getElementById("idName").value;
+  const phone = document.getElementById("idPhone").value;
+  const result = document.getElementById("idResult");
 
-        <input type="text" placeholder="Account number">
+  if(!name || !phone){
+    result.innerHTML =
+      '<div class="error">Please enter your name and phone number.</div>';
+    return;
+  }
 
-        <input type="text" placeholder="Bank name">
+  result.innerHTML =
+    '<div class="success">' +
+    'DEMO ID Code purchase created. Price: ₦2,500.00. ' +
+    'No real payment was processed.' +
+    '</div>';
+}
 
-        <button class="button" onclick="demoMessage()">
-          Save Account
-        </button>
 
-      </div>
+function demoWithdraw(){
 
-    </div>
+  const country = document.getElementById("country").value;
+  const result = document.getElementById("withdrawResult");
 
+  if(!country){
+    result.innerHTML =
+      '<div class="error">Please select Nigeria or Cameroon.</div>';
+    return;
+  }
 
-    <!-- SUPPORT -->
+  result.innerHTML =
+    '<div class="success">' +
+    'DEMO transfer request submitted successfully. ' +
+    'No real bank or Mobile Money transfer was made.' +
+    '</div>';
+}
 
-    <div id="support" class="section">
 
-      <div class="card">
+function demoAction(element,message){
 
-        <h2>🎧 Support</h2>
-
-        <p>
-          Need help? Contact HUNPAY support.
-        </p>
-
-        <button class="button" onclick="demoMessage()">
-          Contact Support
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- EARN -->
-
-    <div id="earn" class="section">
-
-      <div class="card">
-
-        <h2>💰 Earn More</h2>
-
-        <p>
-          Referral and earning opportunities can appear here.
-        </p>
-
-        <button class="button" onclick="demoMessage()">
-          Explore
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- PROFILE -->
-
-    <div id="profile" class="section">
-
-      <div class="card">
-
-        <h2>👤 Profile</h2>
-
-        <p><strong>Name:</strong> Demo User</p>
-
-        <p><strong>Status:</strong> Demo Account</p>
-
-        <button class="button" onclick="demoMessage()">
-          Edit Profile
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- UPGRADE -->
-
-    <div id="upgrade" class="section">
-
-      <div class="card">
-
-        <h2>↗ Upgrade</h2>
-
-        <p>
-          Account upgrade options can be added here.
-        </p>
-
-        <button class="button" onclick="demoMessage()">
-          Continue
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- TRANSFER -->
-
-    <div id="transfer" class="section">
-
-      <div class="card">
-
-        <h2>↑ Transfer</h2>
-
-        <input type="text" placeholder="Recipient">
-
-        <input type="number" placeholder="Amount">
-
-        <button class="button" onclick="demoMessage()">
-          Continue
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div class="demo">
-      HUNPAY demo dashboard. Real payments, withdrawals,
-      airtime and data require verified backend/payment services.
-    </div>
-
-  </main>
-
-
-  <script>
-
-    function openSection(id) {
-
-      const sections = document.querySelectorAll(".section");
-
-      sections.forEach(function(section) {
-        section.style.display = "none";
-      });
-
-      document.getElementById(id).style.display = "block";
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    }
-
-
-    function goHome() {
-      openSection("dashboard");
-    }
-
-
-    function demoMessage() {
-
-      alert(
-        "Demo feature only. No real transaction has been processed."
-      );
-
-    }
-
-
-    function paymentNotice() {
-
-      alert(
-        "Payment page will be connected after the official payment link is configured."
-      );
-
-    }
-
-  </script>
+  document.getElementById(element).innerHTML =
+    '<div class="success">' + message + '</div>';
+}
+</script>
 
 </body>
-          </html>
+</html>
