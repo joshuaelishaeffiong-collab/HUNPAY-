@@ -2,541 +2,248 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HUNPAY Trading Dashboard</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HUNPAY Dashboard</title>
 
 <style>
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f5f7fb;
-  color:#182033
-}
-button,input,select{font:inherit}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f6fb;color:#172033}
+header{background:#172033;color:#fff;text-align:center;padding:22px;font-size:27px;font-weight:bold}
+.container{max-width:720px;margin:auto;padding:16px}
+.balance{background:linear-gradient(135deg,#7b18e6,#9b35ee);color:#fff;border-radius:24px;padding:25px;margin-bottom:18px}
+.balance h1{font-size:38px;margin:10px 0}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
+.menu{background:#fff;border-radius:17px;padding:17px 7px;text-align:center;cursor:pointer;box-shadow:0 4px 15px #0001;font-size:13px}
+.icon{font-size:28px;margin-bottom:7px}
+.card{background:#fff;border-radius:20px;padding:22px;margin-bottom:18px;box-shadow:0 4px 18px #00000010}
+.hidden{display:none}
+h2{margin-top:0}
+label{display:block;font-weight:bold;margin:14px 0 7px}
+input,select,textarea{width:100%;padding:14px;border:1px solid #ddd;border-radius:11px;font-size:16px}
+button{width:100%;padding:14px;border:0;border-radius:11px;background:#7b20e6;color:white;font-size:16px;font-weight:bold;margin-top:14px;cursor:pointer}
+.price{font-size:29px;font-weight:bold;margin:15px 0}
+.box{background:#f4efff;border:2px solid #8735e8;border-radius:16px;padding:16px;margin-top:15px}
+.row{background:#fff;padding:12px;border-radius:9px;margin:9px 0}
+.row strong{display:block;margin-bottom:5px}
+.notice{padding:12px;border-radius:10px;margin-top:12px;background:#eef5ff}
+.success{display:none;background:#e8f8ee;color:#146c36;padding:12px;border-radius:10px;margin-top:12px}
+.status{font-weight:bold}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:10px;border-bottom:1px solid #eee;text-align:left}
 
-.screen{
-  min-height:100vh;
-}
-
-.auth{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  background:linear-gradient(135deg,#111827,#7b20e6)
-}
-
-.auth-box{
-  width:100%;
-  max-width:430px;
-  background:white;
-  border-radius:25px;
-  padding:30px;
-  box-shadow:0 20px 60px #0004
-}
-
-.logo{
-  text-align:center;
-  font-size:30px;
-  font-weight:800;
-  margin-bottom:8px
-}
-
-.subtitle{
-  text-align:center;
-  color:#707789;
-  margin-bottom:25px
+.whatsapp{
+background:#25D366;
+color:white;
+text-decoration:none;
+display:block;
+text-align:center;
+padding:14px;
+border-radius:11px;
+font-size:16px;
+font-weight:bold;
+margin-top:14px;
 }
 
-label{
-  display:block;
-  font-weight:700;
-  margin:14px 0 7px
-}
-
-input,select{
-  width:100%;
-  padding:14px;
-  border:1px solid #dfe3ea;
-  border-radius:12px;
-  outline:none
-}
-
-input:focus,select:focus{
-  border-color:#7b20e6
-}
-
-button{
-  width:100%;
-  border:0;
-  border-radius:12px;
-  padding:14px;
-  margin-top:15px;
-  background:#7b20e6;
-  color:white;
-  font-weight:700;
-  cursor:pointer
-}
-
-.secondary{
-  background:#eee9ff;
-  color:#6d18d4
-}
-
-.auth-switch{
-  text-align:center;
-  margin-top:18px;
-  color:#666
-}
-
-.auth-switch span{
-  color:#7b20e6;
-  font-weight:bold;
-  cursor:pointer
-}
-
-.error{
-  color:#c62828;
-  background:#ffeded;
-  padding:11px;
-  border-radius:10px;
-  margin-top:12px;
-  display:none
-}
-
-.app{
-  display:none;
-  min-height:100vh
-}
-
-header{
-  background:#172033;
-  color:white;
-  padding:18px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center
-}
-
-.brand{
-  font-size:24px;
-  font-weight:800
-}
-
-.logout{
-  width:auto;
-  margin:0;
-  padding:9px 15px;
-  background:#ffffff18
-}
-
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:20px
-}
-
-.welcome{
-  margin-bottom:18px
-}
-
-.balance{
-  background:linear-gradient(135deg,#7018dc,#a039ee);
-  color:white;
-  border-radius:25px;
-  padding:28px;
-  margin-bottom:20px;
-  box-shadow:0 12px 30px #7b20e633
-}
-
-.balance small{
-  opacity:.9
-}
-
-.balance h1{
-  font-size:42px;
-  margin:10px 0
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px
-}
-
-.stat{
-  background:#ffffff18;
-  padding:14px;
-  border-radius:15px
-}
-
-.menu{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:12px;
-  margin-bottom:20px
-}
-
-.menu button{
-  margin:0;
-  background:white;
-  color:#182033;
-  box-shadow:0 5px 20px #0000000b;
-  min-height:95px
-}
-
-.menu-icon{
-  display:block;
-  font-size:28px;
-  margin-bottom:7px
-}
-
-.card{
-  background:white;
-  border-radius:22px;
-  padding:25px;
-  margin-bottom:20px;
-  box-shadow:0 5px 20px #0000000b
-}
-
-.hidden{
-  display:none!important
-}
-
-.plan-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px
-}
-
-.plan{
-  border:1px solid #e3e5eb;
-  border-radius:18px;
-  padding:20px
-}
-
-.plan h3{
-  margin-top:0
-}
-
-.plan-price{
-  font-size:25px;
-  font-weight:800
-}
-
-.info{
-  background:#f3efff;
-  padding:14px;
-  border-radius:12px;
-  margin-top:12px
-}
-
-.status{
-  padding:12px;
-  border-radius:10px;
-  background:#edf8f0;
-  color:#176b35;
-  margin-top:12px;
-  display:none
-}
-
-.warning{
-  background:#fff6df;
-  color:#795b00;
-  padding:13px;
-  border-radius:12px;
-  margin-top:12px
-}
-
-table{
-  width:100%;
-  border-collapse:collapse
-}
-
-th,td{
-  padding:12px;
-  border-bottom:1px solid #eee;
-  text-align:left
-}
-
-@media(max-width:750px){
-  .menu{
-    grid-template-columns:repeat(2,1fr)
-  }
-
-  .plan-grid{
-    grid-template-columns:1fr
-  }
-
-  .stats{
-    grid-template-columns:1fr
-  }
-
-  .balance h1{
-    font-size:34px
-  }
-
-  .container{
-    padding:12px
-  }
-
-  .card{
-    padding:18px
-  }
-
-  table{
-    font-size:13px
-  }
+@media(max-width:600px){
+header{font-size:21px;padding:18px}
+.container{padding:11px}
+.grid{grid-template-columns:repeat(2,1fr)}
+.menu{min-height:88px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.balance h1{font-size:32px}
+.card{padding:17px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- REGISTER / LOGIN -->
-
-<div class="auth screen" id="authScreen">
-
-  <div class="auth-box">
-
-    <div class="logo">HUNPAY</div>
-    <div class="subtitle" id="authSubtitle">
-      Create your account to continue
-    </div>
-
-    <!-- REGISTER -->
-
-    <form id="registerForm">
-
-      <label>Full Name</label>
-      <input id="regName" required placeholder="Enter your full name">
-
-      <label>Username</label>
-      <input id="regUsername" required placeholder="Create a username">
-
-      <label>Email Address</label>
-      <input id="regEmail" type="email" required placeholder="Enter your email">
-
-      <label>Phone Number</label>
-      <input id="regPhone" type="tel" required placeholder="Enter phone number">
-
-      <label>Country</label>
-      <select id="regCountry">
-        <option value="nigeria">Nigeria 🇳🇬</option>
-        <option value="cameroon">Cameroon 🇨🇲</option>
-      </select>
-
-      <label>Password</label>
-      <input id="regPassword" type="password" minlength="6" required placeholder="Create password">
-
-      <label>Confirm Password</label>
-      <input id="regConfirm" type="password" minlength="6" required placeholder="Confirm password">
-
-      <button type="submit">Create Account</button>
-
-      <div class="error" id="registerError"></div>
-
-    </form>
-
-    <!-- LOGIN -->
-
-    <form id="loginForm" class="hidden">
-
-      <label>Username or Email</label>
-      <input id="loginId" required placeholder="Username or email">
-
-      <label>Password</label>
-      <input id="loginPassword" type="password" required placeholder="Password">
-
-      <button type="submit">Login</button>
-
-      <div class="error" id="loginError"></div>
-
-    </form>
-
-    <div class="auth-switch">
-
-      <span id="switchText">
-        Already have an account? Login
-      </span>
-
-    </div>
-
-  </div>
-</div>
-
-
-<!-- APPLICATION -->
-
-<div class="app" id="app">
-
-<header>
-
-  <div class="brand">HUNPAY</div>
-
-  <button class="logout" onclick="logout()">
-    Logout
-  </button>
-
-</header>
-
+<header>HUNPAY Dashboard</header>
 
 <div class="container">
 
-<div class="welcome">
-  <h2>Welcome, <span id="userName"></span> 👋</h2>
-  <p>Your trading dashboard</p>
-</div>
-
-
-<!-- BALANCE -->
-
 <div class="balance">
+<small>Your Account Balance</small>
+<h1 id="balance">₦200,000.00</h1>
+<small>Demo account balance</small>
+</div>
 
-  <small>Available Balance</small>
+<div class="grid">
 
-  <h1 id="balance">
-    ₦200,000.00
-  </h1>
+<div class="menu" onclick="show('register')">
+<div class="icon">📝</div>Register
+</div>
 
-  <div class="stats">
+<div class="menu" onclick="show('login')">
+<div class="icon">🔐</div>Login
+</div>
 
-    <div class="stat">
-      <small>Invested</small>
-      <strong id="invested">₦0.00</strong>
-    </div>
+<div class="menu" onclick="show('id')">
+<div class="icon">🪪</div>ID Code
+</div>
 
-    <div class="stat">
-      <small>Profit</small>
-      <strong id="profit">₦0.00</strong>
-    </div>
+<div class="menu" onclick="show('withdraw')">
+<div class="icon">💸</div>Withdraw
+</div>
 
-    <div class="stat">
-      <small>Active Trades</small>
-      <strong id="activeTrades">0</strong>
-    </div>
+<div class="menu" onclick="show('airtime')">
+<div class="icon">📱</div>Airtime
+</div>
 
-  </div>
+<div class="menu" onclick="show('data')">
+<div class="icon">🌐</div>Data
+</div>
+
+<div class="menu" onclick="show('bank')">
+<div class="icon">🏦</div>Payment Account
+</div>
+
+<div class="menu" onclick="show('profile')">
+<div class="icon">👤</div>Profile
+</div>
+
+<div class="menu" onclick="show('transactions')">
+<div class="icon">📋</div>Transactions
+</div>
+
+<div class="menu" onclick="show('support')">
+<div class="icon">🎧</div>Support
+</div>
 
 </div>
 
 
-<!-- MENU -->
+<!-- REGISTER -->
 
-<div class="menu">
+<div class="card hidden" id="register">
 
-<button onclick="showSection('invest')">
-<span class="menu-icon">📈</span>
-Invest
+<h2>📝 Create Account</h2>
+
+<label>Full Name</label>
+<input id="regName" placeholder="Enter your full name">
+
+<label>Phone Number</label>
+<input id="regPhone" type="tel" placeholder="Enter phone number">
+
+<label>Email</label>
+<input id="regEmail" type="email" placeholder="Enter email">
+
+<label>Country</label>
+
+<select id="regCountry">
+
+<option value="nigeria">
+Nigeria 🇳🇬
+</option>
+
+<option value="cameroon">
+Cameroon 🇨🇲
+</option>
+
+</select>
+
+<label>Password</label>
+<input id="regPassword" type="password" placeholder="Create password">
+
+<button onclick="registerUser()">
+Create Account
 </button>
 
-<button onclick="showSection('trade')">
-<span class="menu-icon">💹</span>
-Trading
+<div class="success" id="registerSuccess">
+Account created successfully.
+</div>
+
+</div>
+
+
+<!-- LOGIN -->
+
+<div class="card hidden" id="login">
+
+<h2>🔐 Login</h2>
+
+<label>Email or Phone</label>
+<input id="loginId" placeholder="Email or phone">
+
+<label>Password</label>
+<input id="loginPassword" type="password" placeholder="Password">
+
+<button onclick="loginUser()">
+Login
 </button>
 
-<button onclick="showSection('withdraw')">
-<span class="menu-icon">💸</span>
-Withdraw
+<div class="success" id="loginSuccess"></div>
+
+</div>
+
+
+<!-- ID CODE -->
+
+<div class="card hidden" id="id">
+
+<h2>🪪 ID Code</h2>
+
+<label>Country</label>
+
+<select id="idCountry" onchange="updatePayment()">
+
+<option value="nigeria">
+Nigeria 🇳🇬
+</option>
+
+<option value="cameroon">
+Cameroon 🇨🇲
+</option>
+
+</select>
+
+<div class="price" id="idPrice">
+₦12,500
+</div>
+
+<div class="box">
+
+<h3>Payment Information</h3>
+
+<div class="row">
+<strong>Account Name</strong>
+<span id="paymentName"></span>
+</div>
+
+<div class="row">
+<strong>Account / MoMo Number</strong>
+<span id="paymentNumber"></span>
+</div>
+
+<div class="row">
+<strong>Bank / Network</strong>
+<span id="paymentBank"></span>
+</div>
+
+</div>
+
+<div class="notice">
+Payment submissions are recorded for review.
+</div>
+
+<label>Transaction Reference</label>
+
+<input
+id="paymentReference"
+placeholder="Enter transaction reference">
+
+<label>Payment Proof</label>
+
+<input
+id="paymentProof"
+type="file"
+accept="image/*,.pdf">
+
+<button onclick="submitPayment()">
+Submit Payment Record
 </button>
 
-<button onclick="showSection('history')">
-<span class="menu-icon">📋</span>
-History
-</button>
-
-<button onclick="showSection('support')">
-<span class="menu-icon">🎧</span>
-Support
-</button>
-
-</div>
-
-
-<!-- INVEST -->
-
-<div class="card" id="invest">
-
-<h2>📈 Investment Plans</h2>
-
-<p>Select a demo trading plan.</p>
-
-<div class="plan-grid">
-
-<div class="plan">
-
-<h3>Starter</h3>
-
-<div class="plan-price">
-₦10,000
-</div>
-
-<p>Demo trading period: 1 day</p>
-<p>Simulated return: 5%</p>
-
-<button onclick="startInvestment(10000,5)">
-Start Demo
-</button>
-
-</div>
-
-
-<div class="plan">
-
-<h3>Standard</h3>
-
-<div class="plan-price">
-₦50,000
-</div>
-
-<p>Demo trading period: 3 days</p>
-<p>Simulated return: 10%</p>
-
-<button onclick="startInvestment(50000,10)">
-Start Demo
-</button>
-
-</div>
-
-
-<div class="plan">
-
-<h3>Premium</h3>
-
-<div class="plan-price">
-₦100,000
-</div>
-
-<p>Demo trading period: 7 days</p>
-<p>Simulated return: 15%</p>
-
-<button onclick="startInvestment(100000,15)">
-Start Demo
-</button>
-
-</div>
-
-</div>
-
-<div class="warning">
-Demo mode: displayed trading returns are simulated and are not real investment profits.
-</div>
-
-</div>
-
-
-<!-- TRADING -->
-
-<div class="card hidden" id="trade">
-
-<h2>💹 Trading Activity</h2>
-
-<div id="tradeContent">
-
-<p>No active demo trade.</p>
-
+<div class="success" id="paymentSuccess">
+Payment record submitted for review.
 </div>
 
 </div>
@@ -546,13 +253,11 @@ Demo mode: displayed trading returns are simulated and are not real investment p
 
 <div class="card hidden" id="withdraw">
 
-<h2>💸 Withdrawal</h2>
-
-<p>Enter the account where you want a withdrawal sent.</p>
+<h2>💸 Withdrawal Request</h2>
 
 <label>Country</label>
 
-<select id="withdrawCountry" onchange="updateProviders()">
+<select id="withdrawCountry" onchange="updateWithdraw()">
 
 <option value="nigeria">
 Nigeria 🇳🇬
@@ -566,42 +271,211 @@ Cameroon 🇨🇲
 
 <label>Account Name</label>
 
-<input id="withdrawName" placeholder="Account name">
+<input
+id="withdrawName"
+placeholder="Enter account name">
 
 <label>Account / MoMo Number</label>
 
-<input id="withdrawNumber" placeholder="Account or MoMo number">
+<input
+id="withdrawNumber"
+placeholder="Enter account number">
 
 <label>Bank / Mobile Money</label>
 
-<select id="withdrawProvider">
+<select id="withdrawProvider"></select>
+
+<label>Amount</label>
+
+<input
+id="withdrawAmount"
+type="number"
+placeholder="Enter amount">
+
+<button onclick="submitWithdraw()">
+Submit Withdrawal
+</button>
+
+<div class="success" id="withdrawSuccess">
+Withdrawal request submitted for review.
+</div>
+
+</div>
+
+
+<!-- AIRTIME -->
+
+<div class="card hidden" id="airtime">
+
+<h2>📱 Airtime</h2>
+
+<label>Country</label>
+
+<select>
+
+<option>Nigeria 🇳🇬</option>
+<option>Cameroon 🇨🇲</option>
+
+</select>
+
+<label>Phone Number</label>
+
+<input
+type="tel"
+placeholder="Enter phone number">
+
+<label>Amount</label>
+
+<input
+type="number"
+placeholder="Enter amount">
+
+<button onclick="simpleNotice('Airtime request recorded.')">
+Continue
+</button>
+
+</div>
+
+
+<!-- DATA -->
+
+<div class="card hidden" id="data">
+
+<h2>🌐 Data</h2>
+
+<label>Country</label>
+
+<select>
+
+<option>Nigeria 🇳🇬</option>
+<option>Cameroon 🇨🇲</option>
+
+</select>
+
+<label>Phone Number</label>
+
+<input
+type="tel"
+placeholder="Enter phone number">
+
+<label>Network</label>
+
+<select>
+
+<option>Select network</option>
+<option>MTN</option>
+<option>Airtel</option>
+<option>Glo</option>
+<option>9mobile</option>
+<option>MTN Cameroon</option>
+<option>Orange Cameroon</option>
+
 </select>
 
 <label>Amount</label>
 
-<input id="withdrawAmount" type="number" placeholder="Amount">
+<input
+type="number"
+placeholder="Enter amount">
 
-<button onclick="requestWithdrawal()">
-Submit Withdrawal Request
+<button onclick="simpleNotice('Data request recorded.')">
+Continue
 </button>
 
-<div class="warning">
-Withdrawals are subject to account verification and review. No payment is represented as an automatic guarantee of withdrawal.
-</div>
-
-<div class="status" id="withdrawStatus"></div>
-
 </div>
 
 
-<!-- HISTORY -->
+<!-- PAYMENT ACCOUNT -->
 
-<div class="card hidden" id="history">
+<div class="card hidden" id="bank">
 
-<h2>📋 Transaction History</h2>
+<h2>🏦 Company Payment Account</h2>
 
-<div id="historyList">
-No transactions yet.
+<label>Country</label>
+
+<select id="accountCountry" onchange="loadAccount()">
+
+<option value="cameroon">
+Cameroon 🇨🇲
+</option>
+
+<option value="nigeria">
+Nigeria 🇳🇬
+</option>
+
+</select>
+
+<label>Account Name</label>
+
+<input id="accountName">
+
+<label>Account / MoMo Number</label>
+
+<input id="accountNumber">
+
+<label>Bank / Network</label>
+
+<input id="accountBank">
+
+<button onclick="saveAccount()">
+Save Account
+</button>
+
+<div class="success" id="accountSuccess">
+Account details saved.
+</div>
+
+</div>
+
+
+<!-- PROFILE -->
+
+<div class="card hidden" id="profile">
+
+<h2>👤 Profile</h2>
+
+<label>Full Name</label>
+<input id="profileName">
+
+<label>Phone Number</label>
+<input id="profilePhone">
+
+<label>Email</label>
+<input id="profileEmail">
+
+<label>Country</label>
+
+<select id="profileCountry">
+
+<option value="nigeria">
+Nigeria 🇳🇬
+</option>
+
+<option value="cameroon">
+Cameroon 🇨🇲
+</option>
+
+</select>
+
+<button onclick="saveProfile()">
+Save Profile
+</button>
+
+<div class="success" id="profileSuccess">
+Profile saved.
+</div>
+
+</div>
+
+
+<!-- TRANSACTIONS -->
+
+<div class="card hidden" id="transactions">
+
+<h2>📋 Transactions</h2>
+
+<div id="transactionList">
+<p>No transactions yet.</p>
 </div>
 
 </div>
@@ -613,7 +487,9 @@ No transactions yet.
 
 <h2>🎧 Contact Support</h2>
 
-<p>Select your country to contact support.</p>
+<p>
+Need help? Select your country and contact the support team directly on WhatsApp.
+</p>
 
 <label>Country</label>
 
@@ -629,681 +505,638 @@ Cameroon 🇨🇲
 
 </select>
 
-<div class="info">
+<div class="box">
 
-<strong>WhatsApp Support</strong>
+<div class="row">
 
-<p id="supportNumber">
+<strong>Support WhatsApp</strong>
+
+<span id="supportNumber">
 +234 901 994 6815
-</p>
+</span>
+
+</div>
 
 </div>
 
 <button onclick="contactSupport()">
-💬 Open WhatsApp Support
+💬 Chat With Support on WhatsApp
 </button>
 
 </div>
 
-
-<!-- PROFILE -->
-
-<div class="card hidden" id="profile">
-
-<h2>👤 My Account</h2>
-
-<p><strong>Name:</strong> <span id="profileName"></span></p>
-<p><strong>Username:</strong> <span id="profileUsername"></span></p>
-<p><strong>Email:</strong> <span id="profileEmail"></span></p>
-<p><strong>Phone:</strong> <span id="profilePhone"></span></p>
-<p><strong>Country:</strong> <span id="profileCountry"></span></p>
-
-</div>
-
-</div>
 </div>
 
 
 <script>
 
-/* =========================
-   ACCOUNT SYSTEM
-========================= */
+const defaultAccounts={
 
-function getUsers(){
-  return JSON.parse(
-    localStorage.getItem("hunpay_users") || "[]"
-  );
+nigeria:{
+name:"Joshua Elisha Effiong",
+number:"9019946815",
+bank:"Moniepoint MFB"
+},
+
+cameroon:{
+name:"PATRICK RICARDO ZEKENG KEMKA",
+number:"678652697",
+bank:"MTN MOMO"
 }
 
-function saveUsers(users){
-  localStorage.setItem(
-    "hunpay_users",
-    JSON.stringify(users)
-  );
+};
+
+
+const supportNumbers={
+
+nigeria:"2349019946815",
+
+cameroon:"237672863741"
+
+};
+
+
+const nigeriaProviders=[
+
+"Access Bank",
+"GTBank",
+"UBA",
+"First Bank",
+"Zenith Bank",
+"Moniepoint",
+"OPay",
+"PalmPay",
+"Kuda",
+"Union Bank",
+"Stanbic IBTC",
+"Fidelity Bank",
+"FCMB",
+"Sterling Bank",
+"Ecobank",
+"Wema Bank",
+"Keystone Bank",
+"Polaris Bank"
+
+];
+
+
+const cameroonProviders=[
+
+"MTN MoMo",
+"Orange Money",
+"Express Union",
+"UBA Cameroon",
+"Afriland First Bank",
+"CCA Bank",
+"Commercial Bank Cameroon",
+"Ecobank Cameroon"
+
+];
+
+
+function getAccounts(){
+
+const saved=
+localStorage.getItem("hunpay_accounts");
+
+return saved
+?JSON.parse(saved)
+:defaultAccounts;
+
 }
 
-function currentUser(){
-  const username =
-    localStorage.getItem("hunpay_logged_user");
 
-  if(!username) return null;
+function updatePayment(){
 
-  return getUsers().find(
-    u => u.username === username
-  );
+const country=
+document.getElementById("idCountry").value;
+
+const account=
+getAccounts()[country];
+
+document.getElementById("paymentName")
+.textContent=account.name;
+
+document.getElementById("paymentNumber")
+.textContent=account.number;
+
+document.getElementById("paymentBank")
+.textContent=account.bank;
+
+document.getElementById("idPrice")
+.textContent=
+country==="nigeria"
+?"₦12,500"
+:"12,500 XAF";
+
 }
 
 
-/* =========================
-   REGISTER
-========================= */
+function saveAccount(){
 
-document.getElementById("registerForm")
-.addEventListener("submit",function(e){
+const country=
+document.getElementById("accountCountry").value;
 
-  e.preventDefault();
+const name=
+document.getElementById("accountName").value.trim();
 
-  const name =
-    document.getElementById("regName").value.trim();
+const number=
+document.getElementById("accountNumber").value.trim();
 
-  const username =
-    document.getElementById("regUsername").value.trim();
+const bank=
+document.getElementById("accountBank").value.trim();
 
-  const email =
-    document.getElementById("regEmail").value.trim();
+if(!name||!number||!bank){
 
-  const phone =
-    document.getElementById("regPhone").value.trim();
+alert("Please complete all fields.");
 
-  const country =
-    document.getElementById("regCountry").value;
+return;
 
-  const password =
-    document.getElementById("regPassword").value;
+}
 
-  const confirm =
-    document.getElementById("regConfirm").value;
+const accounts=getAccounts();
 
-  const error =
-    document.getElementById("registerError");
+accounts[country]={
+name:name,
+number:number,
+bank:bank
+};
 
-  error.style.display="none";
+localStorage.setItem(
+"hunpay_accounts",
+JSON.stringify(accounts)
+);
 
-  if(password !== confirm){
+document.getElementById(
+"accountSuccess"
+).style.display="block";
 
-    error.textContent =
-      "Passwords do not match.";
+updatePayment();
 
-    error.style.display="block";
+}
 
-    return;
-  }
 
-  const users=getUsers();
+function loadAccount(){
 
-  if(users.some(u =>
-    u.username.toLowerCase() ===
-    username.toLowerCase()
-  )){
+const country=
+document.getElementById("accountCountry").value;
 
-    error.textContent =
-      "That username already exists.";
+const account=
+getAccounts()[country];
 
-    error.style.display="block";
+document.getElementById(
+"accountName"
+).value=account.name;
 
-    return;
-  }
+document.getElementById(
+"accountNumber"
+).value=account.number;
 
-  if(users.some(u =>
-    u.email.toLowerCase() ===
-    email.toLowerCase()
-  )){
+document.getElementById(
+"accountBank"
+).value=account.bank;
 
-    error.textContent =
-      "That email is already registered.";
+}
 
-    error.style.display="block";
 
-    return;
-  }
+function registerUser(){
 
-  const user={
+const user={
 
-    name,
-    username,
-    email,
-    phone,
-    country,
+name:
+document.getElementById("regName").value.trim(),
 
-    /* Demo only */
-    password,
+phone:
+document.getElementById("regPhone").value.trim(),
 
-    balance:200000,
-    invested:0,
-    profit:0,
-    trades:[]
+email:
+document.getElementById("regEmail").value.trim(),
 
-  };
+country:
+document.getElementById("regCountry").value,
 
-  users.push(user);
+password:
+document.getElementById("regPassword").value
 
-  saveUsers(users);
+};
 
-  localStorage.setItem(
-    "hunpay_logged_user",
-    username
-  );
+if(
+!user.name||
+!user.phone||
+!user.email||
+!user.password
+){
 
-  openDashboard();
+alert("Please complete all registration fields.");
+
+return;
+
+}
+
+localStorage.setItem(
+"hunpay_user",
+JSON.stringify(user)
+);
+
+document.getElementById(
+"registerSuccess"
+).style.display="block";
+
+}
+
+
+function loginUser(){
+
+const saved=
+localStorage.getItem("hunpay_user");
+
+if(!saved){
+
+alert("No local demo account found.");
+
+return;
+
+}
+
+const user=JSON.parse(saved);
+
+const id=
+document.getElementById("loginId").value.trim();
+
+const password=
+document.getElementById("loginPassword").value;
+
+const box=
+document.getElementById("loginSuccess");
+
+if(
+(id===user.email||id===user.phone)&&
+password===user.password
+){
+
+box.textContent="Login successful.";
+
+}else{
+
+box.textContent="Incorrect login details.";
+
+}
+
+box.style.display="block";
+
+}
+
+
+function submitPayment(){
+
+const reference=
+document.getElementById(
+"paymentReference"
+).value.trim();
+
+const proof=
+document.getElementById(
+"paymentProof"
+).files.length;
+
+if(!reference&&!proof){
+
+alert(
+"Please provide a transaction reference or payment proof."
+);
+
+return;
+
+}
+
+const transactions=
+JSON.parse(
+localStorage.getItem(
+"hunpay_transactions"
+)||"[]"
+);
+
+transactions.push({
+
+type:"ID Code Payment",
+
+reference:
+reference||"Proof uploaded",
+
+status:"Pending",
+
+date:new Date().toLocaleString()
 
 });
 
+localStorage.setItem(
+"hunpay_transactions",
+JSON.stringify(transactions)
+);
 
-/* =========================
-   LOGIN
-========================= */
+document.getElementById(
+"paymentSuccess"
+).style.display="block";
 
-document.getElementById("loginForm")
-.addEventListener("submit",function(e){
+loadTransactions();
 
-  e.preventDefault();
+}
 
-  const id =
-    document.getElementById("loginId")
-    .value.trim();
 
-  const password =
-    document.getElementById("loginPassword")
-    .value;
+function submitWithdraw(){
 
-  const error =
-    document.getElementById("loginError");
+const name=
+document.getElementById(
+"withdrawName"
+).value.trim();
 
-  const user=getUsers().find(u =>
+const number=
+document.getElementById(
+"withdrawNumber"
+).value.trim();
 
-    (
-      u.username.toLowerCase() ===
-      id.toLowerCase() ||
+const amount=
+document.getElementById(
+"withdrawAmount"
+).value;
 
-      u.email.toLowerCase() ===
-      id.toLowerCase()
-    )
-    &&
-    u.password === password
+if(!name||!number||!amount){
 
-  );
+alert(
+"Please complete the withdrawal details."
+);
 
-  if(!user){
+return;
 
-    error.textContent =
-      "Incorrect username/email or password.";
+}
 
-    error.style.display="block";
+const transactions=
+JSON.parse(
+localStorage.getItem(
+"hunpay_transactions"
+)||"[]"
+);
 
-    return;
-  }
+transactions.push({
 
-  localStorage.setItem(
-    "hunpay_logged_user",
-    user.username
-  );
+type:"Withdrawal",
 
-  openDashboard();
+amount:amount,
+
+status:"Pending",
+
+date:new Date().toLocaleString()
 
 });
 
+localStorage.setItem(
+"hunpay_transactions",
+JSON.stringify(transactions)
+);
 
-/* =========================
-   LOGIN / REGISTER SWITCH
-========================= */
+document.getElementById(
+"withdrawSuccess"
+).style.display="block";
 
-let showingLogin=false;
+loadTransactions();
 
-document.getElementById("switchText")
-.addEventListener("click",function(){
+}
 
-  showingLogin=!showingLogin;
 
-  document.getElementById("registerForm")
-  .classList.toggle("hidden",showingLogin);
+function updateWithdraw(){
 
-  document.getElementById("loginForm")
-  .classList.toggle("hidden",!showingLogin);
+const country=
+document.getElementById(
+"withdrawCountry"
+).value;
 
-  document.getElementById("authSubtitle")
-  .textContent =
-    showingLogin
-    ? "Login to your account"
-    : "Create your account to continue";
+const select=
+document.getElementById(
+"withdrawProvider"
+);
 
-  this.textContent =
-    showingLogin
-    ? "Don't have an account? Register"
-    : "Already have an account? Login";
+select.innerHTML="";
+
+const providers=
+country==="nigeria"
+?nigeriaProviders
+:cameroonProviders;
+
+providers.forEach(function(provider){
+
+const option=
+document.createElement("option");
+
+option.textContent=provider;
+
+select.appendChild(option);
 
 });
 
+}
 
-/* =========================
-   DASHBOARD
-========================= */
 
-function openDashboard(){
+function saveProfile(){
 
-  const user=currentUser();
+const profile={
 
-  if(!user) return;
+name:
+document.getElementById(
+"profileName"
+).value,
 
-  document.getElementById("authScreen")
-  .style.display="none";
+phone:
+document.getElementById(
+"profilePhone"
+).value,
 
-  document.getElementById("app")
-  .style.display="block";
+email:
+document.getElementById(
+"profileEmail"
+).value,
 
-  document.getElementById("userName")
-  .textContent=user.name;
+country:
+document.getElementById(
+"profileCountry"
+).value
 
-  document.getElementById("profileName")
-  .textContent=user.name;
+};
 
-  document.getElementById("profileUsername")
-  .textContent=user.username;
+localStorage.setItem(
+"hunpay_profile",
+JSON.stringify(profile)
+);
 
-  document.getElementById("profileEmail")
-  .textContent=user.email;
-
-  document.getElementById("profilePhone")
-  .textContent=user.phone;
-
-  document.getElementById("profileCountry")
-  .textContent=
-    user.country === "nigeria"
-    ? "Nigeria"
-    : "Cameroon";
-
-  updateDashboard();
-
-  updateProviders();
-
-  updateSupport();
+document.getElementById(
+"profileSuccess"
+).style.display="block";
 
 }
 
 
-function updateDashboard(){
+function loadTransactions(){
 
-  const user=currentUser();
+const list=
+document.getElementById(
+"transactionList"
+);
 
-  if(!user) return;
+const transactions=
+JSON.parse(
+localStorage.getItem(
+"hunpay_transactions"
+)||"[]"
+);
 
-  document.getElementById("balance")
-  .textContent =
-    "₦" +
-    Number(user.balance)
-    .toLocaleString("en-NG",{
-      minimumFractionDigits:2
-    });
+if(!transactions.length){
 
-  document.getElementById("invested")
-  .textContent =
-    "₦" +
-    Number(user.invested)
-    .toLocaleString("en-NG");
+list.innerHTML=
+"<p>No transactions yet.</p>";
 
-  document.getElementById("profit")
-  .textContent =
-    "₦" +
-    Number(user.profit)
-    .toLocaleString("en-NG");
+return;
 
-  document.getElementById("activeTrades")
-  .textContent =
-    user.trades.filter(
-      t => t.status==="Trading"
-    ).length;
+}
 
-  updateHistory();
-  updateTradeScreen();
+let html=
+"<table>"+
+"<tr>"+
+"<th>Type</th>"+
+"<th>Amount/Ref</th>"+
+"<th>Status</th>"+
+"</tr>";
+
+transactions
+.slice()
+.reverse()
+.forEach(function(t){
+
+html+=
+"<tr>"+
+"<td>"+t.type+"</td>"+
+"<td>"+(t.amount||t.reference||"-")+"</td>"+
+"<td>"+t.status+"</td>"+
+"</tr>";
+
+});
+
+html+="</table>";
+
+list.innerHTML=html;
 
 }
 
 
-/* =========================
-   DEMO INVESTMENT
-========================= */
+function updateSupport(){
 
-function startInvestment(amount,rate){
+const country=
+document.getElementById(
+"supportCountry"
+).value;
 
-  const users=getUsers();
+const number=
+supportNumbers[country];
 
-  const username=
-    localStorage.getItem("hunpay_logged_user");
-
-  const user=
-    users.find(u=>u.username===username);
-
-  if(!user) return;
-
-  if(user.balance < amount){
-
-    alert("Insufficient demo balance.");
-
-    return;
-  }
-
-  user.balance -= amount;
-
-  user.invested += amount;
-
-  const trade={
-
-    id:Date.now(),
-
-    amount,
-
-    rate,
-
-    start:Date.now(),
-
-    duration:60,
-
-    status:"Trading",
-
-    profit:0
-
-  };
-
-  user.trades.push(trade);
-
-  saveUsers(users);
-
-  updateDashboard();
-
-  showSection("trade");
+document.getElementById(
+"supportNumber"
+).textContent=
+country==="nigeria"
+?"+234 901 994 6815"
+:"+237 672 863 741";
 
 }
 
 
-/* =========================
-   TRADING TIMER
-========================= */
+function contactSupport(){
 
-function updateTradeScreen(){
+const country=
+document.getElementById(
+"supportCountry"
+).value;
 
-  const user=currentUser();
+const number=
+supportNumbers[country];
 
-  if(!user) return;
+const message=
+"Hello HUNPAY Support, I need assistance with my account.";
 
-  const box=
-    document.getElementById("tradeContent");
+const url=
+"https://wa.me/"+
+number+
+"?text="+
+encodeURIComponent(message);
 
-  const active=
-    user.trades.filter(
-      t=>t.status==="Trading"
-    );
-
-  if(!active.length){
-
-    box.innerHTML=
-      "<p>No active demo trade.</p>";
-
-    return;
-  }
-
-  box.innerHTML="";
-
-  active.forEach(trade=>{
-
-    const elapsed=
-      Math.floor(
-        (Date.now()-trade.start)/1000
-      );
-
-    const remaining=
-      Math.max(
-        0,
-        trade.duration-elapsed
-      );
-
-    const progress=
-      Math.min(
-        100,
-        Math.floor(
-          elapsed/trade.duration*100
-        )
-      );
-
-    trade.profit=
-      Math.floor(
-        trade.amount *
-        (trade.rate/100) *
-        (progress/100)
-      );
-
-    const div=
-      document.createElement("div");
-
-    div.className="info";
-
-    div.innerHTML=`
-
-      <strong>Demo Trade #${trade.id}</strong>
-
-      <p>Investment: ₦${trade.amount.toLocaleString()}</p>
-
-      <p>Simulated Return: ${trade.rate}%</p>
-
-      <p>Progress: ${progress}%</p>
-
-      <p>Time Remaining: ${remaining}s</p>
-
-      <p>Simulated Profit: ₦${trade.profit.toLocaleString()}</p>
-
-    `;
-
-    box.appendChild(div);
-
-    if(remaining<=0){
-
-      trade.status="Completed";
-
-      user.profit +=
-        Math.floor(
-          trade.amount *
-          trade.rate/100
-        );
-
-      user.balance +=
-        trade.amount +
-        Math.floor(
-          trade.amount *
-          trade.rate/100
-        );
-
-      user.invested -=
-        trade.amount;
-
-    }
-
-  });
-
-  saveUsers(
-    getUsers().map(
-      u=>u.username===user.username
-      ?user:u
-    )
-  );
+window.open(url,"_blank");
 
 }
 
 
-/* =========================
-   WITHDRAWAL
-========================= */
+function simpleNotice(message){
 
-function updateProviders(){
-
-  const country=
-    document.getElementById(
-      "withdrawCountry"
-    ).value;
-
-  const select=
-    document.getElementById(
-      "withdrawProvider"
-    );
-
-  const nigeria=[
-
-    "Moniepoint",
-    "OPay",
-    "PalmPay",
-    "Access Bank",
-    "GTBank",
-    "UBA",
-    "First Bank",
-    "Zenith Bank",
-    "Fidelity Bank",
-    "FCMB"
-
-  ];
-
-  const cameroon=[
-
-    "MTN MoMo",
-    "Orange Money",
-    "UBA Cameroon",
-    "Afriland First Bank",
-    "CCA Bank",
-    "Ecobank Cameroon"
-
-  ];
-
-  const list=
-    country==="nigeria"
-    ?nigeria
-    :cameroon;
-
-  select.innerHTML="";
-
-  list.forEach(name=>{
-
-    const option=
-      document.createElement("option");
-
-    option.value=name;
-    option.textContent=name;
-
-    select.appendChild(option);
-
-  });
+alert(message);
 
 }
 
 
-function requestWithdrawal(){
+function show(id){
 
-  const name=
-    document.getElementById(
-      "withdrawName"
-    ).value.trim();
+const sections=[
 
-  const number=
-    document.getElementById(
-      "withdrawNumber"
-    ).value.trim();
+"register",
+"login",
+"id",
+"withdraw",
+"airtime",
+"data",
+"bank",
+"profile",
+"transactions",
+"support"
 
-  const amount=
-    Number(
-      document.getElementById(
-        "withdrawAmount"
-      ).value
-    );
+];
 
-  const user=currentUser();
+sections.forEach(function(section){
 
-  if(!name||!number||!amount){
+document
+.getElementById(section)
+.classList.add("hidden");
 
-    alert("Please complete all fields.");
+});
 
-    return;
-  }
+document
+.getElementById(id)
+.classList.remove("hidden");
 
-  if(amount>user.balance){
+if(id==="id")
+updatePayment();
 
-    alert(
-      "The requested amount exceeds the available demo balance."
-    );
+if(id==="bank")
+loadAccount();
 
-    return;
-  }
+if(id==="withdraw")
+updateWithdraw();
 
-  const users=getUsers();
+if(id==="transactions")
+loadTransactions();
 
-  const stored=
-    users.find(
-      u=>u.username===user.username
-    );
+if(id==="support")
+updateSupport();
 
-  stored.trades.push({
+window.scrollTo({
 
-    id:Date.now(),
+top:0,
+behavior:"smooth"
 
-    type:"Withdrawal",
-
-    amount,
-
-    status:"Pending",
-
-    date:new Date().toLocaleString()
-
-  });
-
-  saveUsers(users);
-
-  const status=
-    document.getElementById(
-      "withdrawStatus"
-    );
-
-  status.textContent=
-    "Withdrawal request recorded for verification.";
-
-  status.style.display="block";
-
-  updateHistory();
+});
 
 }
 
 
-/* =========================
-   HISTORY
-========================= */
+updatePayment();
+updateWithdraw();
+loadTransactions();
+updateSupport();
 
-function updateHistory(){
+</script>
 
-  const user=currentUser();
-
-  const list=
-    document.getElementById(
-      "historyList"
-    );
-
-  const transactions=
-    (user?.trades||[]).slice().reverse();
-
-  if(!transactions.length){
-
-    list.innerHTML=
-      "No transactions yet.";
-
-    return;
-  }
-
-  let html="<table>";
-
-  html+=`
-    <tr>
-      <th>Type</th>
-  
+</body>
+  </html>
