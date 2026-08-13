@@ -3,551 +3,839 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Trading Wallet Demo</title>
+<title>Trading Wallet</title>
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f4f6fb;color:#172033}
-header{background:#172033;color:#fff;padding:22px;text-align:center;font-size:25px;font-weight:bold}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f6fa;
+  color:#182033
+}
+.header{
+  background:#171b2b;
+  color:#fff;
+  padding:18px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:10
+}
+.logo{font-size:21px;font-weight:800}
 .container{max-width:700px;margin:auto;padding:15px}
-.card{background:#fff;padding:22px;margin-bottom:18px;border-radius:20px;box-shadow:0 5px 20px #0001}
+.card{
+  background:#fff;
+  border-radius:18px;
+  padding:20px;
+  margin-bottom:15px;
+  box-shadow:0 5px 20px rgba(0,0,0,.07)
+}
 .hidden{display:none}
-label{display:block;margin:15px 0 7px;font-weight:bold}
-input,select,textarea{width:100%;padding:14px;border:1px solid #ddd;border-radius:10px;font-size:16px}
-button{width:100%;padding:14px;margin-top:15px;border:0;border-radius:10px;background:#7620df;color:white;font-size:16px;font-weight:bold;cursor:pointer}
-.dark{background:#172033}
-.red{background:#d52b20}
-.wallet{background:linear-gradient(135deg,#7019d8,#a238ed);color:#fff;padding:25px;border-radius:22px}
-.wallet h1{font-size:40px;margin:10px 0}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
-.grid button{margin:0;background:#fff;color:#172033;box-shadow:0 3px 12px #0001;min-height:75px}
-.payment{background:#f5f0ff;border:2px solid #8535df;border-radius:16px;padding:18px}
-.payment-row{background:#fff;padding:13px;border-radius:10px;margin:10px 0}
-.payment-row strong{display:block;margin-bottom:5px}
-.test{color:#c40000;font-weight:bold}
-.notice{background:#fff3cd;color:#725500;padding:12px;border-radius:10px;margin-top:12px}
-.message{padding:12px;border-radius:10px;margin-top:12px;text-align:center}
-.error{background:#fde8e8;color:#a00000}
-.success{background:#e8f7ed;color:#176b38}
-.support{background:#eaf4ff;border-radius:14px;padding:15px;margin-top:12px}
-.support a{display:block;margin-top:10px;color:#1264c4;font-weight:bold;text-decoration:none}
-@media(max-width:550px){.grid{grid-template-columns:repeat(2,1fr)}}
+h2{margin-top:0}
+label{
+  display:block;
+  margin:13px 0 7px;
+  font-weight:600
+}
+input,select,textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #dcdfe6;
+  border-radius:10px;
+  font-size:15px;
+  outline:none
+}
+button{
+  width:100%;
+  padding:14px;
+  border:0;
+  border-radius:10px;
+  background:#7040df;
+  color:white;
+  font-size:15px;
+  font-weight:700;
+  margin-top:13px;
+  cursor:pointer
+}
+.secondary{background:#252b3c}
+.danger{background:#d73535}
+
+.wallet{
+  background:linear-gradient(135deg,#6032d3,#9a4ae8);
+  color:white;
+  border-radius:20px;
+  padding:24px
+}
+.wallet-title{font-size:14px}
+.amount{
+  font-size:38px;
+  font-weight:800;
+  margin:8px 0
+}
+.demo-label{
+  font-size:12px;
+  opacity:.85
+}
+
+.menu{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-bottom:15px
+}
+.menu button{
+  background:white;
+  color:#182033;
+  margin:0;
+  min-height:75px;
+  box-shadow:0 3px 12px rgba(0,0,0,.07)
+}
+
+.payment{
+  border:1px solid #e1d9f8;
+  background:#faf8ff;
+  border-radius:15px;
+  padding:15px
+}
+.payment-box{
+  background:#fff;
+  padding:14px;
+  border-radius:11px;
+  margin:10px 0
+}
+.payment-box strong{
+  display:block;
+  margin-bottom:8px
+}
+.account{
+  font-size:20px;
+  font-weight:800;
+  letter-spacing:2px
+}
+
+.notice{
+  background:#f3efff;
+  border-radius:10px;
+  padding:11px;
+  font-size:13px;
+  margin-top:12px
+}
+.message{
+  margin-top:12px;
+  padding:11px;
+  border-radius:9px;
+  text-align:center
+}
+.success{background:#e7f7ed;color:#176337}
+.error{background:#ffe7e7;color:#9b0000}
+
+.profile-row{
+  padding:13px 0;
+  border-bottom:1px solid #eee
+}
+.profile-row:last-child{border-bottom:0}
+
+.loader{
+  width:28px;
+  height:28px;
+  border:4px solid #ddd;
+  border-top-color:#7040df;
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+  margin:15px auto
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media(max-width:520px){
+  .menu{grid-template-columns:repeat(2,1fr)}
+  .amount{font-size:33px}
+}
 </style>
 </head>
 
 <body>
 
-<header>TRADING WALLET</header>
+<header class="header">
+  <div class="logo">TRADING WALLET</div>
+  <div>🔔</div>
+</header>
 
 <div class="container">
 
 <!-- REGISTER -->
-<div class="card" id="register">
-<h2>📝 Create Account</h2>
+<section class="card" id="register">
+  <h2>Create Account</h2>
 
-<label>Full Name</label>
-<input id="name" placeholder="Enter your full name">
+  <label>Full Name</label>
+  <input id="regName" placeholder="Enter your name">
 
-<label>Email Address</label>
-<input id="email" type="email" placeholder="Enter your email">
+  <label>Username</label>
+  <input id="regUsername" placeholder="Choose username">
 
-<label>Password</label>
-<input id="password" type="password" placeholder="Create password">
+  <label>Email Address</label>
+  <input id="regEmail" type="email" placeholder="Enter email">
 
-<button onclick="registerUser()">Create Account</button>
+  <label>Password</label>
+  <input id="regPassword" type="password" placeholder="Create password">
 
-<div id="registerMessage"></div>
+  <button onclick="register()">Create Account</button>
 
-<button class="dark" onclick="showLogin()">
-Already Have An Account? Login
-</button>
-</div>
+  <div id="registerMsg"></div>
+
+  <button class="secondary" onclick="showLogin()">
+    Already have an account? Login
+  </button>
+</section>
 
 
 <!-- LOGIN -->
-<div class="card hidden" id="login">
-<h2>🔐 Login</h2>
+<section class="card hidden" id="login">
+  <h2>Welcome Back</h2>
 
-<label>Email Address</label>
-<input id="loginEmail" type="email" placeholder="Enter email">
+  <label>Email Address</label>
+  <input id="loginEmail" type="email">
 
-<label>Password</label>
-<input id="loginPassword" type="password" placeholder="Enter password">
+  <label>Password</label>
+  <input id="loginPassword" type="password">
 
-<button onclick="loginUser()">Login</button>
+  <button onclick="login()">Login</button>
 
-<div id="loginMessage"></div>
+  <div id="loginMsg"></div>
 
-<button class="dark" onclick="showRegister()">
-Create New Account
-</button>
-</div>
+  <button class="secondary" onclick="showRegister()">
+    Create Account
+  </button>
+</section>
 
 
 <!-- DASHBOARD -->
-<div class="hidden" id="dashboard">
-
-<div class="card">
-<h2 id="welcome"></h2>
+<section id="dashboard" class="hidden">
 
-<div class="wallet">
-<small>Trading Wallet Balance</small>
-<h1>₦200000.00</h1>
-<small>Demo Balance</small>
-</div>
-</div>
+  <div class="card">
+    <h2 id="welcome"></h2>
 
+    <div class="wallet">
+      <div class="wallet-title">Trading Wallet</div>
+      <div class="amount">₦200,000.00</div>
+      <div class="demo-label">DEMO WALLET</div>
+    </div>
+  </div>
 
-<!-- DASHBOARD MENU -->
-<div class="grid">
 
-<button onclick="openSection('trading')">📈<br>Trading</button>
-<button onclick="openSection('deposit')">💳<br>Deposit</button>
-<button onclick="openSection('withdraw')">💸<br>Withdraw</button>
-<button onclick="openSection('idcode')">🪪<br>Buy ID Code</button>
-<button onclick="openSection('airtime')">📱<br>Airtime</button>
-<button onclick="openSection('data')">🌐<br>Buy Data</button>
-<button onclick="openSection('chat')">💬<br>Chat</button>
-<button onclick="openSection('support')">🎧<br>Customer Service</button>
-<button onclick="openSection('profile')">👤<br>Profile</button>
+  <!-- MAIN MENU -->
+  <div class="menu">
 
-</div>
+    <button onclick="openSection('trading')">
+      📈<br>Trading
+    </button>
 
+    <button onclick="openSection('withdraw')">
+      💸<br>Withdraw
+    </button>
 
-<!-- TRADING -->
-<div class="card hidden" id="trading">
-<h2>📈 Trading</h2>
-<p>Your trading wallet is available in demonstration mode.</p>
-
-<div class="wallet">
-<small>Wallet Balance</small>
-<h1>₦200000.00</h1>
-</div>
-</div>
+    <button onclick="openSection('idcode')">
+      🪪<br>ID Code
+    </button>
 
+    <button onclick="openSection('data')">
+      📱<br>Buy Data
+    </button>
 
-<!-- DEPOSIT -->
-<div class="card hidden" id="deposit">
-<h2>💳 Deposit</h2>
+    <button onclick="openSection('chat')">
+      💬<br>Chat
+    </button>
 
-<label>Country</label>
-<select>
-<option>Nigeria 🇳🇬</option>
-<option>Cameroon 🇨🇲</option>
-</select>
+    <button onclick="openSection('support')">
+      🎧<br>Support
+    </button>
 
-<label>Amount</label>
-<input type="number" placeholder="Enter amount">
+    <button onclick="openSection('profile')">
+      👤<br>Profile
+    </button>
 
-<button onclick="demo('depositMessage')">
-Continue
-</button>
+  </div>
 
-<div id="depositMessage"></div>
-</div>
 
+  <!-- TRADING -->
+  <section class="card hidden" id="trading">
+    <h2>📈 Trading</h2>
 
-<!-- WITHDRAW -->
-<div class="card hidden" id="withdraw">
-<h2>💸 Withdraw</h2>
+    <div class="wallet">
+      <div class="wallet-title">Wallet Balance</div>
+      <div class="amount">₦200,000.00</div>
+      <div class="demo-label">DEMO WALLET</div>
+    </div>
 
-<label>Country</label>
-<select>
-<option>Nigeria 🇳🇬</option>
-<option>Cameroon 🇨🇲</option>
-</select>
+    <p>Trading activity</p>
 
-<label>Account Name</label>
-<input placeholder="Enter account name">
-
-<label>Account Number</label>
-<input placeholder="Enter account number">
-
-<label>Bank / Mobile Money</label>
-<select>
-<option>Select provider</option>
-<option>Moniepoint</option>
-<option>OPay</option>
-<option>Palmpay</option>
-<option>Access Bank</option>
-<option>GTBank</option>
-<option>UBA</option>
-<option>First Bank</option>
-<option>Zenith Bank</option>
-<option>MTN MoMo</option>
-<option>Orange Money</option>
-</select>
+    <button onclick="demoMessage('tradingMsg')">
+      View Trading Activity
+    </button>
 
-<label>Amount</label>
-<input type="number" placeholder="Enter amount">
+    <div id="tradingMsg"></div>
+  </section>
 
-<button onclick="demo('withdrawMessage')">
-Submit Test Withdrawal
-</button>
 
-<div id="withdrawMessage"></div>
-</div>
+  <!-- WITHDRAW -->
+  <section class="card hidden" id="withdraw">
+    <h2>💸 Withdraw</h2>
 
+    <label>Country</label>
+    <select id="country">
+      <option>Nigeria 🇳🇬</option>
+      <option>Cameroon 🇨🇲</option>
+    </select>
 
-<!-- ID CODE -->
-<div class="card hidden" id="idcode">
+    <label>Account Name</label>
+    <input id="withdrawName" placeholder="Account name">
 
-<h2>🪪 Buy ID Code</h2>
+    <label>Account Number</label>
+    <input id="withdrawAccount" placeholder="Account number">
 
-<div class="payment">
-
-<h3>ID Code Payment</h3>
+    <label>Bank / Mobile Money</label>
+    <select>
+      <option>Select provider</option>
+      <option>Moniepoint MFB</option>
+      <option>OPay</option>
+      <option>MTN MoMo</option>
+      <option>Orange Money</option>
+    </select>
 
-<div class="payment-row">
-<strong>ID Code Amount</strong>
-<span>₦12,500</span>
-</div>
-
-<div class="payment-row">
-<strong>🇳🇬 Nigeria Account Number</strong>
-<span class="test">0000000000</span>
-</div>
-
-<div class="payment-row">
-<strong>🇨🇲 Cameroon Account
-PATRICK RICARDO ZEKENG KEMKA
-678652697
-. Number</strong>
-<span class="test">0000000000</span>
-</div>
-
-<div class="notice">
-Demo payment details. The displayed account numbers are
-non-payment placeholders.
-</div>
-
-</div>
-
-<label>Payment Reference</label>
-<input id="reference" placeholder="Enter test reference">
-
-<label>Payment Proof</label>
-<input id="proof" type="file" accept="image/*,.pdf">
-
-<button onclick="submitTestPayment()">
-Submit Test Payment
-</button>
+    <label>Amount</label>
+    <input type="number" value="200000">
 
-<div id="paymentMessage"></div>
-</div>
+    <button onclick="processWithdrawal()">
+      Submit Withdrawal
+    </button>
 
+    <div id="withdrawResult"></div>
+  </section>
 
-<!-- AIRTIME -->
-<div class="card hidden" id="airtime">
-<h2>📱 Airtime</h2>
-
-<label>Country</label>
-<select>
-<option>Nigeria 🇳🇬</option>
-<option>Cameroon 🇨🇲</option>
-</select>
-
-<label>Phone Number</label>
-<input type="tel" placeholder="Enter phone number">
-
-<label>Network</label>
-<select>
-<option>Select network</option>
-<option>MTN</option>
-<option>Airtel</option>
-<option>Glo</option>
-<option>9mobile</option>
-<option>MTN Cameroon</option>
-<option>Orange Cameroon</option>
-</select>
-
-<label>Amount</label>
-<input type="number" placeholder="Enter amount">
-
-<button onclick="demo('airtimeMessage')">
-Continue
-</button>
-
-<div id="airtimeMessage"></div>
-</div>
-
-
-<!-- DATA -->
-<div class="card hidden" id="data">
-<h2>🌐 Buy Data</h2>
-
-<label>Country</label>
-<select>
-<option>Nigeria 🇳🇬</option>
-<option>Cameroon 🇨🇲</option>
-</select>
-
-<label>Phone Number</label>
-<input type="tel" placeholder="Enter phone number">
-
-<label>Network</label>
-<select>
-<option>Select network</option>
-<option>MTN</option>
-<option>Airtel</option>
-<option>Glo</option>
-<option>9mobile</option>
-<option>MTN Cameroon</option>
-<option>Orange Cameroon</option>
-</select>
-
-<label>Data Plan</label>
-<select>
-<option>Select data plan</option>
-<option>500MB</option>
-<option>1GB</option>
-<option>2GB</option>
-<option>5GB</option>
-<option>10GB</option>
-</select>
-
-<button onclick="demo('dataMessage')">
-Continue
-</button>
-
-<div id="dataMessage"></div>
-</div>
-
-
-<!-- CHAT -->
-<div class="card hidden" id="chat">
-<h2>💬 Chat</h2>
-
-<label>Message</label>
-<textarea id="chatMessage" rows="5"
-placeholder="Type your message"></textarea>
-
-<button onclick="sendChat()">
-Send Message
-</button>
-
-<div id="chatResult"></div>
-</div>
-
-
-<!-- CUSTOMER SERVICE -->
-<div class="card hidden" id="support">
-<h2>🎧 Customer Service</h2>
-
-<div class="support">
-<strong>Nigeria Support</strong>
-<a href="https://wa.me/2349019946815" target="_blank">
-WhatsApp: +234 901 994 6815
-</a>
-</div>
-
-<div class="support">
-<strong>Cameroon Support</strong>
-<a href="https://wa.me/237672863741" target="_blank">
-WhatsApp: +237 672 863 741
-</a>
-</div>
-</div>
-
-
-<!-- PROFILE -->
-<div class="card hidden" id="profile">
-<h2>👤 Profile</h2>
-
-<p>
-<strong>Name:</strong>
-<span id="profileName"></span>
-</p>
-
-<p>
-<strong>Email:</strong>
-<span id="profileEmail"></span>
-</p>
-</div>
-
-
-<div class="card">
-<button class="red" onclick="logout()">Logout</button>
-</div>
-
-</div>
+
+  <!-- WITHDRAW PROCESSING -->
+  <section class="card hidden" id="processing">
+    <h2>Processing Withdrawal</h2>
+
+    <div class="loader"></div>
+
+    <p style="text-align:center">
+      Processing your request...
+    </p>
+  </section>
+
+
+  <!-- ID CODE -->
+  <section class="card hidden" id="idcode">
+    <h2>🪪 Buy ID Code</h2>
+
+    <div class="payment">
+
+      <div class="payment-box">
+        <strong>ID Code</strong>
+        ₦12,500
+      </div>
+
+
+      <!-- NIGERIA -->
+      <div class="payment-box">
+
+        <strong>🇳🇬 Nigeria</strong>
+
+        Account Name:<br>
+        <b>Joshua Elisha Effiong</b>
+
+        <br><br>
+
+        Bank:<br>
+        <b>Moniepoint MFB</b>
+
+        <br><br>
+
+        Account Number:<br>
+        <span class="account">
+          000-0-0-0-0-0-0-0
+        </span>
+
+      </div>
+
+
+      <!-- CAMEROON -->
+      <div class="payment-box">
+
+        <strong>🇨🇲 Cameroon</strong>
+
+        Account Name:<br>
+        <b>PATRICK RICARDO ZEKENG KEMKA</b>
+
+        <br><br>
+
+        Provider:<br>
+        <b>MTN MoMo</b>
+
+        <br><br>
+
+        Account Number:<br>
+        <span class="account">
+          000-0-0-0-0-0-0-0
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <label>Payment Reference</label>
+    <input id="reference" placeholder="Payment reference">
+
+    <label>Payment Proof</label>
+    <input id="proof" type="file" accept="image/*,.pdf">
+
+    <button onclick="submitProof()">
+      Submit
+    </button>
+
+    <div id="proofMsg"></div>
+  </section>
+
+
+  <!-- DATA -->
+  <section class="card hidden" id="data">
+    <h2>📱 Buy Data</h2>
+
+    <label>Phone Number</label>
+    <input type="tel" placeholder="Phone number">
+
+    <label>Network</label>
+    <select>
+      <option>Select Network</option>
+      <option>MTN</option>
+      <option>Airtel</option>
+      <option>Glo</option>
+      <option>9mobile</option>
+    </select>
+
+    <label>Data Plan</label>
+    <select>
+      <option>500MB</option>
+      <option>1GB</option>
+      <option>2GB</option>
+      <option>5GB</option>
+      <option>10GB</option>
+    </select>
+
+    <button onclick="demoMessage('dataMsg')">
+      Continue
+    </button>
+
+    <div id="dataMsg"></div>
+  </section>
+
+
+  <!-- CHAT -->
+  <section class="card hidden" id="chat">
+    <h2>💬 Chat</h2>
+
+    <textarea id="chatText"
+      rows="5"
+      placeholder="Write your message"></textarea>
+
+    <button onclick="sendChat()">
+      Send
+    </button>
+
+    <div id="chatMsg"></div>
+  </section>
+
+
+  <!-- SUPPORT -->
+  <section class="card hidden" id="support">
+    <h2>🎧 Customer Service</h2>
+
+    <p>Customer service</p>
+
+    <button onclick="demoMessage('supportMsg')">
+      Contact Support
+    </button>
+
+    <div id="supportMsg"></div>
+  </section>
+
+
+  <!-- PROFILE -->
+  <section class="card hidden" id="profile">
+
+    <h2>👤 Profile</h2>
+
+    <div class="profile-row">
+      <b>Name</b><br>
+      <span id="profileName"></span>
+    </div>
+
+    <div class="profile-row">
+      <b>Username</b><br>
+      <span id="profileUsername"></span>
+    </div>
+
+    <div class="profile-row">
+      <b>Email</b><br>
+      <span id="profileEmail"></span>
+    </div>
+
+    <!-- LOGOUT IS INSIDE PROFILE -->
+    <button class="danger" onclick="logout()">
+      Logout
+    </button>
+
+  </section>
+
+</section>
+
 </div>
 
 
 <script>
 
-const USERS_KEY="trading_demo_users";
-const SESSION_KEY="trading_demo_session";
+const USERS="TRADING_WALLET_USERS";
+const SESSION="TRADING_WALLET_SESSION";
 
-function getUsers(){
-return JSON.parse(localStorage.getItem(USERS_KEY)||"{}");
+
+function users(){
+  return JSON.parse(
+    localStorage.getItem(USERS)||"{}"
+  );
 }
 
-function saveUsers(users){
-localStorage.setItem(USERS_KEY,JSON.stringify(users));
+
+function saveUsers(data){
+  localStorage.setItem(
+    USERS,
+    JSON.stringify(data)
+  );
 }
 
-function registerUser(){
 
-const name=document.getElementById("name").value.trim();
-const email=document.getElementById("email").value.trim().toLowerCase();
-const password=document.getElementById("password").value;
+function register(){
 
-if(!name||!email||!password){
-message("registerMessage","Please complete all fields.","error");
-return;
+  const name=
+    document.getElementById("regName").value.trim();
+
+  const username=
+    document.getElementById("regUsername").value.trim();
+
+  const email=
+    document.getElementById("regEmail")
+    .value.trim().toLowerCase();
+
+  const password=
+    document.getElementById("regPassword").value;
+
+  if(!name||!username||!email||!password){
+    message(
+      "registerMsg",
+      "Please complete all fields.",
+      "error"
+    );
+    return;
+  }
+
+  const data=users();
+
+  if(data[email]){
+    message(
+      "registerMsg",
+      "An account already exists with this email.",
+      "error"
+    );
+    return;
+  }
+
+  data[email]={
+    name,
+    username,
+    email,
+    password
+  };
+
+  saveUsers(data);
+
+  localStorage.setItem(
+    SESSION,
+    email
+  );
+
+  loadDashboard();
 }
 
-if(password.length<6){
-message("registerMessage","Password must contain at least 6 characters.","error");
-return;
+
+function login(){
+
+  const email=
+    document.getElementById("loginEmail")
+    .value.trim().toLowerCase();
+
+  const password=
+    document.getElementById("loginPassword")
+    .value;
+
+  const data=users();
+
+  if(!data[email]){
+    message(
+      "loginMsg",
+      "Account not found.",
+      "error"
+    );
+    return;
+  }
+
+  if(data[email].password!==password){
+    message(
+      "loginMsg",
+      "Incorrect password.",
+      "error"
+    );
+    return;
+  }
+
+  localStorage.setItem(
+    SESSION,
+    email
+  );
+
+  loadDashboard();
 }
 
-const users=getUsers();
 
-if(users[email]){
-message("registerMessage","This email already has an account. Please login.","error");
-return;
+function loadDashboard(){
+
+  const email=
+    localStorage.getItem(SESSION);
+
+  const data=users();
+
+  if(!data[email]){
+    showLogin();
+    return;
+  }
+
+  const user=data[email];
+
+  document
+    .getElementById("register")
+    .classList.add("hidden");
+
+  document
+    .getElementById("login")
+    .classList.add("hidden");
+
+  document
+    .getElementById("dashboard")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("welcome")
+    .textContent=
+    "Welcome, "+user.name;
+
+  document
+    .getElementById("profileName")
+    .textContent=user.name;
+
+  document
+    .getElementById("profileUsername")
+    .textContent=user.username;
+
+  document
+    .getElementById("profileEmail")
+    .textContent=user.email;
 }
 
-users[email]={
-name:name,
-email:email,
-password:password,
-wallet:0
-};
-
-saveUsers(users);
-
-localStorage.setItem(SESSION_KEY,email);
-
-openDashboard();
-}
-
-function loginUser(){
-
-const email=document.getElementById("loginEmail").value.trim().toLowerCase();
-const password=document.getElementById("loginPassword").value;
-const users=getUsers();
-const user=users[email];
-
-if(!user){
-message("loginMessage","Account not found. Please create an account.","error");
-return;
-}
-
-if(user.password!==password){
-message("loginMessage","Incorrect email or password.","error");
-return;
-}
-
-localStorage.setItem(SESSION_KEY,email);
-openDashboard();
-}
-
-function openDashboard(){
-
-const email=localStorage.getItem(SESSION_KEY);
-const users=getUsers();
-const user=users[email];
-
-if(!user){
-showLogin();
-return;
-}
-
-document.getElementById("register").classList.add("hidden");
-document.getElementById("login").classList.add("hidden");
-document.getElementById("dashboard").classList.remove("hidden");
-
-document.getElementById("welcome").textContent="Welcome, "+user.name;
-document.getElementById("profileName").textContent=user.name;
-document.getElementById("profileEmail").textContent=user.email;
-}
 
 function showLogin(){
-document.getElementById("register").classList.add("hidden");
-document.getElementById("login").classList.remove("hidden");
+
+  document
+    .getElementById("register")
+    .classList.add("hidden");
+
+  document
+    .getElementById("login")
+    .classList.remove("hidden");
 }
 
+
 function showRegister(){
-document.getElementById("login").classList.add("hidden");
-document.getElementById("register").classList.remove("hidden");
+
+  document
+    .getElementById("login")
+    .classList.add("hidden");
+
+  document
+    .getElementById("register")
+    .classList.remove("hidden");
 }
+
 
 function openSection(id){
 
-const sections=[
-"trading","deposit","withdraw","idcode",
-"airtime","data","chat","support","profile"
-];
+  const sections=[
+    "trading",
+    "withdraw",
+    "processing",
+    "idcode",
+    "data",
+    "chat",
+    "support",
+    "profile"
+  ];
 
-sections.forEach(function(section){
-document.getElementById(section).classList.add("hidden");
-});
+  sections.forEach(function(x){
+    document
+      .getElementById(x)
+      .classList.add("hidden");
+  });
 
-document.getElementById(id).classList.remove("hidden");
-window.scrollTo({top:0,behavior:"smooth"});
+  document
+    .getElementById(id)
+    .classList.remove("hidden");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 }
 
-function submitTestPayment(){
 
-const reference=document.getElementById("reference").value.trim();
-const proof=document.getElementById("proof").files.length;
+function processWithdrawal(){
 
-if(!reference&&!proof){
-message("paymentMessage","Enter a test reference or upload test proof.","error");
-return;
+  const name=
+    document.getElementById("withdrawName")
+    .value.trim();
+
+  const account=
+    document.getElementById("withdrawAccount")
+    .value.trim();
+
+  if(!name||!account){
+
+    message(
+      "withdrawResult",
+      "Enter your account name and account number.",
+      "error"
+    );
+
+    return;
+  }
+
+  openSection("processing");
+
+  setTimeout(function(){
+
+    openSection("idcode");
+
+  },1800);
 }
 
-message("paymentMessage","Test payment submitted successfully.","success");
+
+function submitProof(){
+
+  const reference=
+    document.getElementById("reference")
+    .value.trim();
+
+  const proof=
+    document.getElementById("proof")
+    .files.length;
+
+  if(!reference&&!proof){
+
+    message(
+      "proofMsg",
+      "Enter a reference or select a file.",
+      "error"
+    );
+
+    return;
+  }
+
+  message(
+    "proofMsg",
+    "Submission received.",
+    "success"
+  );
 }
+
 
 function sendChat(){
 
-const text=document.getElementById("chatMessage").value.trim();
+  const text=
+    document.getElementById("chatText")
+    .value.trim();
 
-if(!text){
-message("chatResult","Please enter a message.","error");
-return;
+  if(!text){
+
+    message(
+      "chatMsg",
+      "Write a message first.",
+      "error"
+    );
+
+    return;
+  }
+
+  message(
+    "chatMsg",
+    "Message submitted.",
+    "success"
+  );
 }
 
-message("chatResult","Test message submitted.","success");
+
+function demoMessage(id){
+
+  message(
+    id,
+    "Request submitted.",
+    "success"
+  );
 }
 
-function demo(id){
-message(id,"Test action completed.","success");
-}
-
-function logout(){
-
-localStorage.removeItem(SESSION_KEY);
-
-document.getElementById("dashboard").classList.add("hidden");
-
-showLogin();
-}
 
 function message(id,text,type){
 
-const box=document.getElementById(id);
+  const el=
+    document.getElementById(id);
 
-box.className="message "+type;
-box.textContent=text;
+  el.className=
+    "message "+type;
+
+  el.textContent=text;
 }
+
+
+function logout(){
+
+  localStorage.removeItem(SESSION);
+
+  document
+    .getElementById("dashboard")
+    .classList.add("hidden");
+
+  showLogin();
+}
+
 
 window.onload=function(){
 
-const email=localStorage.getItem(SESSION_KEY);
-const users=getUsers();
-
-if(email&&users[email]){
-openDashboard();
-}
+  if(localStorage.getItem(SESSION)){
+    loadDashboard();
+  }
 
 };
 
 </script>
 
 </body>
-  </html>
+</html>
